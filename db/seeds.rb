@@ -17,8 +17,7 @@ User.create!(
   rep_rating: 7,
   will_travel_km: 3,
   will_match_units: 300,
-  lat: -58.17256227443719,
-  lng: -156.65548382095133
+  address: "138 Kingsland Road"
 )
 User.create!(
   email: "jill@test.com",
@@ -28,8 +27,7 @@ User.create!(
   rep_rating: 3,
   will_travel_km: 2,
   will_match_units: 1000,
-  lat: -59.17256227443719,
-  lng: -157.65548382095133
+  address: "110 Hoxton St"
 )
 
 10.times do
@@ -41,9 +39,7 @@ User.create!(
     rep_rating: rand(-10..10),
     will_travel_km: rand(0..5),
     will_match_units: rand(300..1000),
-    lat: Faker::Address.latitude,
-    lng: Faker::Address.longitude
-    # address: Faker::Address.street_address
+    address: Faker::Address.street_address
   )
 end
 
@@ -68,9 +64,7 @@ end
 
 30.times do
   Venue.create!(
-    lat: Faker::Address.latitude,
-    lng: Faker::Address.longitude
-    # address: Faker::Address.street_address
+    address: Faker::Address.street_address
   )
 end
 

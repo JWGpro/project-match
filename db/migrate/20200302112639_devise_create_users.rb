@@ -37,8 +37,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.integer :rep_rating
       t.integer :will_travel_km
       t.integer :will_match_units
-      t.float :lat
-      t.float :lng
+      t.float :latitude
+      t.float :longitude
       t.string :address
 
 

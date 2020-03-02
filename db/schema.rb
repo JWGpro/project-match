@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2020_03_02_124230) do
     t.integer "rep_rating"
     t.integer "will_travel_km"
     t.integer "will_match_units"
-    t.float "lat"
-    t.float "lng"
+    t.float "latitude"
+    t.float "longitude"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 2020_03_02_124230) do
   end
 
   create_table "venues", force: :cascade do |t|
-    t.float "lng"
-    t.float "lat"
+    t.float "latitude"
+    t.float "longitude"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
