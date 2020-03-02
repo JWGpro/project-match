@@ -1,2 +1,12 @@
 <h1>Users#index</h1>
 <p>Find me in app/views/users/index.html.erb</p>
+
+<div class="container">
+  <% @users.each do |user| %>
+  <div class="card">
+    <p><%= user.name %></p>
+    <p>User skill: <%= user.skill_rating %></p>
+    <%= link_to "View Profile", user_path(user.id) %>
+  </div>
+  <% end %>
+</div>
