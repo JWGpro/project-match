@@ -5,7 +5,18 @@
       <% @matches.each_with_index do |match| %>
         <% sender = @users.find(match.sender_id) %>
         <% receiver = @users.find(match.receiver_id) %>
-        <% if sender.id == current_user.id || receiver.id == current_user.id %>
+        <% if sender.id == current_user.id %>
+          <% if receiver.avatar.attached? %>
+            <%= receiver.avatar %>
+          <% else %>
+            <%= link_to user_path(sender.id) do %>
+              <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+            <% end %>
+          <% end %>
+          <%= receiver.name %>
+          <hr>
+        <% end %>
+        <% if receiver.id == current_user.id %>
           <% if sender.avatar.attached? %>
             <%= sender.avatar %>
           <% else %>
