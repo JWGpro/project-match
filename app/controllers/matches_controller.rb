@@ -4,6 +4,11 @@ class MatchesController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @match = Match.find(params[:id])
+    @message = Message.new
+  end
+
   def new
     @match = Match.new
   end
