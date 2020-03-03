@@ -6,6 +6,7 @@ class CreateMatches < ActiveRecord::Migration[6.0]
 
       t.references :venue, null: false, foreign_key: true
       t.datetime :start_datetime
+      t.text :content, default: ""
       t.integer :acceptance_deadline_hrs
       t.boolean :is_accepted, default: false
       t.boolean :is_complete, default: false
