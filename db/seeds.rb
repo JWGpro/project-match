@@ -10,82 +10,141 @@
 ### Users
 
 User.create!(
-  email: "john@test.com",
-  password: "123456",
-  name: "John",
-  skill_rating: 1500,
+  email: "bigdave@gmail.com",
+  password: "password",
+  name: "Dave",
+  skill_rating: 1068,
   rep_rating: 7,
-  will_travel_km: 3,
-  will_match_units: 300,
-  lat: -58.17256227443719,
-  lng: -156.65548382095133
+  # will_travel_km: 3,
+  # will_match_units: 300,
+  latitude: 51.436008,
+  longitude: -0.213844
+  # address: "271 Church Lane, Wimbledon, London SW19 5AF"
 )
 User.create!(
-  email: "jill@test.com",
-  password: "123456",
-  name: "Jill",
-  skill_rating: 1800,
+  email: "jill@gmail.com",
+  password: "password",
+  name: "Jill Valentine",
+  skill_rating: 1154,
   rep_rating: 3,
-  will_travel_km: 2,
-  will_match_units: 1000,
-  lat: -59.17256227443719,
-  lng: -157.65548382095133
+  latitude: 51.447015,
+  longitude: -0.220174
+  # address: "Cambium, 15 Victoria Dr, London SW19 6AD"
+)
+User.create!(
+  email: "greg@gmail.com",
+  password: "password",
+  name: "Greg Fields",
+  skill_rating: 982,
+  rep_rating: -2,
+  latitude: 51.441641,
+  longitude: -0.213319
+  # address:
+)
+User.create!(
+  email: "daigo@gmail.com",
+  password: "password",
+  name: "Daigo Umehara",
+  skill_rating: 1211,
+  rep_rating: 4,
+  latitude: 51.439424,
+  longitude: -0.201095
+  # address: "81 Revelstoke Rd, Wimbledon Park, London SW18 5NL"
+)
+User.create!(
+  email: "sofia@gmail.com",
+  password: "password",
+  name: "Sofia Alanis",
+  skill_rating: 1037,
+  rep_rating: 1,
+  latitude: 51.421967,
+  longitude: -0.217034
+  # address: "30 - 34 Ridgway, Wimbledon, London SW19 4QW"
 )
 
-10.times do
-  User.create!(
-    email: Faker::Internet.email,
-    password: "123456",
-    name: Faker::Name.name,
-    skill_rating: rand(0..3000),
-    rep_rating: rand(-10..10),
-    will_travel_km: rand(0..5),
-    will_match_units: rand(300..1000),
-    lat: Faker::Address.latitude,
-    lng: Faker::Address.longitude
-    # address: Faker::Address.street_address
-  )
-end
+
+# 10.times do
+#   User.create!(
+#     email: Faker::Internet.email,
+#     password: "password",
+#     name: Faker::Name.name,
+#     skill_rating: rand(0..3000),
+#     rep_rating: rand(-10..10),
+#     will_travel_km: rand(0..5),
+#     will_match_units: rand(300..1000),
+#     address: Faker::Address.street_address
+#   )
+# end
 
 
 ### Availabilities
 
-User.all.each do |user|
-  rand(1..7).times do |i|
-    avail = Availability.create!(
-      user: user,
-      day: i
-    )
-    hour = rand(15..20)
-    avail.start_time = DateTime.new(2000,1,1, hour,0,0)
-    avail.end_time = (avail.start_time.to_time + 3600*(3)).to_datetime
-    avail.save!
-  end
-end
+# User.all.each do |user|
+#   rand(1..7).times do |i|
+#     avail = Availability.create!(
+#       user: user,
+#       day: i
+#     )
+#     hour = rand(15..20)
+#     avail.start_time = DateTime.new(2000,1,1, hour,0,0)
+#     avail.end_time = (avail.start_time.to_time + 3600*(3)).to_datetime
+#     avail.save!
+#   end
+# end
 
 
 ### Venues
 
-30.times do
-  Venue.create!(
-    lat: Faker::Address.latitude,
-    lng: Faker::Address.longitude
-    # address: Faker::Address.street_address
-  )
-end
+Venue.create!(
+  latitude: User.first.latitude,
+  longitude: User.first.longitude
+)
+
+# 30.times do
+#   Venue.create!(
+#     address: Faker::Address.street_address
+#   )
+# end
 
 
 ### Matches
 # could seed some completed matches for viewing in a history chart or something
 
-5.times do
-  sender_id = User.all.order(Arel.sql('RANDOM()')).first.id
-  match = Match.create!(
-    sender_id: sender_id,
-    receiver_id: User.where.not(id: sender_id).order(Arel.sql('RANDOM()')).first.id,
-    venue: Venue.all.order(Arel.sql('RANDOM()')).first,
-    acceptance_deadline_hrs: rand(1..24)
-  )
-  match.start_datetime = match.created_at + rand(100_000..900_000)
-  match.save!
-end
+match = Match.create!(
+  sender_id: User.first.id,
+  receiver_id: User.find(2),
+  venue: Venue.first,
+  acceptance_deadline_hrs: 6
+)
+match.start_datetime = match.created_at + 100_000
+match.save!
+
+match = Match.create!(
+  sender_id: User.find(4),
+  receiver_id: User.first.id,
+  venue: Venue.first,
+  acceptance_deadline_hrs: 6
+)
+match.start_datetime = match.created_at + 200_000
+match.save!
+
+match = Match.create!(
+  sender_id: User.find(3),
+  receiver_id: User.first.id,
+  venue: Venue.first,
+  acceptance_deadline_hrs: 6
+)
+match.start_datetime = match.created_at + 300_000
+match.save!
+
+# 5.times do
+#   sender_id = User.all.order(Arel.sql('RANDOM()')).first.id
+#   match = Match.create!(
+#     sender_id: sender_id,
+#     receiver_id: User.where.not(id: sender_id).order(Arel.sql('RANDOM()')).first.id,
+#     venue: Venue.all.order(Arel.sql('RANDOM()')).first,
+#     acceptance_deadline_hrs: rand(1..24)
+#   )
+#   match.start_datetime = match.created_at + rand(100_000..900_000)
+#   match.save!
+# end
