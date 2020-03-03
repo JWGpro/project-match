@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
         @match,
         render_to_string(partial: "message", locals: { message: @message })
       )
-      # redirect_to user_match_path(current_user, @match)
+      # redirect_to matches_path(current_user, match: @match.id)
     else
       render "matches/show"
     end
