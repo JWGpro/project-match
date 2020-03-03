@@ -19,8 +19,8 @@
     <% @matches.each do |match| %>
       <ul class="card">
         <li>Match Time: <%= match.start_datetime %></li>
-        <li>Challenger: <%= match.sender_id %></li>
-        <li>Challenged: <%= match.receiver_id %></li>
+        <li>Challenger: <%= match.sender.name %></li>
+        <li>Challenged: <%= match.receiver.name %></li>
       </ul>
     <% end %>
 </div>
