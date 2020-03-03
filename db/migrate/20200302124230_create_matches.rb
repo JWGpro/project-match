@@ -4,6 +4,10 @@ class CreateMatches < ActiveRecord::Migration[6.0]
       t.integer :sender_id
       t.integer :receiver_id
 
+      t.string :address
+      t.time :start_time
+      t.time :end_time
+
       t.references :venue, null: false, foreign_key: true
       t.datetime :start_datetime
       t.text :content, default: ""
