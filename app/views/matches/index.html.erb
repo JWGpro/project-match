@@ -1,0 +1,48 @@
+
+<div class="container">
+  <div class="row little-margin">
+    <div class="col-3">
+      <% @matches.each do |match| %>
+        <% sender = match.sender %>
+        <% receiver = match.receiver %>
+
+        <% if sender.id == current_user.id %>
+          <% if receiver.avatar.attached? %>
+            <%= receiver.avatar %>
+          <% else %>
+            <%= link_to  user_match_path(current_user.id, match.id) do %>
+              <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+            <% end %>
+          <% end %>
+
+          <%= receiver.name %>
+          <hr>
+        <% end %>
+
+        <% if receiver.id == current_user.id %>
+          <% if sender.avatar.attached? %>
+            <%= sender.avatar %>
+          <% else %>
+            <%= link_to user_path(sender.id) do %>
+              <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+            <% end %>
+          <% end %>
+          <%= sender.name %>
+         <hr>
+        <% end %>
+
+      <% end %>
+      <%# raise %>
+    </div>
+
+
+
+
+    <div class="col-9" style="background-color: blue;">
+
+
+    </div>
+  </div>
+</div>
+
+

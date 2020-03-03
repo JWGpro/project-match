@@ -1,3 +1,15 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+$news-container-background-white: white;
+
 // Specific CSS for your home-page
 .full-pg {
   height: 100vh;
@@ -5,11 +17,11 @@
 }
 
 
-.first-row {
+.first-c {
   background-color: rgba(0,0,0,0.07);
 }
 
-.middle-row {
+.middle-c {
   background-color: rgba(0,0,0,0.01);
   h4 {
     padding-top: 4px;
@@ -17,6 +29,140 @@
   }
 }
 
-.last-row {
+.last-c {
   background-color: rgba(0,0,0,0.07);
+}
+
+//News container
+.post-news {
+  display: flex;
+  margin: 15px;
+  background: $news-container-background-white;
+  padding: 10px;
+  border-radius: 10px;
+  height: 10vh;
+}
+
+.news-input {
+  width: 100%;
+  border: none;
+}
+
+.news-container {
+  display: flex;
+  margin: 15px;
+  background: $news-container-background-white;
+  padding: 10px;
+  border-radius: 10px;
+ 
+}
+
+.news-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.news-content {
+  padding: 10px;
+}
+
+.edu-video  {
+  display: flex;
+  flex-direction: column;
+  background: $news-container-background-white;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 10px;
+    a {
+      width: 100%;
+    }
+}
+
+.edu-item {
+  text-align: center;
+}
+.video-tutorial {
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYFjiSEVV9vj55a5pAmbxvFAB7R6ictvB1vXjYTxkhnip8_asp") no-repeat center center/cover;
+  width: 100%;
+  height: 200px;
+}
+
+//Right asside column
+  .available-players {
+
+  }
+
+//turnament
+
+.turnaments {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  background: $news-container-background-white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.turnament-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.turnament-description {
+  text-align: center;
+}
+
+.trophy-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  color: rgb(207, 135, 15);
+  font-size: 2rem;
+}
+
+//Players mini card
+
+.players-mini-card {
+  display: flex;
+  margin: 15px;
+  background: $news-container-background-white;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.available-players {
+  display: flex;
+}
+
+.players-short-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.card-avatar {
+  
+}
+.mini-card-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.available-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

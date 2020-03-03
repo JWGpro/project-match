@@ -1,4 +1,14 @@
 class MatchesController < ApplicationController
+  def index
+    @matches = Match.all
+    @users = User.all
+  end
+
+  def show
+    @match = Match.find(params[:id])
+    @message = Message.new
+  end
+
   def new
     @match = Match.new
   end
