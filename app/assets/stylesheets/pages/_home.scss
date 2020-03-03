@@ -8,8 +8,16 @@ p {
   margin: 0;
 }
 
-$news-container-background-white: white;
+$news-container-background-white: rgba(250, 250, 250, 0.5) ;
+$news-container-background-gray: rgba(0, 0, 0, 0.3);
+$news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 
+.banner {
+  background: url('https://images.unsplash.com/photo-1554653918-7889417d67d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80') no-repeat center center/cover;
+}
+.banner-overlay {
+  background: $news-container-background-dark-gray;
+}
 // Specific CSS for your home-page
 .full-pg {
   height: 100vh;
@@ -19,6 +27,7 @@ $news-container-background-white: white;
 
 .first-c {
   background-color: rgba(0,0,0,0.07);
+  color: white;
 }
 
 .middle-c {
@@ -26,6 +35,7 @@ $news-container-background-white: white;
   h4 {
     padding-top: 4px;
     padding-right: 4px;
+    color: white;
   }
 }
 
@@ -37,7 +47,7 @@ $news-container-background-white: white;
 .post-news {
   display: flex;
   margin: 15px;
-  background: $news-container-background-white;
+  background: $news-container-background-gray;
   padding: 10px;
   border-radius: 10px;
   height: 10vh;
@@ -46,18 +56,23 @@ $news-container-background-white: white;
 .news-input {
   width: 100%;
   border: none;
+  background: $news-container-background-gray;
+  color: white;
 }
 
 .news-container {
   display: flex;
   margin: 15px;
-  background: $news-container-background-white;
+  background: $news-container-background-gray;
   padding: 10px;
   border-radius: 10px;
+  color: white;
  
 }
 
 .news-avatar {
+  margin-top: auto;
+  margin-bottom:  auto;
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -70,10 +85,11 @@ $news-container-background-white: white;
 .edu-video  {
   display: flex;
   flex-direction: column;
-  background: $news-container-background-white;
+  background: $news-container-background-gray;
   margin: 15px;
   padding: 10px;
   border-radius: 10px;
+  color: white;
     a {
       width: 100%;
     }
@@ -83,9 +99,16 @@ $news-container-background-white: white;
   text-align: center;
 }
 .video-tutorial {
-  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYFjiSEVV9vj55a5pAmbxvFAB7R6ictvB1vXjYTxkhnip8_asp") no-repeat center center/cover;
-  width: 100%;
-  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ height: 20vh;
+  h2 {
+    font-size: 5vw;
+  }
+}
+.fab {
+  color: rgb(255, 0, 0)
 }
 
 //Right asside column
@@ -98,16 +121,18 @@ $news-container-background-white: white;
 .turnaments {
   display: flex;
   flex-direction: column;
-  margin: 15px;
-  background: $news-container-background-white;
+  margin-top: 5px;
+  background: $news-container-background-gray;
   padding: 10px;
   border-radius: 10px;
+  color: white;
 }
 
 .turnament-header {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .turnament-description {
@@ -127,15 +152,24 @@ $news-container-background-white: white;
 
 .players-mini-card {
   display: flex;
-  margin: 15px;
-  background: $news-container-background-white;
+  margin-top: 5px;
+  background: $news-container-background-gray;
   padding: 10px;
   border-radius: 10px;
   width: 100%;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+    &:hover {
+      background: rgba(220, 220, 220, 0.5);
+      text-decoration: none;
+    }
 }
 
 .available-players {
   display: flex;
+  flex-direction: column;
+ 
 }
 
 .players-short-description {
@@ -143,11 +177,17 @@ $news-container-background-white: white;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  color: white;
+  text-decoration: none;
 }
 
-.card-avatar {
+.players-link { 
+  p {
+    text-decoration: none;
+  }
   
 }
+
 .mini-card-avatar {
   display: flex;
   justify-content: center;
