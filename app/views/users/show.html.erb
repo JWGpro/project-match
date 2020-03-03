@@ -1,17 +1,26 @@
 <div class="container">
-  <h1><%= @user.name %>'s Profile</h1>
-  <p>Skill: <%= @user.skill_rating %></p>
-  <p>User rep: <%= "⭐️" * @user.rep_rating %></p>
-  <% if @user.avatar.attached? %>
-    <%= cl_image_tag(@user.avatar.key, class: "user-avatar") %>
-  <% else %>
-    <img class="user-avatar" src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="image">
-  <% end %>
-  <ul>
+
+  <div class="profile-banner">
+    <div>
+      <% if @user.avatar.attached? %>
+        <%= cl_image_tag(@user.avatar.key, class: "user-avatar") %>
+      <% else %>
+        <img class="user-avatar" src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="image">
+      <% end %>
+    </div>
+    <div class="banner-body">
+      <h1><%= @user.name %>'s Profile</h1>
+      <p>Skill: <%= @user.skill_rating %></p>
+      <p>User rep: <%= "⭐️" * @user.rep_rating %></p>
+    </div>
+  </div>
+  <br>
+  <br>
     <% @matches.each do |match| %>
-      <li>Match Time: <%= match.start_datetime %></li>
-      <li>Challenger: <%= match.sender_id %></li>
-      <li>Challenged: <%= match.receiver_id %></li>
+      <ul class="card">
+        <li>Match Time: <%= match.start_datetime %></li>
+        <li>Challenger: <%= match.sender_id %></li>
+        <li>Challenged: <%= match.receiver_id %></li>
+      </ul>
     <% end %>
-  </ul>
 </div>
