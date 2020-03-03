@@ -7,5 +7,11 @@
   <% else %>
     <img class="user-avatar" src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="image">
   <% end %>
-  <%= @matches %>
+  <ul>
+    <% @matches.each do |match| %>
+      <li>Match Time: <%= match.start_datetime %></li>
+      <li>Challenger: <%= match.sender_id %></li>
+      <li>Challenged: <%= match.receiver_id %></li>
+    <% end %>
+  </ul>
 </div>
