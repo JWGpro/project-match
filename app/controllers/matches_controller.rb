@@ -2,6 +2,12 @@ class MatchesController < ApplicationController
   def index
     @matches = Match.all
     @users = User.all
+    if params[:match]
+      @match = Match.find(params[:match])
+    else
+      @match = Match.all.first
+    end
+    @message = Message.new
   end
 
   def show
