@@ -15,6 +15,9 @@
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
+          <%= link_to "My Profile", user_path(current_user), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
           <%= link_to "Messages", user_matches_path(current_user.id), class: "nav-link" %>
         </li>
          <li class="nav-item">
