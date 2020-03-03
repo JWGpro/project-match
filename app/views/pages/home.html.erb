@@ -35,25 +35,48 @@
 
 
   <div class="col last-row">
-
-    <div class="available-players">
-      
-    </div>
-
      <div class="turnaments">
       <div class="turnament-header">
         <h2>Next Turnament</h2>
+      </div>
+      <div class="trophy-icon">
+        <i class="fas fa-trophy"></i>
       </div>
 
       <div class="turnament-details">
         <div class="turnament-description">
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur ut, libero blanditiis sapiente cumque repellat animi voluptatum voluptatibus obcaecati autem.</p>
-        </div>    
-        
+        </div>      
       </div>
 
     </div>
 
+    <div class="available-players">
+      <% @users=User.all%>
+      <% @users.each do |user| %>
+        <%= link_to user_path(user.id) do %>
+          <div class="players-mini-card">
+
+            <div class="mini-card-avatar">
+              <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
+            </div>
+
+            <div class="players-short-description">
+              <p>skill points</p>
+              <p><%= user.skill_rating %></p>
+              <div class="available-date">
+                <p>availability date</p>
+                <p><%=rand(1..28)%>.<%=rand(1..12)%>.2020</p>
+              </div>
+            </div>
+          </div>
+      
+        <%end %>
+      <%end%>
+        
+    </div>
+
+    
   </div>
 
 

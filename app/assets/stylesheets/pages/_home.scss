@@ -1,3 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
 $news-container-background-white: white;
 
 // Specific CSS for your home-page
@@ -48,10 +58,6 @@ $news-container-background-white: white;
 }
 
 .news-avatar {
-  width: 20%;
-}
-
-.news-avatar {
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -82,6 +88,11 @@ $news-container-background-white: white;
   height: 200px;
 }
 
+//Right asside column
+  .available-players {
+
+  }
+
 //turnament
 
 .turnaments {
@@ -93,4 +104,65 @@ $news-container-background-white: white;
   border-radius: 10px;
 }
 
+.turnament-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.turnament-description {
+  text-align: center;
+}
+
+.trophy-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  color: rgb(207, 135, 15);
+  font-size: 2rem;
+}
+
+//Players mini card
+
+.players-mini-card {
+  display: flex;
+  margin: 15px;
+  background: $news-container-background-white;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.available-players {
+  display: flex;
+}
+
+.players-short-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.card-avatar {
+  
+}
+.mini-card-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.available-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
