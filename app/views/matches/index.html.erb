@@ -1,0 +1,59 @@
+
+<div class="container">
+  <div class="row little-margin">
+    <div class="col-3">
+      <% @matches.each do |match| %>
+        <% sender = match.sender %>
+        <% receiver = match.receiver %>
+
+        <% if sender.id == current_user.id %>
+          <% if receiver.avatar.attached? %>
+            <%= receiver.avatar %>
+          <% else %>
+            <%= link_to matches_path(match: match.id) do %>
+              <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+            <% end %>
+          <% end %>
+
+          <%= receiver.name %>
+          <hr>
+        <% end %>
+
+        <% if receiver.id == current_user.id %>
+          <% if sender.avatar.attached? %>
+            <%= sender.avatar %>
+          <% else %>
+            <%= link_to matches_path(match: match.id) do %>
+              <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+            <% end %>
+          <% end %>
+          <%= sender.name %>
+         <hr>
+        <% end %>
+
+      <% end %>
+      <%# raise %>
+    </div>
+
+
+
+
+    <div class="col-9" style="overflow-y: scroll; max-height: 60vh;background-color: white;">
+      <div id="messages" data-match-id="<%= @match.id %>">
+        <% @match.messages.each do |message| %>
+          <%= render "messages/message", message: message %>
+          <hr>
+        <% end %>
+      </div>
+
+      <div style="position: sticky; bottom: 0;">
+        <%= simple_form_for [ current_user, @match, @message ] do |f| %>
+          <%= f.input :content, label: false, placeholder: "Message" %>
+        <% end %>
+      <div>
+
+    </div>
+  </div>
+</div>
+
+

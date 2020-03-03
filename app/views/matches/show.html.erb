@@ -1,0 +1,43 @@
+
+<div class="container">
+  <div id="messages" data-match-id="<%= @match.id %>">
+    <div class="challenge-message">
+      <% sender = @match.sender %>
+      <% receiver = @match.receiver %>
+
+      <% if current_user.avatar.attached? %>
+        <%= current_user.avatar %>
+      <% else %>
+        <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+      <% end %>
+
+      <h5>VS</h5>
+
+      <% if current_user.id == sender.id %>
+        <%= puts "debug" %>
+        <%#=  cl_image_tag("receiver.avatar.key") %>
+      <% else %>
+        <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+      <% end %>
+
+      <% if current_user.id == receiver.id %>
+        <%#= sender.avatar %>
+      <% else %>
+        <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+      <% end %>
+
+      <%#= @match.content %>
+
+    </div>
+
+
+    <% @match.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+      <hr>
+    <% end %>
+  </div>
+
+  <%= simple_form_for [ current_user, @match, @message ] do |f| %>
+    <%= f.input :content, label: false, placeholder: "Message" %>
+  <% end %>
+</div>

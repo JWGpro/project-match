@@ -25,12 +25,12 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 }
 
 
-.first-row {
+.first-c {
   background-color: rgba(0,0,0,0.07);
   color: white;
 }
 
-.middle-row {
+.middle-c {
   background-color: rgba(0,0,0,0.01);
   h4 {
     padding-top: 4px;
@@ -39,7 +39,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   }
 }
 
-.last-row {
+.last-c {
   background-color: rgba(0,0,0,0.07);
 }
 
