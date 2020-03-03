@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_160013) do
+ActiveRecord::Schema.define(version: 2020_03_03_140852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_160013) do
     t.integer "receiver_id"
     t.bigint "venue_id", null: false
     t.datetime "start_datetime"
+    t.text "content", default: ""
     t.integer "acceptance_deadline_hrs"
     t.boolean "is_accepted", default: false
     t.boolean "is_complete", default: false
@@ -58,6 +59,16 @@ ActiveRecord::Schema.define(version: 2020_03_02_160013) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["venue_id"], name: "index_matches_on_venue_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "match_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["match_id"], name: "index_messages_on_match_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,8 +82,8 @@ ActiveRecord::Schema.define(version: 2020_03_02_160013) do
     t.integer "rep_rating"
     t.integer "will_travel_km"
     t.integer "will_match_units"
-    t.float "lat"
-    t.float "lng"
+    t.float "latitude"
+    t.float "longitude"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -81,8 +92,8 @@ ActiveRecord::Schema.define(version: 2020_03_02_160013) do
   end
 
   create_table "venues", force: :cascade do |t|
-    t.float "lng"
-    t.float "lat"
+    t.float "latitude"
+    t.float "longitude"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -91,4 +102,6 @@ ActiveRecord::Schema.define(version: 2020_03_02_160013) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "availabilities", "users"
   add_foreign_key "matches", "venues"
+  add_foreign_key "messages", "matches"
+  add_foreign_key "messages", "users"
 end
