@@ -33,6 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       # t.datetime :locked_at
 
       t.string :name
+      t.text :bio
       t.integer :skill_rating
       t.integer :rep_rating
       t.integer :will_travel_km

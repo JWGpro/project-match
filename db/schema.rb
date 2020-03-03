@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_140852) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
+    t.text "bio"
     t.integer "skill_rating"
     t.integer "rep_rating"
     t.integer "will_travel_km"
