@@ -112,7 +112,7 @@ Venue.create!(
 
 match = Match.create!(
   sender_id: User.first.id,
-  receiver_id: User.find(2),
+  receiver_id: User.second.id,
   venue: Venue.first,
   acceptance_deadline_hrs: 6
 )
@@ -120,7 +120,7 @@ match.start_datetime = match.created_at + 100_000
 match.save!
 
 match = Match.create!(
-  sender_id: User.find(4),
+  sender_id: User.fourth.id,
   receiver_id: User.first.id,
   venue: Venue.first,
   acceptance_deadline_hrs: 6
@@ -129,7 +129,7 @@ match.start_datetime = match.created_at + 200_000
 match.save!
 
 match = Match.create!(
-  sender_id: User.find(3),
+  sender_id: User.third.id,
   receiver_id: User.first.id,
   venue: Venue.first,
   acceptance_deadline_hrs: 6
