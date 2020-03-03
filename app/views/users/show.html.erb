@@ -16,11 +16,16 @@
   </div>
   <br>
   <br>
+  <textarea name="bio" id="bio" cols="121" rows="10">
+    <%= @user.bio %>
+  </textarea>
+  <br>
+  <br>
     <% @matches.each do |match| %>
-      <ul class="card">
-        <li>Match Time: <%= match.start_datetime %></li>
-        <li>Challenger: <%= match.sender.name %></li>
-        <li>Challenged: <%= match.receiver.name %></li>
-      </ul>
+      <div class="card">
+        <p>Match Time: <%= match.start_datetime %></p>
+        <p>Challenger: <%= match.sender.name %></p>
+        <p>Challenged: <%= match.receiver.name %></p>
+      </div>
     <% end %>
 </div>

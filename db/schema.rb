@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_140852) do
     t.integer "receiver_id"
     t.bigint "venue_id", null: false
     t.datetime "start_datetime"
+    t.text "content", default: ""
     t.integer "acceptance_deadline_hrs"
     t.boolean "is_accepted", default: false
     t.boolean "is_complete", default: false
@@ -77,12 +78,13 @@ ActiveRecord::Schema.define(version: 2020_03_03_140852) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
+    t.text "bio"
     t.integer "skill_rating"
     t.integer "rep_rating"
     t.integer "will_travel_km"
     t.integer "will_match_units"
-    t.float "lat"
-    t.float "lng"
+    t.float "latitude"
+    t.float "longitude"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -91,8 +93,8 @@ ActiveRecord::Schema.define(version: 2020_03_03_140852) do
   end
 
   create_table "venues", force: :cascade do |t|
-    t.float "lng"
-    t.float "lat"
+    t.float "latitude"
+    t.float "longitude"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
