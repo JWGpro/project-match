@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_160013) do
     t.integer "receiver_id"
     t.bigint "venue_id", null: false
     t.datetime "start_datetime"
+    t.text "content"
     t.integer "acceptance_deadline_hrs"
     t.boolean "is_accepted", default: false
     t.boolean "is_complete", default: false

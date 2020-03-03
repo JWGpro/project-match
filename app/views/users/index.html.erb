@@ -28,6 +28,7 @@
             <%= simple_form_for [user, Match.new] do |f| %>
               <%= f.input :sender_id, :as => :hidden, input_html: { value: current_user.id } %>
               <%= f.input :receiver_id, :as => :hidden, input_html: { value: user.id } %>
+              <%= f.input :content, :as => :text %>
               <%= f.input :start_datetime, :as => :hidden, input_html: { value: params.dig(:match, :start_datetime) } %>
               <%= f.input :acceptance_deadline_hrs, :as => :hidden, input_html: { value: params.dig(:match, :acceptance_deadline_hrs) } %>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
