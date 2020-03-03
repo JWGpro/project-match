@@ -1,4 +1,9 @@
 class MatchesController < ApplicationController
+  def index
+    @matches = Match.all
+    @users = User.all
+  end
+
   def new
     @match = Match.new
   end
