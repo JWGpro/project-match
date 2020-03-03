@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @matches = Match.where(sender_id: @user).or(Match.where(receiver_id: @user))
   end
 
   def edit
