@@ -1,0 +1,13 @@
+
+<div class="container">
+  <div id="messages" data-match-id="<%= @match.id %>">
+    <% @match.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+      <hr>
+    <% end %>
+  </div>
+
+  <%= simple_form_for [ current_user, @match, @message ] do |f| %>
+    <%= f.input :content, label: false, placeholder: "Message" %>
+  <% end %>
+</div>
