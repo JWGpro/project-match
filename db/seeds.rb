@@ -9,7 +9,7 @@
 
 ### Users
 
-User.create!(
+temp = User.new(
   email: "bigdave@gmail.com",
   password: "password",
   name: "Dave",
@@ -22,7 +22,12 @@ User.create!(
   longitude: -0.213844
   # address: "271 Church Lane, Wimbledon, London SW19 5AF"
 )
-User.create!(
+temp.avatar.attach(
+  io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/dave_mwvxdk.jpg'),
+  filename: 'dave.jpg')
+temp.save!
+
+temp = User.new(
   email: "jill@gmail.com",
   password: "password",
   name: "Jill Valentine",
@@ -34,7 +39,12 @@ User.create!(
   longitude: -0.220174
   # address: "Cambium, 15 Victoria Dr, London SW19 6AD"
 )
-User.create!(
+temp.avatar.attach(
+  io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/jill_vqcedz.jpg'),
+  filename: 'jill.jpg')
+temp.save!
+
+temp = User.new(
   email: "greg@gmail.com",
   password: "password",
   name: "Greg Fields",
@@ -46,7 +56,12 @@ User.create!(
   longitude: -0.213319
   # address:
 )
-User.create!(
+temp.avatar.attach(
+  io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/greg_cvxdxv.jpg'),
+  filename: 'greg.jpg')
+temp.save!
+
+temp = User.new(
   email: "daigo@gmail.com",
   password: "password",
   name: "Daigo Umehara",
@@ -58,7 +73,12 @@ User.create!(
   longitude: -0.201095
   # address: "81 Revelstoke Rd, Wimbledon Park, London SW18 5NL"
 )
-User.create!(
+temp.avatar.attach(
+  io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/daigo_rlyvrr.jpg'),
+  filename: 'daigo.jpg')
+temp.save!
+
+temp = User.new(
   email: "sofia@gmail.com",
   password: "password",
   name: "Sofia Alanis",
@@ -70,6 +90,10 @@ User.create!(
   longitude: -0.217034
   # address: "30 - 34 Ridgway, Wimbledon, London SW19 4QW"
 )
+temp.avatar.attach(
+  io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/sofia_caatde.jpg'),
+  filename: 'sofia.jpg')
+temp.save!
 
 
 # 10.times do
