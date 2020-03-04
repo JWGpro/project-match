@@ -15,7 +15,7 @@ User.create!(
   name: "Dave",
   bio: "My name is Dave and I like tennis",
   skill_rating: 1068,
-  rep_rating: 7,
+  rep_rating: 5,
   will_travel_km: 3,
   # will_match_units: 300,
   latitude: 51.436008,
@@ -40,7 +40,7 @@ User.create!(
   name: "Greg Fields",
   bio: "My name is Greg and I like tennis",
   skill_rating: 982,
-  rep_rating: -2,
+  rep_rating: 2,
   will_travel_km: 3,
   latitude: 51.441641,
   longitude: -0.213319

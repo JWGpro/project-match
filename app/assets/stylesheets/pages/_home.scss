@@ -166,10 +166,19 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
     }
 }
 
+
 .available-players {
   display: flex;
   flex-direction: column;
  
+}
+
+.avatar-fullname {
+  display: flex;
+  flex-direction: column;
+  h2 {
+    font-size: 12px;
+  }
 }
 
 .players-short-description {
