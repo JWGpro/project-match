@@ -63,11 +63,12 @@
 
                 <%= link_to user_path(user.id), class: "players-link" do %>
                   <div class="players-mini-card">
-
-                    <div class="mini-card-avatar">
-                      <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
+                    <div class="avatar-fullname">
+                      <div class="mini-card-avatar">
+                        <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
+                      </div>
+                      <h2><%= user.name %></h2>
                     </div>
-
                     <div class="players-short-description">
                       <p>skill points</p>
                       <p><%= user.skill_rating %></p>
@@ -78,8 +79,12 @@
                     </div>
                   </div>
                 <%end%>
+7
               <%end %>
+
             <% end %>
+
+
           <%end%>
 
         </div>

@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     if @message.save
       MatchChannel.broadcast_to(
         @match,
-        render_to_string(partial: "message", locals: { message: @message })
+        render_to_string(partial: "message",locals: { message: @message })
       )
       # redirect_to matches_path(current_user, match: @match.id)
     else
