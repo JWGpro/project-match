@@ -53,18 +53,42 @@
           <h5>VS</h5>
 
           <% if current_user.id == sender.id %>
-            <%= puts "debug" %>
-            <%#=  cl_image_tag("receiver.avatar.key") %>
-          <% else %>
-            <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+            <% if receiver.avatar.attached? %>
+              <%=  cl_image_tag(receiver.avatar.key) %>
+            <% else %>
+              <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+            <% end %>
           <% end %>
 
-          <%#= @match.content %>
+          <% if current_user.id == receiver.id %>
+            <% if sender.avatar.attached? %>
+              <%=  cl_image_tag(sender.avatar.key) %>
+            <% else %>
+              <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+            <% end %>
+          <% end %>
+
+
 
         </div>
+        <%= sender.name %>
+        <br>
+        <%= @match.content %>
+        <hr>
         <% @match.messages.each do |message| %>
-          <%= render "messages/message", message: message %>
-          <hr>
+
+          <% if message.user_id == current_user.id %>
+            <div class="message-left">
+              <%= render "messages/message", message: message %>
+            </div>
+          <% end %>
+
+          <% if message.user_id != current_user.id %>
+            <div class="message-right">
+              <%= render "messages/message", message: message %>
+            </div>
+          <% end %>
+
         <% end %>
       </div>
 
