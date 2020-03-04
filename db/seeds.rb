@@ -39,7 +39,7 @@ User.create!(
   name: "Greg Fields",
   bio: "My name is Greg and I like tennis",
   skill_rating: 982,
-  rep_rating: -2,
+  rep_rating: 2,
   latitude: 51.441641,
   longitude: -0.213319
   # address:
