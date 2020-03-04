@@ -25,7 +25,7 @@ class MatchesController < ApplicationController
       redirect_to root_path
       # TODO: some kind of success modal?
     else
-      render "users"
+      render "create"
     end
   end
 
