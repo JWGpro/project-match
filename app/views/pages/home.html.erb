@@ -5,7 +5,7 @@
 
 
       <div class="col first-row">
-        
+
       </div>
 
 
@@ -31,10 +31,10 @@
           <div class="edu-item"><h2>Tennis tutorial - The Forehand</h2></div>
           <a href="https://www.youtube.com/watch?v=dOa7DcKcL8U">
             <div class="video-tutorial"><h2><i class="fab fa-youtube"></i></h2></div>
-          </a>  
+          </a>
         </div>
 
-      
+
       </div>
 
 
@@ -50,7 +50,7 @@
           <div class="turnament-details">
             <div class="turnament-description">
               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur ut, libero blanditiis sapiente cumque repellat animi voluptatum voluptatibus obcaecati autem.</p>
-            </div>      
+            </div>
           </div>
 
         </div>
@@ -58,31 +58,33 @@
         <div class="available-players">
           <% @users=User.all%>
           <% @users.each do |user| %>
-            <%if user.id != current_user.id%> 
+            <% if current_user %>
+              <%if user.id != current_user.id%>
 
-              <%= link_to user_path(user.id), class: "players-link" do %>
-                <div class="players-mini-card">
+                <%= link_to user_path(user.id), class: "players-link" do %>
+                  <div class="players-mini-card">
 
-                  <div class="mini-card-avatar">
-                    <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
-                  </div>
+                    <div class="mini-card-avatar">
+                      <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
+                    </div>
 
-                  <div class="players-short-description">
-                    <p>skill points</p>
-                    <p><%= user.skill_rating %></p>
-                    <div class="available-date">
-                      <p>availability date</p>
-                      <p><%=rand(1..28)%>.<%=rand(1..12)%>.2020</p>
+                    <div class="players-short-description">
+                      <p>skill points</p>
+                      <p><%= user.skill_rating %></p>
+                      <div class="available-date">
+                        <p>availability date</p>
+                        <p><%=rand(1..28)%>.<%=rand(1..12)%>.2020</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              <%end%>
-            <%end %>
+                <%end%>
+              <%end %>
+            <% end %>
           <%end%>
-            
+
         </div>
 
-        
+
       </div>
 
 
