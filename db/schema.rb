@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(version: 2020_03_03_140852) do
   create_table "matches", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "receiver_id"
+    t.string "address"
+    t.time "start_time"
+    t.time "end_time"
     t.bigint "venue_id", null: false
     t.datetime "start_datetime"
     t.text "content", default: ""
