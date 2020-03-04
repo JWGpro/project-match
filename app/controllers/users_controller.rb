@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
   def index
     # @users = User.where('skill_rating...').where('availability...').near([@venue.latitude, @venue.longitude], 5)
-    @users = User.where.not(id: current_user.id)
+
+    cskill = current_user.skill_rating
+    @users = User.where(skill_rating: (cskill * 1.1)..(cskill * 0.9))
+
+    # day = params
+    # start_time = params
+    # end_time = params
+
     @markers = @users.map do |user|
       {
         lat: user.latitude,
