@@ -16,7 +16,7 @@ User.create!(
   bio: "My name is Dave and I like tennis",
   skill_rating: 1068,
   rep_rating: 5,
-  # will_travel_km: 3,
+  will_travel_km: 3,
   # will_match_units: 300,
   latitude: 51.436008,
   longitude: -0.213844
@@ -29,6 +29,7 @@ User.create!(
   bio: "My name is Jill and I like tennis",
   skill_rating: 1154,
   rep_rating: 3,
+  will_travel_km: 3,
   latitude: 51.447015,
   longitude: -0.220174
   # address: "Cambium, 15 Victoria Dr, London SW19 6AD"
@@ -40,6 +41,7 @@ User.create!(
   bio: "My name is Greg and I like tennis",
   skill_rating: 982,
   rep_rating: 2,
+  will_travel_km: 3,
   latitude: 51.441641,
   longitude: -0.213319
   # address:
@@ -51,6 +53,7 @@ User.create!(
   bio: "My name is Daigo and I like tennis",
   skill_rating: 1211,
   rep_rating: 4,
+  will_travel_km: 3,
   latitude: 51.439424,
   longitude: -0.201095
   # address: "81 Revelstoke Rd, Wimbledon Park, London SW18 5NL"
@@ -62,6 +65,7 @@ User.create!(
   bio: "My name is Sofia and I like tennis",
   skill_rating: 1037,
   rep_rating: 1,
+  will_travel_km: 3,
   latitude: 51.421967,
   longitude: -0.217034
   # address: "30 - 34 Ridgway, Wimbledon, London SW19 4QW"
