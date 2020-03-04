@@ -34,12 +34,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
 
       t.string :name
       t.text :bio, default: ""
-      t.integer :skill_rating
-      t.integer :rep_rating
-      t.integer :will_travel_km
-      t.integer :will_match_units
-      t.float :latitude
-      t.float :longitude
+      t.integer :skill_rating, default: 0
+      t.integer :rep_rating, default: 0
+      t.integer :will_travel_km, default: 3
+      t.integer :will_match_units, default: 3
+      t.float :latitude, default: 0
+      t.float :longitude, default: 0
       t.string :address
 
 
