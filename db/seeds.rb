@@ -15,7 +15,7 @@ User.create!(
   name: "Dave",
   bio: "My name is Dave and I like tennis",
   skill_rating: 1068,
-  rep_rating: 7,
+  rep_rating: 5,
   # will_travel_km: 3,
   # will_match_units: 300,
   latitude: 51.436008,
