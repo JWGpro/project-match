@@ -10,7 +10,7 @@
           <% if receiver.avatar.attached? %>
             <%= receiver.avatar %>
           <% else %>
-            <%= link_to matches_path(match: match.id) do %>
+            <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
               <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
             <% end %>
           <% end %>
@@ -23,7 +23,7 @@
           <% if sender.avatar.attached? %>
             <%= sender.avatar %>
           <% else %>
-            <%= link_to matches_path(match: match.id) do %>
+            <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
               <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
             <% end %>
           <% end %>
@@ -36,10 +36,8 @@
     </div>
 
 
-
-
     <div class="col-9" style="overflow-y: scroll; max-height: 60vh;background-color: white;">
-      <div id="messages" data-match-id="<%= @match.id %>">
+      <div id="messages_<%= @match.id %>" class="messagess" data-match-id="<%= @match.id %>">
         <div class="challenge-message">
           <% sender = @match.sender %>
           <% receiver = @match.receiver %>
