@@ -13,10 +13,10 @@ $news-container-background-gray: rgba(0, 0, 0, 0.3);
 $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 
 .banner {
-  background: url('https://images.unsplash.com/photo-1554653918-7889417d67d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80') no-repeat center center/cover;
+  // background:
 }
 .banner-overlay {
-  background: $news-container-background-dark-gray;
+
 }
 // Specific CSS for your home-page
 .full-pg {
@@ -67,7 +67,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   padding: 10px;
   border-radius: 10px;
   color: white;
- 
+
 }
 
 .news-avatar {
@@ -166,10 +166,19 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
     }
 }
 
+
 .available-players {
   display: flex;
   flex-direction: column;
- 
+
+}
+
+.avatar-fullname {
+  display: flex;
+  flex-direction: column;
+  h2 {
+    font-size: 12px;
+  }
 }
 
 .players-short-description {
@@ -181,11 +190,11 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   text-decoration: none;
 }
 
-.players-link { 
+.players-link {
   p {
     text-decoration: none;
   }
-  
+
 }
 
 .mini-card-avatar {
