@@ -1,14 +1,43 @@
 class UsersController < ApplicationController
   def index
-    # @users = User.where('skill_rating...').where('availability...').near([@venue.latitude, @venue.longitude], 5)
-    @users = User.where.not(id: current_user.id)
-    @markers = @users.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude
-      }
+    query = params[:search]
+
+    ### AR/SQL
+    cskill = current_user.skill_rating
+    filtered_users = User.where.not(id: current_user.id).where(skill_rating: (cskill * 0.7)..(cskill * 1.3))
+
+    # day = Date.parse(query[:start_datetime]).cwday
+    # # start_time =
+
+    # filtered_users = skill_filtered.joins(
+    #   :availabilities).where(
+    #   "availabilities.day = ? AND availabilities.start_time = ? AND availabilities.end_time = ?", day, start_time, end_time
+    #   )
+    #   # TODO: no, it's a range.
+    ###
+
+    @venues = Venue.near([current_user.latitude, current_user.longitude], query[:will_travel_km])
+
+    @results = []
+    filtered_users.each do |user|
+      venues_near = @venues.select do |venue|
+        Geocoder::Calculations.distance_between(
+          [user.latitude, user.longitude], [venue.latitude, venue.longitude]
+          ) <= user.will_travel_km
+      end
+
+      if venues_near.length > 0
+        @results << {user: user, venue: venues_near[0]} # can do multiple tho
+      end
     end
-    @markers << {lat: current_user.latitude, lng: current_user.longitude}
+
+    # @markers = @users.map do |user|
+    #   {
+    #     lat: user.latitude,
+    #     lng: user.longitude
+    #   }
+    # end
+    # @markers << {lat: current_user.latitude, lng: current_user.longitude}
 
   end
 
