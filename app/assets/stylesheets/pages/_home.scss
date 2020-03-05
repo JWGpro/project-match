@@ -1,6 +1,8 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Anton', sans-serif;
 }
 
 p {
@@ -12,14 +14,18 @@ $news-container-background-white: rgba(250, 250, 250, 0.5) ;
 $news-container-background-gray: rgba(0, 0, 0, 0.3);
 $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 
-.banner {
-  // background:
+.first-row {
+  background-color: rgba(0,0,0,0.025)
 }
-.banner-overlay {
 
+.banner-overlay {
+  background-color: white;
+  height: 100%;
+  width: 100%;
 }
 // Specific CSS for your home-page
 .full-pg {
+
   height: 100vh;
   width: 100vw;
 }
