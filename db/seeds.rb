@@ -35,9 +35,13 @@ temp = User.new(
   skill_rating: 1154,
   rep_rating: 3,
   will_travel_km: 3,
-  latitude: 51.447015,
-  longitude: -0.220174
   # address: "Cambium, 15 Victoria Dr, London SW19 6AD"
+  # latitude: 51.447015,
+  # longitude: -0.220174
+
+  # Venue 3
+  latitude: 51.416732,
+  longitude: -0.254581
 )
 temp.avatar.attach(
   io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/jill_vqcedz.jpg'),
@@ -52,9 +56,11 @@ temp = User.new(
   skill_rating: 982,
   rep_rating: 2,
   will_travel_km: 3,
+  # address:
+
+  # Venue 1
   latitude: 51.441641,
   longitude: -0.213319
-  # address:
 )
 temp.avatar.attach(
   io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/greg_cvxdxv.jpg'),
@@ -69,9 +75,13 @@ temp = User.new(
   skill_rating: 1211,
   rep_rating: 4,
   will_travel_km: 3,
-  latitude: 51.439424,
-  longitude: -0.201095
   # address: "81 Revelstoke Rd, Wimbledon Park, London SW18 5NL"
+  # latitude: 51.439424,
+  # longitude: -0.201095
+
+  # Venue 2
+  latitude: 51.431513,
+  longitude: -0.175462
 )
 temp.avatar.attach(
   io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/daigo_rlyvrr.jpg'),
@@ -86,9 +96,11 @@ temp = User.new(
   skill_rating: 1037,
   rep_rating: 1,
   will_travel_km: 3,
+
+  # Venue 3
+  # address: "30 - 34 Ridgway, Wimbledon, London SW19 4QW"
   latitude: 51.421967,
   longitude: -0.217034
-  # address: "30 - 34 Ridgway, Wimbledon, London SW19 4QW"
 )
 temp.avatar.attach(
   io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/sofia_caatde.jpg'),
@@ -112,6 +124,17 @@ temp.save!
 
 ### Availabilities
 
+User.all.each do |user|
+  # Saturday 1600-2000
+  av = Availability.new(
+    user: User.second,
+    day: 6
+  )
+  av.start_time = DateTime.new(2000,1,1, 16,0,0),
+  av.end_time = DateTime.new(2000,1,1, 20,0,0)
+  av.save!
+end
+
 # User.all.each do |user|
 #   rand(1..7).times do |i|
 #     avail = Availability.create!(
@@ -129,8 +152,19 @@ temp.save!
 ### Venues
 
 Venue.create!(
-  latitude: User.first.latitude,
-  longitude: User.first.longitude
+  # 34-16 Gressenhall Rd, Southfields, London
+  latitude: 51.451526,
+  longitude: -0.207088
+)
+Venue.create!(
+  # London
+  latitude: 51.438352,
+  longitude: -0.195456
+)
+Venue.create!(
+  # Wimbledon, London SW19 4RF
+  latitude: 51.418846,
+  longitude: -0.230122
 )
 
 # 30.times do

@@ -1,21 +1,47 @@
 class UsersController < ApplicationController
   def index
-    # @users = User.where('skill_rating...').where('availability...').near([@venue.latitude, @venue.longitude], 5)
+    query = params[:search]
 
+    ### AR/SQL
     cskill = current_user.skill_rating
-    @users = User.where(skill_rating: (cskill * 1.1)..(cskill * 0.9))
+    filtered_users = User.where(skill_rating: (cskill * 1.3)..(cskill * 0.7))
 
-    # day = params
-    # start_time = params
-    # end_time = params
+    # day = Date.parse(query[:start_datetime]).cwday
+    # # start_time =
 
-    @markers = @users.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude
-      }
+    # filtered_users = skill_filtered.joins(
+    #   :availabilities).where(
+    #   "availabilities.day = ? AND availabilities.start_time = ? AND availabilities.end_time = ?", day, start_time, end_time
+    #   )
+    #   # TODO: no, it's a range.
+    ###
+
+    @venues = Venue.near(current_user.latitude, current_user.longitude, query[:will_travel_km])
+
+    @results = []
+    @venues.each do |venue|
+      users_near = filtered_users.select do |user|
+        Geocoder::Calculations.distance_between(
+          [user.latitude, user.longitude], [venue.latitude, venue.longitude]
+          ) <= user.will_travel_km
+      end
+
+      if users_near.length > 0
+        users_near.each do |user|
+          @results << {user: user, venue: venue}
+        end
+      end
     end
-    @markers << {lat: current_user.latitude, lng: current_user.longitude}
+
+    raise # does it work??
+
+    # @markers = @users.map do |user|
+    #   {
+    #     lat: user.latitude,
+    #     lng: user.longitude
+    #   }
+    # end
+    # @markers << {lat: current_user.latitude, lng: current_user.longitude}
 
   end
 
