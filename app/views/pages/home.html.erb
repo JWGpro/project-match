@@ -1,5 +1,4 @@
 
-
 <div class="banner-overlay container">
   <div class="row full-pg ">
 
@@ -30,83 +29,79 @@
         </div>
 
       </div>
-    </div>
 
 
-    <div class="col-6 middle-row">
-      <h4>Community feed</h4>
+      <div class="col-6 middle-row">
+        <h4>Community feed</h4>
 
 
-      <div class="post-news">
-        <input class="news-input" type="text" placeholder="place your post here..............">
-      </div>
-
-      <div class="news-container">
-        <div class="news-avatar">
-          <img class="news-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
-        </div>
-        <div class="news-content">
-          <h2>My favorite tennis venues</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, maxime. Odio, itaque quidem sed facere eligendi recusandae tempora aspernatur iure illo vel minima, corrupti dolorum cumque exercitationem ea explicabo dicta.</p>
-        </div>
-      </div>
-
-      <div class="edu-video">
-        <div class="edu-item"><h2>Tennis tutorial - The Forehand</h2></div>
-        <a href="https://www.youtube.com/watch?v=dOa7DcKcL8U">
-          <div class="video-tutorial"><h2><i class="fab fa-youtube"></i></h2></div>
-        </a>
-      </div>
-
-
-    </div>
-
-
-    <div class="col last-row">
-      <div class="turnaments">
-        <div class="turnament-header">
-          <h2>Next Turnament</h2>
-        </div>
-        <div class="trophy-icon">
-          <i class="fas fa-trophy"></i>
+        <div class="post-news">
+          <input class="news-input" type="text" placeholder="place your post here..............">
         </div>
 
-        <div class="turnament-details">
-          <div class="turnament-description">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur ut, libero blanditiis sapiente cumque repellat animi voluptatum voluptatibus obcaecati autem.</p>
+        <div class="news-container">
+          <div class="news-avatar">
+            <img class="news-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
+          </div>
+          <div class="news-content">
+            <h2>My favorite tennis venues</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, maxime. Odio, itaque quidem sed facere eligendi recusandae tempora aspernatur iure illo vel minima, corrupti dolorum cumque exercitationem ea explicabo dicta.</p>
           </div>
         </div>
 
+        <div class="edu-video">
+          <div class="edu-item"><h2>Tennis tutorial - The Forehand</h2></div>
+          <a href="https://www.youtube.com/watch?v=dOa7DcKcL8U">
+            <div class="video-tutorial"><h2><i class="fab fa-youtube"></i></h2></div>
+          </a>
+        </div>
+
+
       </div>
 
-      <div class="available-players">
-        <% @users=User.all%>
-        <% @users.each do |user| %>
-          <% if current_user %>
-            <%if user.id != current_user.id%>
 
-              <%= link_to user_path(user.id), class: "players-link" do %>
-                <div class="players-mini-card">
-                  <div class="avatar-fullname">
-                    <div class="mini-card-avatar">
-                      <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
-                    </div>
-                    <h2><%= user.name %></h2>
-                  </div>
-                  <div class="players-short-description">
-                    <p>skill points</p>
-                    <p><%= user.skill_rating %></p>
-                    <div class="available-date">
-                      <p>availability date</p>
-                      <p><%=rand(1..28)%>.<%=rand(1..12)%>.2020</p>
-                    </div>
-                  </div>
-                </div>
+      <div class="col last-row">
+        <div class="turnaments">
+          <div class="turnament-header">
+            <h2>Upcomming turnament</h2>
+          </div>
+          <div class="turnament-name">
+            <h2>Hoxton Local Cup</h2><i class="fas fa-trophy"></i>
+            <div class="available-players">
+              <% @users=User.all%>
+              <% @users.each do |user| %>
+                <% if current_user %>
+                  <%if user.id != current_user.id%>
+
+                    <%= link_to user_path(user.id), class: "players-link" do %>
+                      <div class="players-mini-card">
+                        <div class="mini-card-avatar">
+                          <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
+                        </div>
+                         
+                        <div class="players-short-description">
+                          <h2><%= user.name%></h2><hr>
+                          <div class="available-date">
+                            <div class="skill-div">
+                              <p class="skill-availability">skill points</p>
+                              <p class="skill-values"><%= user.skill_rating %></p>
+                            </div>
+                            <div class="availability-div">
+                              <p class="skill-availability">availability date</p>
+                              <p class="skill-values"><%=rand(1..28)%>.<%=rand(1..12)%>.2020</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <%end%>
+                  <%end %>
+                <% end %>
               <%end%>
-            <%end %>
-          <% end %>
-        <%end%>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
