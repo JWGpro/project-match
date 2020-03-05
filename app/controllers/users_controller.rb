@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
     ### AR/SQL
     cskill = current_user.skill_rating
-    filtered_users = User.where(skill_rating: (cskill * 1.3)..(cskill * 0.7))
+    filtered_users = User.where.not(id: current_user.id).where(skill_rating: (cskill * 0.7)..(cskill * 1.3))
 
     # day = Date.parse(query[:start_datetime]).cwday
     # # start_time =
@@ -16,20 +16,18 @@ class UsersController < ApplicationController
     #   # TODO: no, it's a range.
     ###
 
-    @venues = Venue.near(current_user.latitude, current_user.longitude, query[:will_travel_km])
+    @venues = Venue.near([current_user.latitude, current_user.longitude], query[:will_travel_km])
 
     @results = []
-    @venues.each do |venue|
-      users_near = filtered_users.select do |user|
+    filtered_users.each do |user|
+      venues_near = @venues.select do |venue|
         Geocoder::Calculations.distance_between(
           [user.latitude, user.longitude], [venue.latitude, venue.longitude]
           ) <= user.will_travel_km
       end
 
-      if users_near.length > 0
-        users_near.each do |user|
-          @results << {user: user, venue: venue}
-        end
+      if venues_near.length > 0
+        @results << {user: user, venue: venues_near[0]} # can do multiple tho
       end
     end
 
