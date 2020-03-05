@@ -7,33 +7,36 @@ const fitMapToMarkers = (map, markers) => {
 };
 
 const initMapbox = () => {
-  const mapElement = document.getElementById('map');
+  const maps = document.querySelectorAll('.map');
+  let counter = 0;
+  maps.forEach((mapElement) => {
+    if (mapElement) { // only build a map if there's a div#map to inject into
+      mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+      const map = new mapboxgl.Map({
+        container: `map_${counter}`,
+        style: 'mapbox://styles/mapbox/streets-v10'
+      });
 
-  if (mapElement) { // only build a map if there's a div#map to inject into
-    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
-    });
+      const markers = JSON.parse(mapElement.dataset.markers);
 
-    const markers = JSON.parse(mapElement.dataset.markers);
+      // colour all the other users
+      for (let i=0; i < markers.length - 1; i++) {
+        const marker = markers[i];
+        new mapboxgl.Marker({ "color": "#6959cd" })
+          .setLngLat([ marker.lng, marker.lat ])
+          .addTo(map);
+      }
 
-    // colour all the other users
-    for (let i=0; i < markers.length - 1; i++) {
-      const marker = markers[i];
-      new mapboxgl.Marker({ "color": "#6959cd" })
-        .setLngLat([ marker.lng, marker.lat ])
+      // colour the centre point (current user)
+      const central = markers.pop();
+      new mapboxgl.Marker({ "color": "#fb7f00" })
+        .setLngLat([ central.lng, central.lat ])
         .addTo(map);
+
+      fitMapToMarkers(map, markers);
+      counter += 1;
     }
-
-    // colour the centre point (current user)
-    const central = markers.pop();
-    new mapboxgl.Marker({ "color": "#fb7f00" })
-      .setLngLat([ central.lng, central.lat ])
-      .addTo(map);
-
-    fitMapToMarkers(map, markers);
-  }
+  })
 };
 
 export { initMapbox };
