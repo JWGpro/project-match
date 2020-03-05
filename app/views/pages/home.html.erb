@@ -27,72 +27,72 @@
             <li class="nav-link match-button"><%= link_to "New Match", "/" %></li>
           </ul>
         </div>
-
       </div>
+    </div>
 
 
-      <div class="col-6 middle-row container">
-        <div class="secondcolwrapper container">
+    <div class="col-6 middle-row container">
+      <div class="secondcolwrapper container">
 
-          <h5 style="font-family:'Anton';color:#616292">Whats up?</h5>
+        <h5 style="font-family:'Anton';color:#616292">Whats up?</h5>
 
-          <div class="posting-card">
-            <div class="post-news">
-              <input class="news-input" type="text" placeholder="Anything...">
-            </div>
-            <div class="post-section">
-              <input type="submit" value="Post" class="post-button">
-            </div>
+        <div class="posting-card">
+          <div class="post-news">
+            <input class="news-input" type="text" placeholder="Anything...">
           </div>
-
-          <h5 style="font-family:'Anton';color:#616292;margin-top:7%;">Community</h5>
-
+          <div class="post-section">
+            <input type="submit" value="Post" class="post-button">
+          </div>
         </div>
+
+        <h5 style="font-family:'Anton';color:#616292;margin-top:7%;">Community</h5>
+
       </div>
+    </div>
 
 
-      <div class="col last-row">
-        <div class="turnaments">
-          <div class="turnament-header">
-            <h2>Upcomming turnament</h2>
-          </div>
-          <div class="turnament-name">
-            <h2>Hoxton Local Cup</h2><i class="fas fa-trophy"></i>
-            <div class="available-players">
-              <% @users=User.all%>
-              <% @users.each do |user| %>
-                <% if current_user %>
-                  <%if user.id != current_user.id%>
+    <div class="col last-row">
+      <div class="turnaments">
+        <div class="turnament-header">
+          <h2>Upcomming turnament</h2>
+        </div>
+        <div class="turnament-name">
+          <h2>Hoxton Local Cup</h2><i class="fas fa-trophy"></i>
+          <div class="available-players">
+            <% @users=User.all%>
+            <% @users.each do |user| %>
+              <% if current_user %>
+                <%if user.id != current_user.id%>
 
-                    <%= link_to user_path(user.id), class: "players-link" do %>
-                      <div class="players-mini-card">
-                        <div class="mini-card-avatar">
-                          <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
-                        </div>
-                         
-                        <div class="players-short-description">
-                          <h2><%= user.name%></h2><hr>
-                          <div class="available-date">
-                            <div class="skill-div">
-                              <p class="skill-availability">skill points</p>
-                              <p class="skill-values"><%= user.skill_rating %></p>
-                            </div>
-                            <div class="availability-div">
-                              <p class="skill-availability">availability date</p>
-                              <p class="skill-values"><%=rand(1..28)%>.<%=rand(1..12)%>.2020</p>
-                            </div>
+                  <%= link_to user_path(user.id), class: "players-link" do %>
+                    <div class="players-mini-card">
+                      <div class="mini-card-avatar">
+                        <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
+                      </div>
+
+                      <div class="players-short-description">
+                        <h2><%= user.name%></h2><hr>
+                        <div class="available-date">
+                          <div class="skill-div">
+                            <p class="skill-availability">skill points</p>
+                            <p class="skill-values"><%= user.skill_rating %></p>
+                          </div>
+                          <div class="availability-div">
+                            <p class="skill-availability">availability date</p>
+                            <p class="skill-values"><%=rand(1..28)%>.<%=rand(1..12)%>.2020</p>
                           </div>
                         </div>
                       </div>
-                    <%end%>
-                  <%end %>
-                <% end %>
-              <%end%>
-            </div>
+                    </div>
+                  <%end%>
+                <%end %>
+              <% end %>
+            <%end%>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
