@@ -31,8 +31,6 @@ class UsersController < ApplicationController
       end
     end
 
-    raise # does it work??
-
     # @markers = @users.map do |user|
     #   {
     #     lat: user.latitude,
