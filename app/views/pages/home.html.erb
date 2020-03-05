@@ -29,13 +29,13 @@
 
         <div class="navbarlist">
           <ul>
-            <li class="nav-link home-button"><%= link_to "Home", "/" %></li><hr>
+            <li class="nav-link link-btn home-button"><%= link_to "Home", "/" %></li><hr>
             <% if current_user %>
-              <li class="nav-link"><%= link_to "Profile", "/" %></li><hr>
+              <li class="nav-link link-btn"><%= link_to "Profile", "/" %></li><hr>
             <% else %>
-              <li class="nav-link"><%= link_to "Login", new_user_session_path %></li><hr>
+              <li class="nav-link link-btn"><%= link_to "Login", new_user_session_path %></li><hr>
             <% end %>
-            <li class="nav-link"><%= link_to "Messages", "/" %></li>
+            <li class="nav-link link-btn"><%= link_to "Messages", "/" %></li>
             <li class="nav-link match-button"><%= link_to "New Match", "/" %></li>
           </ul>
         </div>

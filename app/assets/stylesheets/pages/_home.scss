@@ -27,7 +27,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 
 .splash-profile-pic {
   height: 60px;
-  weight: 60px;
+  width: 60px;
   border-radius: 7px;
 }
 
@@ -40,10 +40,15 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
     font-family: "Nunito Sans";
     font-weight: 600;
     font-size: 14px;
-    &:hover {
+    &:hover{
       text-decoration: none;
     }
   }
+ 
+}
+.link-btn:hover, .link-btn:focus {
+  text-decoration: none;
+  background: rgb(240, 240, 240);
 }
 
 .home-button {
