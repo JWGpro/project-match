@@ -10,12 +10,84 @@ p {
   margin: 0;
 }
 
+hr {
+  margin: 0;
+}
+
 $news-container-background-white: rgba(250, 250, 250, 0.5) ;
 $news-container-background-gray: rgba(0, 0, 0, 0.3);
 $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 
 .first-row {
   background-color: rgba(0,0,0,0.025)
+}
+
+.splash-profile-pic {
+  height: 60px;
+  weight: 60px;
+  border-radius: 7px;
+}
+
+.nav-link {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  a {
+    color: black;
+    opacity: 0.7;
+    font-family: 'Nunito Sans';
+    font-weight: 600;
+    font-size: 14px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.home-button {
+  a {
+    color: #FC4E67;
+    opacity: 1;
+    font-family: 'Nunito Sans';
+    font-weight: 600;
+  }
+}
+
+.match-button {
+  background-color: #FC4E67;
+  border-radius: 7px;
+  a {
+    color: white;
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+.firstcolumn-wrapper{
+  margin-top: 5vh;
+}
+
+.navbarlist {
+  margin-top: 15%;
+}
+
+
+.ourlogo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10%;
+  img {
+    height: 110px;
+    width: 110px;
+  }
+}
+
+.user-details {
+  padding-left: 1vw;
+}
+
+.personal-info {
+  display: flex;
 }
 
 .banner-overlay {
@@ -221,3 +293,5 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   align-items: center;
   width: 100%;
 }
+
+
