@@ -37,6 +37,13 @@ class UsersController < ApplicationController
       end
     end
 
+    @markers = @results.map do |result|
+      {
+        lat: result[:user].latitude,
+        lng: result[:user].longitude
+      }
+    end
+
   end
 
   def show

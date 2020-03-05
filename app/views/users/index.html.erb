@@ -1,18 +1,42 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="index-banner">
 
+</div>
 <div class="container">
-  <% @users.each do |user| %>
-    <div class="card">
-      <p><%= user.name %></p>
-      <p>User skill: <%= user.skill_rating %></p>
-      <%= link_to "View Profile", user_path(user.id) %>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-user="<%= user.id %>" data-target="#exampleModalCenter">
-        Challenge
-      </button>
+  <% @results.each_with_index do |result, index| %>
+    <div class="my-card">
+      <div>
+        <% if result[:user].avatar.attached? %>
+        <%= cl_image_tag(result[:user].avatar.key, class: "card-avatar") %>
+      <% else %>
+        <img class="user-avatar" src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="image">
+      <% end %>
+      </div>
+      <div class="card-content">
+        <p class="name"> <strong><%= result[:user].name.split(" ")[0] %></strong> <%= result[:user].name.split(" ")[1] %></p>
+        <p>User skill: <%= result[:user].skill_rating %></p>
+        <p>Rep Rating <%= result[:user].rep_rating %></p>
+        <p><%= result[:user].bio %></p>
+        <button type="button" class="my-btn" data-toggle="modal" data-user="<%= result[:user].id %>" data-target="#exampleModalCenter">
+          Challenge
+        </button>
+      </div>
+      <div class="map" id="map_<%= index %>"
+       style="width: 20%;
+       height: auto;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  <% end %>
+
+
+
+</div>
+
+
 
       <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -24,29 +48,17 @@
             <div class="modal-body">
               ...
             </div>
-            <div class="modal-footer">
-              <%= simple_form_for [user, Match.new] do |f| %>
-                <%= f.input :sender_id, :as => :hidden, input_html: { value: current_user.id } %>
-                <%= f.input :receiver_id, :as => :hidden, input_html: { value: user.id } %>
-                <%= f.input :content, :as => :text %>
-                <%= f.input :start_datetime, :as => :hidden, input_html: { value: params.dig(:match, :start_datetime) } %>
-                <%= f.input :acceptance_deadline_hrs, :as => :hidden, input_html: { value: params.dig(:match, :acceptance_deadline_hrs) } %>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Confirm</button>
-              <% end %>
-            </div>
+            <div class="modal-footer"> -->
+              <%#= simple_form_for [user, Match.new] do |f| %>
+                <%#= f.input :sender_id, :as => :hidden, input_html: { value: current_user.id } %>
+                <%#= f.input :receiver_id, :as => :hidden, input_html: { value: user.id } %>
+                <%#= f.input :content, :as => :text %>
+                <%#= f.input :start_datetime, :as => :hidden, input_html: { value: params.dig(:match, :start_datetime) } %>
+                <%#= f.input :acceptance_deadline_hrs, :as => :hidden, input_html: { value: params.dig(:match, :acceptance_deadline_hrs) } %>
+               <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Confirm</button> -->
+              <%# end %>
+            <!-- </div>
           </div>
         </div>
-      </div>
-    </div>
-  <% end %>
-
-  <div id="map"
-       style="width: 100%;
-       height: 600px;"
-       data-markers="<%= @markers.to_json %>"
-       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-</div>
-
-
+      </div> -->

@@ -1,3 +1,47 @@
-.card {
+.my-card {
+  display: flex;
+  height: 20vh;
+  justify-content: space-between;
+  margin-top: 30px;
+  box-shadow: 10px 10px 10px lightgrey;
+  background-color: white;
+  .btn {
+    opacity: 70%;
+  }
+  .map {
+    margin: 2px;
+  }
+}
+
+.card-content {
+  flex-grow: 2;
+  display: flex;
+  height: 20vh;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
+  .name {
+    border-bottom: 2px lightgrey solid;
+  }
+  strong {
+    color: #616292;
+  }
+}
+
+.my-btn {
+  padding: 8px 20px 8px 20px;
+  border-radius: 8px;
+  font-family:'Nunito Sans';
+  font-weight: 800;
+  font-size: 15px;
+  color: white;
+  background-color:#FC4E67;
+}
+
+.my-btn:hover {
+  opacity: 0.8;
+}
+
+.card-avatar {
+  height: 20vh;
 }
