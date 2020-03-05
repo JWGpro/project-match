@@ -6,7 +6,7 @@
       <% receiver = @match.receiver %>
 
       <% if current_user.avatar.attached? %>
-        <%= current_user.avatar %>
+        <%= cl_image_tag(sender.avatar.key) %>
       <% else %>
         <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
       <% end %>
@@ -31,10 +31,11 @@
     </div>
 
 
-    <% @match.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
-      <hr>
-    <% end %>
+    <div class="message-container">  <!-- id="<%= @match.id %>" -->
+      <% @match.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
   </div>
 
   <%= simple_form_for [ current_user, @match, @message ] do |f| %>

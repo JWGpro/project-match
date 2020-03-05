@@ -1,8 +1,13 @@
-<div class="message-container" id="<%= message.match.id %>">
+<% if message.user == current_user %>
+  <% style = "message-out" %>
+<% else %>
+  <% style = "message-in" %>
+<% end %>
+
+<div class="p-3 m-3 container round-lg shadow <%= style %>">
   <i class="author">
     <span><%= message.user.name %></span>
     <small><%= message.created_at.strftime("") %></small>
   </i>
   <p><%= message.content %></p>
 </div>
-<hr>

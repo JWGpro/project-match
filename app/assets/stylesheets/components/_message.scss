@@ -1,0 +1,18 @@
+.message-container{
+  overflow-y: scroll;
+  max-height: 350px;
+}
+
+.message-out {
+  background-color: lightgrey;
+  text-align: left;
+  float: left;
+  width: 50%;
+}
+
+.message-in {
+  background-color: white;
+  text-align: right;
+  float: right;
+  width: 50%;
+}
