@@ -1,5 +1,6 @@
 .message-container{
-  position: relative;
+  overflow-y: scroll;
+  max-height: 350px;
 }
 
 .message-out {
