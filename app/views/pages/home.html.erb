@@ -25,6 +25,7 @@
               <% end %>
             </p>
           </div>
+          <i class="fas fa-medal" style="padding-top:2%;padding-left:3%;color:#cc6633;"></i>
         </div>
 
         <div class="navbarlist">
@@ -45,9 +46,10 @@
 
     <div class="col-6 middle-row container">
       <div class="secondcolwrapper container">
-
-        <h5 style="font-family:'Anton';color:#616292">Whats up?</h5>
-
+        <div style="display:flex;">
+          <img src="https://icons-for-free.com/iconfiles/png/512/idea+idea+bulb+light+bulb+icon-1320144733751939202.png" alt="light bulb" style="height:25px;width:25px;">
+          <h5 style="font-family:'Anton';color:#616292">Whats up?</h5>
+        </div>
         <div class="posting-card">
           <div class="post-news">
             <input class="news-input" type="text" placeholder="Anything...">
@@ -56,9 +58,10 @@
             <input type="submit" value="Post" class="post-button">
           </div>
         </div>
-
-        <h5 style="font-family:'Anton';color:#616292;margin-top:7%;">Community</h5>
-
+        <div style="display:flex;">
+          <img src="https://icons-for-free.com/iconfiles/png/512/racquet+sport+squash+tennis+tC3AAnis+icon-1320086005765961363.png" alt="Tennis ball" style="height:20px;width:20px;margin-top:4.3%;margin-right:1%;">
+          <h5 style="font-family:'Anton';color:#616292;margin-top:4%;">Community</h5>
+        </div>
       </div>
     </div>
 
@@ -66,43 +69,46 @@
 
     <div class="col-3 last-row" style="background-color: #F9F9F9;padding-top:5vh;">
       <div class="turnaments container">
-        <div class="turnament-header">
-          <h2>Upcomming turnament</h2>
-        </div>
-        <div class="turnament-name">
-          <h2>Hoxton Local Cup</h2><i class="fas fa-trophy" style="padding-bottom:20px;"></i>
-          <div class="available-players">
-            <% @users=User.all%>
-            <% @users.each do |user| %>
-              <% if current_user %>
-                <%if user.id != current_user.id%>
+        <div class="container">
 
-                  <%= link_to user_path(user.id), class: "players-link" do %>
-                    <div class="players-mini-card">
-                      <div class="mini-card-avatar">
-                        <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
-                      </div>
+          <div class="turnament-header">
+            <h5 style="font-family:'Anton';color:#616292">Players around you</h5>
+          </div>
+          <div class="turnament-name">
+            <i class="fas fa-trophy" style="padding-bottom:20px;color:#cc6633;"></i>
+            <div class="available-players">
+              <% @users=User.all%>
+              <% @users.each do |user| %>
+                <% if current_user %>
+                  <%if user.id != current_user.id%>
 
-                      <div class="players-short-description">
-                        <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;color:rgb(94,94,144)"><%= user.name%></h2><hr>
-                        <div class="available-date">
-                          <div class="skill-div">
-                            <p class="skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINTS</p>
-                            <p class="skill-values" style="font-family: 'Nunito Sans';font-weight: 600;"><%= user.skill_rating %></p>
-                          </div>
-                          <div class="availability-div">
-                            <p class="skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">NEXT AVALIBLE</p>
-                            <% dayrange = ["Mon", "Tue", "Wed", "Thu", "Fri"] %>
-                            <% timerange = ["after 12", "after 5", "after 6", "after 7", "after 8"] %>
-                            <p class="skill-values"><%=dayrange.sample%> <%=timerange.sample%></p>
+                    <%= link_to user_path(user.id), class: "players-link" do %>
+                      <div class="players-mini-card">
+                        <div class="mini-card-avatar">
+                          <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
+                        </div>
+
+                        <div class="players-short-description">
+                          <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;color:rgb(94,94,144)"><%= user.name%></h2><hr>
+                          <div class="available-date">
+                            <div class="skill-div">
+                              <p class="skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINTS</p>
+                              <p class="skill-values" style="font-family: 'Nunito Sans';font-weight: 600;"><%= user.skill_rating %></p>
+                            </div>
+                            <div class="availability-div">
+                              <p class="skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">NEXT AVALIBLE</p>
+                              <% dayrange = ["Mon", "Tue", "Wed", "Thu", "Fri"] %>
+                              <% timerange = ["after 12", "after 5", "after 6", "after 7", "after 8"] %>
+                              <p class="skill-values"><%=dayrange.sample%> <%=timerange.sample%></p>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  <%end%>
-                <%end %>
-              <% end %>
-            <%end%>
+                    <%end%>
+                  <%end %>
+                <% end %>
+              <%end%>
+            </div>
           </div>
         </div>
       </div>
