@@ -1,3 +1,23 @@
-.card {
+.my-card {
+  display: flex;
+  height: 20vh;
+  justify-content: space-between;
+  margin-top: 20px;
+  box-shadow: 10px 10px 10px grey;
+  background-color: white;
+  .btn {
+    opacity: 70%;
+  }
+}
+
+.card-content {
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
+}
+
+.card-avatar {
+  height: 20vh;
 }
