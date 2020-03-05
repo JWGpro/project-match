@@ -127,10 +127,10 @@ temp.save!
 User.all.each do |user|
   # Saturday 1600-2000
   av = Availability.new(
-    user: User.second,
+    user: user,
     day: 6
   )
-  av.start_time = DateTime.new(2000,1,1, 16,0,0),
+  av.start_time = DateTime.new(2000,1,1, 16,0,0)
   av.end_time = DateTime.new(2000,1,1, 20,0,0)
   av.save!
 end
