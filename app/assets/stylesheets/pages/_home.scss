@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   font-family: 'Nunito Sans', sans-serif;
-  font-family: 'Anton', sans-serif;
+  // font-family: 'Anton', sans-serif;
 }
 
 p {
@@ -20,6 +20,9 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 
 .first-row {
   background-color: rgba(0,0,0,0.025)
+}
+.middle-row {
+  margin-top: 5vh;
 }
 
 .splash-profile-pic {
@@ -122,31 +125,45 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 }
 
 //News container
-.post-news {
-  display: flex;
-  margin: 15px;
-  background: $news-container-background-gray;
-  padding: 10px;
-  border-radius: 10px;
-  height: 10vh;
+.posting-card {
+  height: 140px;
+  width: 100%;
+  border-radius: 7px;
+  border: solid 0.5px #BFBFD1;
+  margin-bottom: 26px;
 }
+
+.post-news {
+  width: 100%;
+  height: 60%;
+}
+
+.post-section {
+  width:100%;
+  height:40%;
+  background-color: rgba(0,0,0,0.035);
+  border-radius:0px 0px 7px 7px;
+  text-align: right;
+}
+.post-button {
+  margin-right: 2%;
+  margin-top: 1%;
+  padding: 8px 20px 8px 20px;
+  border-radius: 8px;
+  font-family:'Nunito Sans';
+  font-weight: 800;
+  font-size: 15px;
+  color: white;
+  background-color:#FC4E67;
+ }
 
 .news-input {
-  width: 100%;
   border: none;
-  background: $news-container-background-gray;
-  color: white;
-}
-
-.news-container {
-  display: flex;
-  margin: 15px;
-  background: $news-container-background-gray;
-  padding: 10px;
-  border-radius: 10px;
-  color: white;
+  margin-top: 2%;
+  margin-left: 2%;
 
 }
+
 
 .news-avatar {
   margin-top: auto;
