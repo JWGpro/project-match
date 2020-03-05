@@ -1,22 +1,28 @@
 class UsersController < ApplicationController
   def index
-    query = params[:search]
+    q = params[:search]
 
     ### AR/SQL
     cskill = current_user.skill_rating
-    filtered_users = User.where.not(id: current_user.id).where(skill_rating: (cskill * 0.7)..(cskill * 1.3))
+    skill_filtered = User.where.not(id: current_user.id).where(skill_rating: (cskill * 0.7)..(cskill * 1.3))
 
-    # day = Date.parse(query[:start_datetime]).cwday
-    # # start_time =
+    day = Date.parse(q[:start_datetime]).cwday
+    start_time = parse_time(q["start_time(4i)"].to_i, q["start_time(5i)"].to_i)
+    end_time = parse_time(q["end_time(4i)"].to_i, q["end_time(5i)"].to_i)
 
-    # filtered_users = skill_filtered.joins(
-    #   :availabilities).where(
-    #   "availabilities.day = ? AND availabilities.start_time = ? AND availabilities.end_time = ?", day, start_time, end_time
-    #   )
-    #   # TODO: no, it's a range.
+    # Two ranges overlap when:
+    #  range_b.begin <= range_a.end && range_a.begin <= range_b.end
+    query = <<-SQL
+      availabilities.day = ? AND
+      availabilities.start_time <= ? AND
+      ? <= availabilities.end_time
+    SQL
+
+    filtered_users = skill_filtered.joins(:availabilities).where([query,
+      day, end_time, start_time])
     ###
 
-    @venues = Venue.near([current_user.latitude, current_user.longitude], query[:will_travel_km])
+    @venues = Venue.near([current_user.latitude, current_user.longitude], q[:will_travel_km])
 
     @results = []
     filtered_users.each do |user|
@@ -31,14 +37,6 @@ class UsersController < ApplicationController
       end
     end
 
-    # @markers = @users.map do |user|
-    #   {
-    #     lat: user.latitude,
-    #     lng: user.longitude
-    #   }
-    # end
-    # @markers << {lat: current_user.latitude, lng: current_user.longitude}
-
   end
 
   def show
@@ -50,5 +48,11 @@ class UsersController < ApplicationController
   end
 
   def update
+  end
+
+  private
+
+  def parse_time(hours, minutes)
+    return DateTime.new(2000,1,1, hours,minutes,0)
   end
 end
