@@ -123,101 +123,95 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   }
 
 //turnament
-
-.turnaments {
+.turnament-header {
+  text-align: center;
+  h2 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 'semi-bold';
+    font-size: 16px;
+    
+  }
+}
+.turnament-name {
   display: flex;
   flex-direction: column;
-  margin-top: 5px;
-  background: $news-container-background-gray;
-  padding: 10px;
-  border-radius: 10px;
-  color: white;
-}
-
-.turnament-header {
-  display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  h2 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 'semi-bold';
+    font-size: 16px;
+  }
+
+  .players-link {
+    text-decoration: none;
+    
+  }
+
 }
-
-.turnament-description {
-  text-align: center;
-}
-
-.trophy-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px 0;
-  color: rgb(207, 135, 15);
-  font-size: 2rem;
-}
-
-//Players mini card
-
 .players-mini-card {
   display: flex;
-  margin-top: 5px;
-  background: $news-container-background-gray;
-  padding: 10px;
-  border-radius: 10px;
-  width: 100%;
-  padding: 10px;
-  color: white;
-  text-decoration: none;
-    &:hover {
-      background: rgba(220, 220, 220, 0.5);
-      text-decoration: none;
-    }
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  margin-bottom: 20px;
+  width: 300px;
+  height: 80px;
 }
 
-
-.available-players {
-  display: flex;
-  flex-direction: column;
-
-}
-
-.avatar-fullname {
-  display: flex;
-  flex-direction: column;
-  h2 {
-    font-size: 12px;
-  }
+.mini-card-avatar {
+  height: 100%;
+  width: 60px;
+  border-radius: 7px;
+  object-fit: cover;
+  width: 80px;
+  
 }
 
 .players-short-description {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 0 10px;
   width: 100%;
-  color: white;
-  text-decoration: none;
-}
-
-.players-link {
-  p {
-    text-decoration: none;
+  h2 {
+    font-family: 'Anton', sans-serif;
+    color: black;
+    padding-left: 10px;
+    padding-top: 10px;
+  }
+  hr {
+    margin: 0;
   }
 
 }
 
-.mini-card-avatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
 .available-date {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  width: 100%;
+    p {
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 300;
+    }
+}
+
+.availability-div {
+ padding-left: 10px;
+ padding-bottom: 10px;
+}
+
+.skill-div {
+padding-left: 10px;
+padding-bottom: 10px;
+
+}
+.skill-availability {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  color: black;
+}
+.skill-values {
+  font-family: 'Anton', sans-serif;
+  color: black;
+  
 }
