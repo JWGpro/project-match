@@ -1,7 +1,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   // font-family: 'Anton', sans-serif;
 }
 
@@ -14,12 +14,12 @@ hr {
   margin: 0;
 }
 
-$news-container-background-white: rgba(250, 250, 250, 0.5) ;
+$news-container-background-white: rgba(250, 250, 250, 0.5);
 $news-container-background-gray: rgba(0, 0, 0, 0.3);
 $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 
 .first-row {
-  background-color: rgba(0,0,0,0.025)
+  background-color: rgba(0, 0, 0, 0.025);
 }
 .middle-row {
   margin-top: 5vh;
@@ -37,7 +37,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   a {
     color: black;
     opacity: 0.7;
-    font-family: 'Nunito Sans';
+    font-family: "Nunito Sans";
     font-weight: 600;
     font-size: 14px;
     &:hover {
@@ -48,15 +48,15 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 
 .home-button {
   a {
-    color: #FC4E67;
+    color: #fc4e67;
     opacity: 1;
-    font-family: 'Nunito Sans';
+    font-family: "Nunito Sans";
     font-weight: 600;
   }
 }
 
 .match-button {
-  background-color: #FC4E67;
+  background-color: #fc4e67;
   border-radius: 7px;
   a {
     color: white;
@@ -66,14 +66,13 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   }
 }
 
-.firstcolumn-wrapper{
+.firstcolumn-wrapper {
   margin-top: 5vh;
 }
 
 .navbarlist {
   margin-top: 15%;
 }
-
 
 .ourlogo {
   display: flex;
@@ -97,22 +96,21 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   background-color: white;
   height: 100%;
   width: 100%;
+  max-width: 100%;
 }
 // Specific CSS for your home-page
 .full-pg {
-
   height: 100vh;
   width: 100vw;
 }
 
-
 .first-c {
-  background-color: rgba(0,0,0,0.07);
+  background-color: rgba(0, 0, 0, 0.07);
   color: white;
 }
 
 .middle-c {
-  background-color: rgba(0,0,0,0.01);
+  background-color: rgba(0, 0, 0, 0.01);
   h4 {
     padding-top: 4px;
     padding-right: 4px;
@@ -121,7 +119,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 }
 
 .last-c {
-  background-color: rgba(0,0,0,0.07);
+  background-color: rgba(0, 0, 0, 0.07);
 }
 
 //News container
@@ -129,7 +127,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   height: 140px;
   width: 100%;
   border-radius: 7px;
-  border: solid 0.5px #BFBFD1;
+  border: solid 0.5px #bfbfd1;
   margin-bottom: 26px;
 }
 
@@ -139,10 +137,10 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 }
 
 .post-section {
-  width:100%;
-  height:40%;
-  background-color: rgba(0,0,0,0.035);
-  border-radius:0px 0px 7px 7px;
+  width: 100%;
+  height: 40%;
+  background-color: rgba(0, 0, 0, 0.035);
+  border-radius: 0px 0px 7px 7px;
   text-align: right;
 }
 .post-button {
@@ -150,24 +148,22 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   margin-top: 1%;
   padding: 8px 20px 8px 20px;
   border-radius: 8px;
-  font-family:'Nunito Sans';
+  font-family: "Nunito Sans";
   font-weight: 800;
   font-size: 15px;
   color: white;
-  background-color:#FC4E67;
- }
+  background-color: #fc4e67;
+}
 
 .news-input {
   border: none;
   margin-top: 2%;
   margin-left: 2%;
-
 }
-
 
 .news-avatar {
   margin-top: auto;
-  margin-bottom:  auto;
+  margin-bottom: auto;
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -177,7 +173,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   padding: 10px;
 }
 
-.edu-video  {
+.edu-video {
   display: flex;
   flex-direction: column;
   background: $news-container-background-gray;
@@ -185,9 +181,9 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   padding: 10px;
   border-radius: 10px;
   color: white;
-    a {
-      width: 100%;
-    }
+  a {
+    width: 100%;
+  }
 }
 
 .edu-item {
@@ -197,28 +193,26 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
- height: 20vh;
+  height: 20vh;
   h2 {
     font-size: 5vw;
   }
 }
 .fab {
-  color: rgb(255, 0, 0)
+  color: rgb(255, 0, 0);
 }
 
 //Right asside column
-  .available-players {
-
-  }
+.available-players {
+}
 
 //turnament
 .turnament-header {
   text-align: center;
   h2 {
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 'semi-bold';
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: "semi-bold";
     font-size: 16px;
-    
   }
 }
 .turnament-name {
@@ -227,16 +221,14 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
   h2 {
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 'semi-bold';
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: "semi-bold";
     font-size: 16px;
   }
 
   .players-link {
     text-decoration: none;
-    
   }
-
 }
 .players-mini-card {
   display: flex;
@@ -253,7 +245,6 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   border-radius: 7px;
   object-fit: cover;
   width: 80px;
-  
 }
 
 .players-short-description {
@@ -262,7 +253,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   padding: 0 10px;
   width: 100%;
   h2 {
-    font-family: 'Anton', sans-serif;
+    font-family: "Anton", sans-serif;
     color: black;
     padding-left: 10px;
     padding-top: 10px;
@@ -270,39 +261,35 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   hr {
     margin: 0;
   }
-
 }
 
 .available-date {
   display: flex;
   justify-content: space-between;
   align-items: center;
-    p {
-      font-family: 'Nunito Sans', sans-serif;
-      font-weight: 300;
-    }
+  p {
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 300;
+  }
 }
 
 .availability-div {
- padding-left: 10px;
- padding-bottom: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 
 .skill-div {
-padding-left: 10px;
-padding-bottom: 10px;
-
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 
 .skill-availability {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-weight: 300;
   font-size: 10px;
   color: black;
 }
 .skill-values {
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   color: black;
-  
 }
-
