@@ -13,16 +13,28 @@
         <div class="personal-info">
           <img src="https://education.uky.edu/wp-content/uploads/2019/12/TL-Headshot-2squaresmall.jpg" alt="Profile-picture" class="splash-profile-pic">
           <div class="user-details">
-            <p class="username" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)"> <%= current_user.name %></p>
+            <p class="username" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">
+              <% if current_user %>
+                <%= current_user.name %>
+              <% end %>
+            </p>
             <p class="little-title" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINT</p>
-            <p style="font-family: 'Nunito Sans';font-weight: 600;"><%= current_user.skill_rating %></p>
+            <p class="skill-values" style="font-family: 'Nunito Sans';font-weight: 600;">
+              <% if current_user %>
+                <%= current_user.skill_rating %>
+              <% end %>
+            </p>
           </div>
         </div>
 
         <div class="navbarlist">
           <ul>
             <li class="nav-link home-button"><%= link_to "Home", "/" %></li><hr>
-            <li class="nav-link"><%= link_to "Profile", "/" %></li><hr>
+            <% if current_user %>
+              <li class="nav-link"><%= link_to "Profile", "/" %></li><hr>
+            <% else %>
+              <li class="nav-link"><%= link_to "Login", new_user_session_path %></li><hr>
+            <% end %>
             <li class="nav-link"><%= link_to "Messages", "/" %></li>
             <li class="nav-link match-button"><%= link_to "New Match", "/" %></li>
           </ul>
@@ -51,13 +63,13 @@
     </div>
 
 
-    <div class="col last-row">
-      <div class="turnaments">
+    <div class="col last-row" style="background-color: #F9F9F9;padding-top:5vh;">
+      <div class="turnaments container">
         <div class="turnament-header">
           <h2>Upcomming turnament</h2>
         </div>
         <div class="turnament-name">
-          <h2>Hoxton Local Cup</h2><i class="fas fa-trophy"></i>
+          <h2>Hoxton Local Cup</h2><i class="fas fa-trophy" style="padding-bottom:20px;"></i>
           <div class="available-players">
             <% @users=User.all%>
             <% @users.each do |user| %>
@@ -71,15 +83,17 @@
                       </div>
 
                       <div class="players-short-description">
-                        <h2><%= user.name%></h2><hr>
+                        <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;color:rgb(94,94,144)"><%= user.name%></h2><hr>
                         <div class="available-date">
                           <div class="skill-div">
-                            <p class="skill-availability">skill points</p>
-                            <p class="skill-values"><%= user.skill_rating %></p>
+                            <p class="skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINTS</p>
+                            <p class="skill-values" style="font-family: 'Nunito Sans';font-weight: 600;"><%= user.skill_rating %></p>
                           </div>
                           <div class="availability-div">
-                            <p class="skill-availability">availability date</p>
-                            <p class="skill-values"><%=rand(1..28)%>.<%=rand(1..12)%>.2020</p>
+                            <p class="skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">NEXT AVALIBLE</p>
+                            <% dayrange = ["Mon", "Tue", "Wed", "Thu", "Fri"] %>
+                            <% timerange = ["after 12", "after 5", "after 6", "after 7", "after 8"] %>
+                            <p class="skill-values"><%=dayrange.sample%> <%=timerange.sample%></p>
                           </div>
                         </div>
                       </div>
