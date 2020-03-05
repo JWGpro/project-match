@@ -1,16 +1,33 @@
 
 
-<div class="banner-overlay ">
-  <div class="row full-pg container">
+<div class="banner-overlay container">
+  <div class="row full-pg ">
 
 
     <div class="col first-row">
-      <div class="ourlogo">
-        <h4>MatchLab logo</h4>
-      </div>
+      <div class="firstcolumn-wrapper container">
 
-      <div class="personal-info">
-        <img src="https://education.uky.edu/wp-content/uploads/2019/12/TL-Headshot-2squaresmall.jpg" alt="Profile-picture">
+        <div class="ourlogo">
+          <%= image_tag "real_logo.png" %>
+        </div>
+
+        <div class="personal-info">
+          <img src="https://education.uky.edu/wp-content/uploads/2019/12/TL-Headshot-2squaresmall.jpg" alt="Profile-picture" class="splash-profile-pic">
+          <div class="user-details">
+            <p class="username" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)"> <%= current_user.name %></p>
+            <p class="little-title" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINT</p>
+            <p style="font-family: 'Nunito Sans';font-weight: 600;"><%= current_user.skill_rating %></p>
+          </div>
+        </div>
+
+        <div class="navbarlist">
+          <ul>
+            <li class="nav-link home-button"><%= link_to "Home", "/" %></li><hr>
+            <li class="nav-link"><%= link_to "Profile", "/" %></li><hr>
+            <li class="nav-link"><%= link_to "Messages", "/" %></li>
+            <li class="nav-link match-button"><%= link_to "New Match", "/" %></li>
+          </ul>
+        </div>
 
       </div>
     </div>
