@@ -1,17 +1,17 @@
 <div class="container">
-  <% @users.each_with_index do |user, index| %>
+  <% @results.each_with_index do |result, index| %>
     <div class="my-card">
       <div>
-        <% if user.avatar.attached? %>
-        <%= cl_image_tag(user.avatar.key, class: "card-avatar") %>
+        <% if result[:user].avatar.attached? %>
+        <%= cl_image_tag(result[:user].avatar.key, class: "card-avatar") %>
       <% else %>
         <img class="user-avatar" src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="image">
       <% end %>
       </div>
       <div class="card-content">
-        <p><%= user.name %></p>
-        <p>User skill: <%= user.skill_rating %></p>
-        <button type="button" class="btn btn-light" data-toggle="modal" data-user="<%= user.id %>" data-target="#exampleModalCenter">
+        <p><%= result[:user].name %></p>
+        <p>User skill: <%= result[:user].skill_rating %></p>
+        <button type="button" class="btn btn-light" data-toggle="modal" data-user="<%= result[:user].id %>" data-target="#exampleModalCenter">
           Challenge
         </button>
       </div>
