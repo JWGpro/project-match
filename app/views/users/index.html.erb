@@ -118,7 +118,7 @@
           <p>User skill: <%= result[:user].skill_rating %></p>
           <p>Rep Rating <%= result[:user].rep_rating %></p>
           <p><%= result[:user].bio %></p>
-          <button type="button" class="my-btn" data-toggle="modal" data-user="<%= result[:user].id %>" data-target="#exampleModalCenter">
+          <button type="button" class="my-btn" data-toggle="modal" data-user="<%= result[:user].id %>" data-target="#exampleModalCenter<%= index %>">
             Challenge
           </button>
         </div>
@@ -129,7 +129,7 @@
          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
       </div>
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="exampleModalCenter<%= index %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -139,7 +139,7 @@
               </button>
             </div>
             <div class="modal-body">
-              ...
+              <%= result[:user].name %>
             </div>
             <div class="modal-footer">
               <%= simple_form_for [result[:user], Match.new] do |f| %>
