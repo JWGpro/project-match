@@ -81,7 +81,11 @@
                   <% end %>
                     </div>
                     <div class="navbar-players-short-description">
-                      <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;color:rgb(94,94,144)"><%= receiver.name%></h2><hr>
+                      <% if current_user.id == sender.id%>
+                        <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;color:rgb(94,94,144)"><%= receiver.name%></h2><hr>
+                      <% else %>
+                        <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;color:rgb(94,94,144)"><%= sender.name%></h2><hr>
+                      <% end %>
                       <div class="navbar-available-date">
                         <div class="navbar-skill-div">
                           <p class="navbar-skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINTS</p>
