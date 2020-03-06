@@ -8,7 +8,9 @@
 
         <% if sender.id == current_user.id %>
           <% if receiver.avatar.attached? %>
-            <%= receiver.avatar %>
+            <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
+              <%= cl_image_tag(receiver.avatar.key, class: "splash-profile-pic" )%>
+            <% end %>
           <% else %>
             <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
               <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
@@ -21,7 +23,9 @@
 
         <% if receiver.id == current_user.id %>
           <% if sender.avatar.attached? %>
-            <%= sender.avatar %>
+            <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
+              <%= cl_image_tag(sender.avatar.key) %>
+            <% end %>
           <% else %>
             <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
               <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
@@ -38,41 +42,54 @@
 
     <div class="col-9" style="overflow-y: scroll; max-height: 60vh;background-color: white;">
       <div id="messages_<%= @match.id %>" class="messagess" data-match-id="<%= @match.id %>">
-        <div class="challenge-message">
+        <div class="challenge-message" style="height:70px;">
           <% sender = @match.sender %>
           <% receiver = @match.receiver %>
 
-          <% if current_user.avatar.attached? %>
-            <%= current_user.avatar %>
-          <% else %>
-            <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
-          <% end %>
+          <div>
+            <% if current_user.avatar.attached? %>
+              <%= current_user.name %>
+              <%=  cl_image_tag(current_user.avatar.key, class: "splash-profile-pic") %>
+            <% else %>
+              <%= current_user.name %>
+              <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+            <% end %>
+          </div>
 
           <h5>VS</h5>
-
-          <% if current_user.id == sender.id %>
-            <% if receiver.avatar.attached? %>
-              <%=  cl_image_tag(receiver.avatar.key) %>
-            <% else %>
-              <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+          <div>
+            <% if current_user.id == sender.id %>
+              <% if receiver.avatar.attached? %>
+                <%=  cl_image_tag(receiver.avatar.key, class: "splash-profile-pic") %>
+                <%= receiver.name %>
+              <% else %>
+                <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+                <%= receiver.name %>
+              <% end %>
             <% end %>
-          <% end %>
-
-          <% if current_user.id == receiver.id %>
-            <% if sender.avatar.attached? %>
-              <%=  cl_image_tag(sender.avatar.key) %>
-            <% else %>
-              <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+          </div>
+          <div>
+            <% if current_user.id == receiver.id %>
+              <% if sender.avatar.attached? %>
+                <%=  cl_image_tag(sender.avatar.key, class: "splash-profile-pic") %>
+                <%= sender.name %>
+              <% else %>
+                <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+                <%= sender.name %>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
+          <div class="match-information">
 
+            <p><%= @match.start_datetime %></p>
 
+          </div>
 
         </div>
-        <%= sender.name %>
-        <br>
-        <%= @match.content %>
-        <hr>
+        <div class="message-container">
+          <%= sender.name %>
+          <%= @match.content %>
+        </div>
         <% @match.messages.each do |message| %>
 
           <% if message.user_id == current_user.id %>
@@ -92,7 +109,7 @@
 
       <div style="position: sticky; bottom: 0; height: 50px;">
         <%= simple_form_for [ current_user, @match, @message ] do |f| %>
-          <%= f.input :content, label: false, placeholder: "Message" %>
+          <%= f.input :content, label: false, placeholder: "Message", class: "message-input"%>
         <% end %>
       <div>
 
