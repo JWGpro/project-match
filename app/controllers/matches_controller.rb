@@ -18,8 +18,8 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(match_params)
     if @match.save
+      raise
       redirect_to root_path
-      # TODO: some kind of success modal?
     else
       render "create"
     end
@@ -37,6 +37,6 @@ class MatchesController < ApplicationController
   private
 
   def match_params
-    params.require(:match).permit(:acceptance_deadline_hrs, :start_datetime, :receiver_id, :sender_id)
+    params.require(:match).permit(:acceptance_deadline_hrs, :start_datetime, :receiver_id, :sender_id, :venue_id)
   end
 end
