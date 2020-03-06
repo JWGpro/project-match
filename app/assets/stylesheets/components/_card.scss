@@ -3,11 +3,9 @@
   height: 20vh;
   justify-content: space-between;
   margin-top: 30px;
-  box-shadow: 10px 10px 10px lightgrey;
-  background-color: white;
-  .btn {
-    opacity: 70%;
-  }
+  box-shadow: 10px 10px 10px grey;
+  background-color: #EEEEEE;
+  overflow: auto;
   .map {
     margin: 2px;
   }
@@ -34,6 +32,7 @@
   font-family:'Nunito Sans';
   font-weight: 800;
   font-size: 15px;
+  width: 20%;
   color: white;
   background-color:#FC4E67;
 }
