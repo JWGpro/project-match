@@ -36,7 +36,8 @@
           <% if current_user %>
             <li class="nav-link link-btn"><%= link_to "Profile", "/" %></li><hr>
             <li class="nav-link link-btn"><%= link_to "Messages", user_matches_path(current_user.id) %></li>
-              <li class="nav-link match-button"><%= link_to "New Match", new_search_path %></li>
+            <li class="nav-link link-btn"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li><hr>
+            <li class="nav-link match-button"><%= link_to "New Match", new_search_path %></li>
           <% else %>
             <li class="nav-link link-btn"><%= link_to "Login", new_user_session_path %></li><hr>
           <% end %>
@@ -79,11 +80,16 @@
 
                 </div>
                 <div class="navbar-players-short-description">
-                  <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;color:rgb(94,94,144)"><%= receiver.name %></h2><hr>
+                  <% if current_user.id == receiver.id %>
+                    <% opponent = sender %>
+                  <% else %>
+                    <% opponent = receiver %>
+                  <% end %>
+                  <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;color:rgb(94,94,144)"><%= opponent.name%></h2><hr>
                   <div class="navbar-available-date">
                     <div class="navbar-skill-div">
                       <p class="navbar-skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINTS</p>
-                      <p class="navbar-skill-values" style="font-family: 'Nunito Sans';font-weight: 600;"><%= receiver.skill_rating %></p>
+                      <p class="navbar-skill-values" style="font-family: 'Nunito Sans';font-weight: 600;"><%= opponent.skill_rating %></p>
                     </div>
                   </div>
                 </div>
