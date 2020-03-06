@@ -1,12 +1,14 @@
-<div class="col-sm-4 p-3 m-3 container form-container round-lg shadow bg-light">
-  <h2>Match search</h2>
-  <%= simple_form_for @search, url: users_path, method: :get do |f| %>
-      <%= f.input :start_datetime, as: :date, html5: true, label: "When do you want to play?", input_html: { value: Date.today } %>
+<div class="form-container ">
+  <div class="form-title ">
+    <h2>Match search</h2>
+  </div>
+  <%= simple_form_for @search, url: users_path, method: :get, html: { class: "matching-form" }   do |f| %>
+      <%= f.input :start_datetime, as: :date, html5: true, class: "pink-border", label: "When do you want to play?", input_html: { value: Date.today } %>
       <%= f.input :start_time, label: "Between:", default: Time.parse('18:00') %>
       <%= f.input :end_time, label: "and:", default: Time.parse('20:00')  %>
       <%= f.input :acceptance_deadline_hrs, label: "How many hours in advance must the opponent accept?", input_html: {value: f.object.acceptance_deadline_hrs || '8'}  %>
       <%= f.input :will_travel_km, label: "How far can you travel (km)?", input_html: {value: f.object.will_travel_km || current_user.will_travel_km}  %>
       <%#= text_field_tag(:match_address) %>
-      <%= f.submit "Search!", class: "btn btn-primary" %>
+      <%= f.submit "Search!", class: "btn btn-primary form-color-pink" %>
   <% end %>
 </div>
