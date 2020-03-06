@@ -39,6 +39,34 @@
             <li class="nav-link link-btn"><%= link_to "Messages", "/" %></li>
             <li class="nav-link match-button"><%= link_to "New Match", new_search_path %></li>
           </ul>
+          <div class="navbar-card-container">
+            <% @users=User.all%>
+              <% @users.each do |user| %>
+                <% if current_user %>
+                  <%if user.id != current_user.id%>                   
+                    <div class="navbar-players-mini-card">
+                      <div class="navbar-mini-card-avatar">
+                        <img class="navbar-mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
+                      </div>
+                      <div class="navbar-players-short-description">
+                        <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;color:rgb(94,94,144)"><%= user.name%></h2><hr>
+                        <div class="navbar-available-date">
+                          <div class="navbar-skill-div">
+                            <p class="navbar-skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINTS</p>
+                            <p class="navbar-skill-values" style="font-family: 'Nunito Sans';font-weight: 600;"><%= user.skill_rating %></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="navbar-chat-icon">
+                        <%= link_to user_path(user.id), class: "navbar-players-link" do %>
+                          <i class="far fa-comment-dots"></i>
+                        <%end%>
+                      </div>
+                    </div>
+                  <%end %>
+                <% end %>
+              <%end%>
+          </div>
         </div>
       </div>
     </div>
