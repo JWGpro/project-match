@@ -1,0 +1,55 @@
+.form-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  
+}
+
+.matching-form { 
+  width: 40%; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  border-radius: 7px;
+}
+
+.form-color-pink {
+  background: #fc4e67;
+  &:hover {
+    background: rgb(242, 68, 93);
+    
+  }
+}
+.form-title {
+  h2 {
+    text-align: center;
+    font-weight: 900;
+  }
+}
+
+.search_start_datetime {
+  text-align: center;
+  font-weight: 900;
+}
+
+.search_start_time {
+  text-align: center;
+  font-weight: 900;
+}
+
+.search_end_time {
+  text-align: center;
+  font-weight: 900;
+}
+
+.search_acceptance_deadline_hrs {
+  text-align: center;
+  font-weight: 900;
+}
+
+.search_will_travel_km {
+  text-align: center;
+  font-weight: 900;
+}

@@ -65,7 +65,7 @@
               <% @users.each do |user| %>
                 <% if current_user %>
                   <%if user.id != current_user.id%>
-                    <%= link_to user_path(user.id), class: "players-link" do %>
+                    
                       <div class="players-mini-card">
                         <div class="mini-card-avatar">
                           <% if current_user.avatar.attached? %>
@@ -92,7 +92,7 @@
                         </div>
                       </div>
                     <%end%>
-                  <%end %>
+                  
                 <% end %>
               <%end%>
             </div>
