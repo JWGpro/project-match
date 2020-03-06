@@ -1,63 +1,162 @@
-<div class="index-banner">
+<div class="row">
 
-</div>
-<div class="container">
-  <% @results.each_with_index do |result, index| %>
-    <div class="my-card">
-      <div>
-        <% if result[:user].avatar.attached? %>
-        <%= cl_image_tag(result[:user].avatar.key, class: "card-avatar") %>
-      <% else %>
-        <img class="user-avatar" src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="image">
-      <% end %>
-      </div>
-      <div class="card-content">
-        <p class="name"> <strong><%= result[:user].name.split(" ")[0] %></strong> <%= result[:user].name.split(" ")[1] %></p>
-        <p>User skill: <%= result[:user].skill_rating %></p>
-        <p>Rep Rating <%= result[:user].rep_rating %></p>
-        <p><%= result[:user].bio %></p>
-        <button type="button" class="my-btn" data-toggle="modal" data-user="<%= result[:user].id %>" data-target="#exampleModalCenter">
-          Challenge
-        </button>
-      </div>
-      <div class="map" id="map_<%= index %>"
-       style="width: 20%;
-       height: auto;"
-       data-markers="<%= @markers.to_json %>"
-       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-    </div>
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+  <div class="col-3 first-row">
+        <div class="firstcolumn-wrapper container">
+
+          <div class="ourlogo" style="background-color:white;border-radius:7px">
+            <%= image_tag "real_logo.png" %>
           </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <%= simple_form_for [result[:user], Match.new] do |f| %>
-              <%= f.input :sender_id, :as => :hidden, input_html: { value: current_user.id } %>
-              <%= f.input :receiver_id, :as => :hidden, input_html: { value: result[:user].id } %>
-              <%= f.input :venue_id, :as => :hidden, input_html: { value: result[:venue].id } %>
-              <%= f.input :content, :as => :text %>
-              <%= f.input :start_datetime, :as => :hidden, input_html: { value: result[:start_datetime] } %>
-              <%= f.input :acceptance_deadline_hrs, :as => :hidden, input_html: { value: params.dig(:search, :acceptance_deadline_hrs) } %>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary">Confirm</button>
+
+          <div class="personal-info">
+            <% if current_user.avatar.attached? %>
+              <%= cl_image_tag(current_user.avatar.key, class: "splash-profile-pic") %>
+            <% else %>
+              <img src="https://education.uky.edu/wp-content/uploads/2019/12/TL-Headshot-2squaresmall.jpg" alt="Profile-picture" class="splash-profile-pic">
             <% end %>
+            <div class="user-details">
+              <p class="username" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">
+                <% if current_user %>
+                  <%= current_user.name %>
+                <% end %>
+              </p>
+              <p class="little-title" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINT</p>
+              <p class="skill-values" style="font-family: 'Nunito Sans';font-weight: 600;">
+                <% if current_user %>
+                  <%= current_user.skill_rating %>
+                <% end %>
+              </p>
+            </div>
+            <i class="fas fa-medal" style="padding-top:2%;padding-left:3%;color:#cc6633;"></i>
+          </div>
+
+          <div class="navbarlist">
+            <ul>
+              <li class="nav-link link-btn home-button"><%= link_to "Home", "/" %></li><hr>
+              <% if current_user %>
+                <li class="nav-link link-btn"><%= link_to "Profile", "/" %></li><hr>
+                <li class="nav-link link-btn"><%= link_to "Messages", user_matches_path(current_user.id) %></li>
+                  <li class="nav-link match-button"><%= link_to "New Match", new_search_path %></li>
+              <% else %>
+                <li class="nav-link link-btn"><%= link_to "Login", new_user_session_path %></li><hr>
+              <% end %>
+            </ul>
+            <div class="navbar-card-container">
+
+              <% if current_user %>
+
+                <% current_user.matches.each do |match| %>
+                  <% sender = match.sender %>
+                  <% receiver = match.receiver %>
+
+
+                  <div class="navbar-players-mini-card">
+                    <div class="navbar-mini-card-avatar">
+                    <% if sender.id == current_user.id %>
+                    <% if receiver.avatar.attached? %>
+                      <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
+                       <%= cl_image_tag(receiver.avatar.key, class:"navbar-mini-card-avatar") %>
+                      <%end%>
+                    <% else %>
+                      <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
+                        <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="navbar-mini-card-avatar">
+                      <% end %>
+                    <% end %>
+
+
+                    <hr>
+                  <% end %>
+
+                  <% if receiver.id == current_user.id %>
+                    <% if sender.avatar.attached? %>
+                    <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
+                      <%=cl_image_tag(sender.avatar.key, class:"navbar-mini-card-avatar") %>
+                    <%end%>
+                    <% else %>
+                      <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
+                        <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="navbar-mini-card-avatar">
+                      <% end %>
+                    <% end %>
+
+                  <hr>
+                  <% end %>
+                    </div>
+                    <div class="navbar-players-short-description">
+                      <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;color:rgb(94,94,144)"><%= receiver.name%></h2><hr>
+                      <div class="navbar-available-date">
+                        <div class="navbar-skill-div">
+                          <p class="navbar-skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINTS</p>
+                          <p class="navbar-skill-values" style="font-family: 'Nunito Sans';font-weight: 600;"><%= receiver.skill_rating %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="navbar-chat-icon">
+                        <i class="far fa-comment-dots"></i>
+                    </div>
+
+                   </div>
+                <% end %>
+              <% end %>
+              <%# raise %>
+
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+
+  <div class="col-9 middle-row container">
+    <% @results.each_with_index do |result, index| %>
+      <div class="my-card">
+        <div>
+          <% if result[:user].avatar.attached? %>
+          <%= cl_image_tag(result[:user].avatar.key, class: "card-avatar") %>
+        <% else %>
+          <img class="user-avatar" src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="image">
+        <% end %>
+        </div>
+        <div class="card-content">
+          <p class="name"> <strong><%= result[:user].name.split(" ")[0] %></strong> <%= result[:user].name.split(" ")[1] %></p>
+          <p>User skill: <%= result[:user].skill_rating %></p>
+          <p>Rep Rating <%= result[:user].rep_rating %></p>
+          <p><%= result[:user].bio %></p>
+          <button type="button" class="my-btn" data-toggle="modal" data-user="<%= result[:user].id %>" data-target="#exampleModalCenter">
+            Challenge
+          </button>
+        </div>
+        <div class="map" id="map_<%= index %>"
+         style="width: 20%;
+         height: auto;"
+         data-markers="<%= @markers.to_json %>"
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <%= simple_form_for [result[:user], Match.new] do |f| %>
+                <%= f.input :sender_id, :as => :hidden, input_html: { value: current_user.id } %>
+                <%= f.input :receiver_id, :as => :hidden, input_html: { value: result[:user].id } %>
+                <%= f.input :venue_id, :as => :hidden, input_html: { value: result[:venue].id } %>
+                <%= f.input :content, :as => :text %>
+                <%= f.input :start_datetime, :as => :hidden, input_html: { value: result[:start_datetime] } %>
+                <%= f.input :acceptance_deadline_hrs, :as => :hidden, input_html: { value: params.dig(:search, :acceptance_deadline_hrs) } %>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Confirm</button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
 </div>
 
-
-
-      <!-- Modal -->
-
+</div>
