@@ -11,7 +11,11 @@
         </div>
 
         <div class="personal-info">
-          <img src="https://education.uky.edu/wp-content/uploads/2019/12/TL-Headshot-2squaresmall.jpg" alt="Profile-picture" class="splash-profile-pic">
+          <% if current_user.avatar.attached? %>
+            <%= cl_image_tag(current_user.avatar.key, class: "splash-profile-pic") %>
+          <% else %>
+            <img src="https://education.uky.edu/wp-content/uploads/2019/12/TL-Headshot-2squaresmall.jpg" alt="Profile-picture" class="splash-profile-pic">
+          <% end %>
           <div class="user-details">
             <p class="username" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">
               <% if current_user %>
@@ -39,63 +43,63 @@
               <li class="nav-link link-btn"><%= link_to "Login", new_user_session_path %></li><hr>
             <% end %>
           </ul>
-          <div class="navbar-card-container">    
+          <div class="navbar-card-container">
 
-            <% @matches.each do |match| %>
-              <% sender = match.sender %>
-              <% receiver = match.receiver %>
+            <% if current_user %>
 
-              
-              <div class="navbar-players-mini-card">
-                <div class="navbar-mini-card-avatar">
-                <% if sender.id == current_user.id %>
-                <% if receiver.avatar.attached? %>
+              <% @matches.each do |match| %>
+                <% sender = match.sender %>
+                <% receiver = match.receiver %>
+
+
+                <div class="navbar-players-mini-card">
+                  <div class="navbar-mini-card-avatar">
+                  <% if sender.id == current_user.id %>
+                  <% if receiver.avatar.attached? %>
+                    <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
+                     <%= cl_image_tag(receiver.avatar.key, class:"navbar-mini-card-avatar") %>
+                    <%end%>
+                  <% else %>
+                    <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
+                      <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="navbar-mini-card-avatar">
+                    <% end %>
+                  <% end %>
+
+
+                  <hr>
+                <% end %>
+
+                <% if receiver.id == current_user.id %>
+                  <% if sender.avatar.attached? %>
                   <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
-                   <%= cl_image_tag(receiver.avatar.key, class:"navbar-mini-card-avatar") %>
+                    <%=cl_image_tag(sender.avatar.key, class:"navbar-mini-card-avatar") %>
                   <%end%>
-                <% else %>
-                  <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
-                    <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="navbar-mini-card-avatar">
+                  <% else %>
+                    <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
+                      <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="navbar-mini-card-avatar">
+                    <% end %>
                   <% end %>
-                <% end %>
 
-               
                 <hr>
-              <% end %>
-
-              <% if receiver.id == current_user.id %>
-                <% if sender.avatar.attached? %>
-                <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
-                  <%=cl_image_tag(sender.avatar.key, class:"navbar-mini-card-avatar") %>
-                <%end%>
-                <% else %>
-                  <%= link_to matches_path(match: match.id), data: {turbolinks: :false} do %>
-                    <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="navbar-mini-card-avatar">
-                  <% end %>
                 <% end %>
-                
-              <hr>
-              <% end %>
-                </div>
-                <div class="navbar-players-short-description">
-                  <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;color:rgb(94,94,144)"><%= receiver.name%></h2><hr>
-                  <div class="navbar-available-date">
-                    <div class="navbar-skill-div">
-                      <p class="navbar-skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINTS</p>
-                      <p class="navbar-skill-values" style="font-family: 'Nunito Sans';font-weight: 600;"><%= receiver.skill_rating %></p>
+                  </div>
+                  <div class="navbar-players-short-description">
+                    <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;color:rgb(94,94,144)"><%= receiver.name%></h2><hr>
+                    <div class="navbar-available-date">
+                      <div class="navbar-skill-div">
+                        <p class="navbar-skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINTS</p>
+                        <p class="navbar-skill-values" style="font-family: 'Nunito Sans';font-weight: 600;"><%= receiver.skill_rating %></p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="navbar-chat-icon">              
-                    <i class="far fa-comment-dots"></i>
-                </div>
-             
+                  <div class="navbar-chat-icon">
+                      <i class="far fa-comment-dots"></i>
+                  </div>
 
-            
-               </div>
+                 </div>
+              <% end %>
             <% end %>
             <%# raise %>
-     
 
           </div>
         </div>
@@ -160,11 +164,14 @@
               <% @users.each do |user| %>
                 <% if current_user %>
                   <%if user.id != current_user.id%>
-
                     <%= link_to user_path(user.id), class: "players-link" do %>
                       <div class="players-mini-card">
                         <div class="mini-card-avatar">
-                          <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
+                          <% if current_user.avatar.attached? %>
+                            <%= cl_image_tag(user.avatar.key, class: "mini-card-avatar") %>
+                          <% else %>
+                            <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
+                          <% end %>
                         </div>
 
                         <div class="players-short-description">
