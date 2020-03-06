@@ -4,7 +4,7 @@
   font-family: "Nunito Sans", sans-serif;
   // font-family: 'Anton', sans-serif;
 }
-
+ 
 p {
   padding: 0;
   margin: 0;
@@ -74,6 +74,9 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
     &:hover {
       color: black;
     }
+  }
+  &:hover {
+    background: rgb(242, 68, 93);
   }
 }
 
@@ -183,9 +186,9 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   color: black;
 }
 
-.navbar-players-link {
-  
-}
+.red-pink-background {
+  background: #fc4e67;
+ }
 
 .navbar-chat-icon {
   width: 40%;
