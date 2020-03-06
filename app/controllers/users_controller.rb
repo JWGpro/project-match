@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     cskill = current_user.skill_rating
     skill_filtered = User.where.not(id: current_user.id).where(skill_rating: (cskill * 0.7)..(cskill * 1.3))
 
-    day = Date.parse(q[:start_datetime]).cwday
+    date = Date.parse(q[:start_datetime])
+    day = date.cwday
     start_time = parse_time(q["start_time(4i)"].to_i, q["start_time(5i)"].to_i)
     end_time = parse_time(q["end_time(4i)"].to_i, q["end_time(5i)"].to_i)
 
@@ -33,7 +34,17 @@ class UsersController < ApplicationController
       end
 
       if venues_near.length > 0
-        @results << {user: user, venue: venues_near[0]} # can do multiple tho
+        user_start_time = user.availabilities.where(day: day)[0].start_time
+        match_start_time = [start_time, user_start_time].max
+        hr = match_start_time.hour
+        min = match_start_time.minute
+        match_start_datetime = DateTime.new(date.year, date.month, date.day, hr, min, 0)
+
+        @results << {
+          user: user,
+          venue: venues_near[0], # can give multiple venues if you want
+          start_datetime: match_start_datetime
+        }
       end
     end
 
