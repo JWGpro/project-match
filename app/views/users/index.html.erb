@@ -45,8 +45,7 @@
               <%= f.input :receiver_id, :as => :hidden, input_html: { value: result[:user].id } %>
               <%= f.input :venue_id, :as => :hidden, input_html: { value: result[:venue].id } %>
               <%= f.input :content, :as => :text %>
-              <%#= f.input : %>
-              <%= f.input :start_datetime, :as => :hidden, input_html: { value: params.dig(:match, :start_datetime) } %>
+              <%= f.input :start_datetime, :as => :hidden, input_html: { value: result[:start_datetime] } %>
               <%= f.input :acceptance_deadline_hrs, :as => :hidden, input_html: { value: params.dig(:search, :acceptance_deadline_hrs) } %>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               <button type="submit" class="btn btn-primary">Confirm</button>
