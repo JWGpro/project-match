@@ -65,6 +65,16 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   display:flex;
 }
 
+.badge {
+  line-height: 20px;
+  width: 20px;
+  padding: 0;
+  background: blue;
+  position: relative;
+  top: -13px;
+  left: -17px;
+}
+
 .stats-item {
   width: 60px;
 }

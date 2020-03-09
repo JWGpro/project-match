@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def matches
     Match.where(sender_id: id).or(Match.where(receiver_id: id))
   end
+
+  def any_messages?
+    matches.where(read: false).any?
+  end
 end

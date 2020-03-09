@@ -4,6 +4,7 @@ class MatchesController < ApplicationController
     @users = User.all
     if params[:match]
       @match = Match.find(params[:match])
+      @match.messages.update_all(read: true)
     else
       @match = Match.all.first
     end
