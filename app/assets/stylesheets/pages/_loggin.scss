@@ -1,0 +1,29 @@
+
+.loginform {
+  width: 30vw;
+  height: 400px;
+  padding-top: 10%;
+  border: solid 0.5px black;
+  padding: 15px 15px 15px 15px;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.3);
+  background-color: #FBF9FA;
+  position: absolute;
+  left: 13%;
+}
+
+.loginpg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, #202020 0%, #020202 5%, transparent), url('https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-size: cover;
+  background-position: 50% 50%;
+  position: relative;
+}
+
+.inputli {
+ border-radius: 5px;
+}
+
+// #EA5A07
