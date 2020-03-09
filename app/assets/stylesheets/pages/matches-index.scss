@@ -34,8 +34,11 @@
 }
 
 .messagess {
-  overflow-y: scroll;
-  max-height: 40vh;
+  
+  max-height: 100%
+  width 52%;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .message-input-div {
@@ -47,8 +50,12 @@ width: 75%;
 z-index:100;
 overflow-y: scroll;
 max-height: 100%;
-    
 }
+
+.message-input-div::-webkit-scrollbar {
+  display: none;
+}
+
 
 .form-message-input {
   display: flex;
@@ -60,8 +67,8 @@ max-height: 100%;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
-  width: 50%;
+.special {
+  width: 100%;
 }
 
 .form-control {
@@ -70,3 +77,6 @@ max-height: 100%;
   border-radius: 7px;
 }
 
+.message_content {
+  width: 50%;
+}

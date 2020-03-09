@@ -3,17 +3,21 @@
 }
 
 .message-out {
-  background-color: rgb(255, 130, 58);
+  background-color: rgb(86, 86, 86);
   text-align: left;
   float: left;
-  width: 50%;
+  width: 80%;
   border-radius: 7px;
+  color: rgb(234, 90, 7);
+  font-weight: bold;
 }
 
 .message-in {
-  background-color:rgb(247, 169, 102);
+  background-color:rgb(234, 90, 7);
   text-align: right;
   float: right;
-  width: 50%;
+  width: 80%;
   border-radius: 7px;
+  color: rgb(86, 86, 86);
+  font-weight: bold;
 }
