@@ -5,6 +5,7 @@
       <%= render 'shared/sidebar' %>
   </div>
 
+
   <div class="col-9 message-container-div"">
     
       <div class="challenge-message" style="height:70px;">
@@ -15,46 +16,51 @@
             <% if current_user.avatar.attached? %>
               <%= current_user.name %>
               <%=  cl_image_tag(current_user.avatar.key, class: "splash-profile-pic") %>
+
+
+          <% else %>
+            <%= current_user.name %>
+            <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+          <% end %>
+        </div>
+
+        <h5>VS</h5>
+        <div>
+          <% if current_user.id == sender.id %>
+            <% if receiver.avatar.attached? %>
+              <%=  cl_image_tag(receiver.avatar.key, class: "splash-profile-pic") %>
+              <%= receiver.name %>
+
             <% else %>
-              <%= current_user.name %>
               <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+              <%= receiver.name %>
             <% end %>
-          </div>
-
-          <h5>VS</h5>
-          <div>
-            <% if current_user.id == sender.id %>
-              <% if receiver.avatar.attached? %>
-                <%=  cl_image_tag(receiver.avatar.key, class: "splash-profile-pic") %>
-                <%= receiver.name %>
-              <% else %>
-                <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
-                <%= receiver.name %>
-              <% end %>
-            <% end %>
-          </div>
-          <div>
-            <% if current_user.id == receiver.id %>
-              <% if sender.avatar.attached? %>
-                <%=  cl_image_tag(sender.avatar.key, class: "splash-profile-pic") %>
-                <%= sender.name %>
-              <% else %>
-                <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
-                <%= sender.name %>
-              <% end %>
-            <% end %>
-          </div>
+          <% end %>
         </div>
-
-
-        <div class="match-information">
-
-          <p><%= @match.start_datetime %></p>
-
+        <div>
+          <% if current_user.id == receiver.id %>
+            <% if sender.avatar.attached? %>
+              <%=  cl_image_tag(sender.avatar.key, class: "splash-profile-pic") %>
+              <%= sender.name %>
+            <% else %>
+              <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
+              <%= sender.name %>
+            <% end %>
+          <% end %>
         </div>
-
-
       </div>
+
+    </div>
+
+    <div class="match-information">
+
+      <% if current_user.id == receiver.id && !@match.is_accepted %>
+        <%= render 'challenge' %>
+      <% else %>
+        <p>accepted or pending</p>
+      <% end %>
+
+    </div>
 
       <div class="message-input-div">
         <%= simple_form_for [ current_user, @match, @message ], html: { class: "form-message-input"}  do |f| %>
@@ -74,6 +80,7 @@
                   <%= render "messages/message", message: message, style: "message-out"%>
                 </div>
               <% end %>
+
 
               <% if message.user_id != current_user.id %>
                 <div class="message-right">
