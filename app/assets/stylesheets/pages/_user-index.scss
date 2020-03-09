@@ -1,5 +1,6 @@
 .my-container {
-  padding: 0 100px;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: white;
 }

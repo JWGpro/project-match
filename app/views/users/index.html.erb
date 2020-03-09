@@ -4,7 +4,7 @@
     <%= render 'shared/sidebar' %>
   </div>
 
-  <div class="col-9 middle-row container">
+  <div class="col-9 my-container">
     <% @results.each_with_index do |result, index| %>
       <div class="my-card">
         <div>
@@ -15,9 +15,7 @@
         <% end %>
         </div>
         <div class="card-content">
-          <p class="name"> <strong><%= result[:user].name.split(" ")[0] %></strong> <%= result[:user].name.split(" ")[1] %></p>
-          <p>User skill: <%= result[:user].skill_rating %></p>
-          <p>Rep Rating <%= result[:user].rep_rating %></p>
+          <div class="name"><p><strong><%= result[:user].name.split(" ")[0] %> </strong> <%= result[:user].name.split(" ")[1] %>&nbsp;&nbsp;&nbsp;&nbsp;<%= "⭐️" * result[:user].rep_rating %></p><p>Skill Points: <strong><%= result[:user].skill_rating %></strong></p></div>
           <p><%= result[:user].bio %></p>
           <button type="button" class="my-btn" data-toggle="modal" data-user="<%= result[:user].id %>" data-target="#exampleModalCenter<%= index %>">
             Challenge

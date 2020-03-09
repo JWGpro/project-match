@@ -1,8 +1,9 @@
 .my-card {
   display: flex;
-  height: 20vh;
+  height: 15vh;
+  width: 70%;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 40px;
   box-shadow: 10px 10px 10px grey;
   background-color: #EEEEEE;
   overflow: auto;
@@ -14,15 +15,21 @@
 .card-content {
   flex-grow: 2;
   display: flex;
-  height: 20vh;
+  height: 15vh;
   flex-direction: column;
   justify-content: space-between;
   padding: 10px;
   .name {
     border-bottom: 2px lightgrey solid;
+    display: flex;
+    justify-content: space-between;
   }
   strong {
     color: #616292;
+  }
+  textarea {
+    margin: 5px;
+    border: none;
   }
 }
 
@@ -42,5 +49,5 @@
 }
 
 .card-avatar {
-  height: 20vh;
+  height: 15vh;
 }
