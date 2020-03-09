@@ -15,7 +15,7 @@
         <% end %>
         </div>
         <div class="card-content">
-          <div class="name"><p><strong><%= result[:user].name.split(" ")[0] %> </strong> <%= result[:user].name.split(" ")[1] %>&nbsp;&nbsp;&nbsp;&nbsp;<%= "⭐️" * result[:user].rep_rating %></p><p>Skill Points: <strong><%= result[:user].skill_rating %></strong></p></div>
+          <div class="name"><p><strong><%= result[:user].name.split(" ")[0] %></strong> <%= result[:user].name.split(" ")[1] %><i class="fas fa-medal" style="padding-top:2%;padding-left:3%;color:#cc6633;"></i><%= "⭐️" * result[:user].rep_rating %></p><p>Skill Points: <strong><%= result[:user].skill_rating %></strong></p></div>
           <p><%= result[:user].bio %></p>
           <button type="button" class="my-btn" data-toggle="modal" data-user="<%= result[:user].id %>" data-target="#exampleModalCenter<%= index %>">
             Challenge
@@ -35,24 +35,29 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <div>
+                <% if result[:user].avatar.attached? %>
+                  <%= cl_image_tag(result[:user].avatar.key, class: "navbar-mini-card-avatar") %>
+                <% else %>
+                <img class="user-avatar" src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="image">
+                <% end %>
+              </div>
+              <h5 class="modal-title" id="exampleModalLongTitle">Challenge <strong class="modal-name"><%= result[:user].name.split(" ")[0] %>?</strong></h5>
+              <p>Skill Points: <strong><%= result[:user].skill_rating %></strong></p>
             </div>
             <div class="modal-body">
-              <%= result[:user].name %>
+              <%= result[:user].bio %>
             </div>
             <div class="modal-footer">
               <%= simple_form_for [result[:user], Match.new] do |f| %>
                 <%= f.input :sender_id, :as => :hidden, input_html: { value: current_user.id } %>
                 <%= f.input :receiver_id, :as => :hidden, input_html: { value: result[:user].id } %>
                 <%= f.input :venue_id, :as => :hidden, input_html: { value: result[:venue].id } %>
-                <%= f.input :content, :as => :text %>
+                <%= f.input :content, :as => :text, label: "Message #{result[:user].name.split(" ")[0]}" %>
                 <%= f.input :start_datetime, :as => :hidden, input_html: { value: result[:start_datetime] } %>
                 <%= f.input :acceptance_deadline_hrs, :as => :hidden, input_html: { value: params.dig(:search, :acceptance_deadline_hrs) } %>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Confirm</button>
+                <button type="submit" class="btn btn-success">Confirm</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
               <% end %>
             </div>
           </div>
