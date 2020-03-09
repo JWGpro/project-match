@@ -37,7 +37,8 @@
         </button></li><hr>
         <li class="nav-link link-btn"><%= link_to "Messages", user_matches_path(current_user.id) %></li><hr>
         <li class="nav-link link-btn"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li><hr>
-        <li class="nav-link match-button"><%= link_to "New Match", new_search_path %></li>
+
+        <li class="nav-link match-button" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">New Match</li>
       <% else %>
         <li class="nav-link link-btn"><%= link_to "Login", new_user_session_path %></li><hr>
       <% end %>
@@ -193,6 +194,31 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="form-container">
+        <div class="form-title ">
+          <h2>Match search</h2>
+        </div>
+
+        <%= simple_form_for Search.new, url: users_path, method: :get, html: { class: "matching-form" }   do |f| %>
+            <%= f.input :start_datetime, as: :date, html5: true, class: "pink-border", label: "When do you want to play?", input_html: { value: Date.today } %>
+            <%= f.input :start_time, label: "Between:", default: Time.parse('18:00') %>
+            <%= f.input :end_time, label: "and:", default: Time.parse('20:00')  %>
+            <%= f.input :acceptance_deadline_hrs, label: "How many hours in advance must the opponent accept?", input_html: {value: f.object.acceptance_deadline_hrs || '8'}  %>
+            <%= f.input :will_travel_km, label: "How far can you travel (km)?", input_html: {value: f.object.will_travel_km || current_user.will_travel_km}  %>
+            <%#= text_field_tag(:match_address) %>
+            <%= f.submit "Search!", class: "btn btn-primary match-submit-button" %>
+        <% end %>
+
       </div>
     </div>
   </div>
