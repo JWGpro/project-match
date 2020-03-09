@@ -22,8 +22,14 @@ require("channels")
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import "bootstrap";
+import $ from 'jquery';
+console.log('loaded')
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initMapbox } from '../plugins/init_mapbox';
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
