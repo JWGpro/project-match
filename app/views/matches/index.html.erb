@@ -46,7 +46,11 @@
         </div>
         <div class="match-information">
 
-          <p><%= @match.start_datetime %></p>
+          <% if current_user.id == receiver.id && !@match.is_accepted %>
+            <%= render 'challenge' %>
+          <% else %>
+            <p>accepted or pending</p>
+          <% end %>
 
         </div>
 

@@ -1,0 +1,26 @@
+<div class="form-container rounded-lg shadow">
+  <!-- datetime -->
+  <p>Date/time: <%= @match.start_datetime.strftime("%A %d/%m, %H:%M") %></p>
+
+  <!-- acceptance deadline -->
+  <% deadline = (@match.start_datetime - @match.acceptance_deadline_hrs) %>
+  <p>Acceptance deadline: <%= deadline.strftime("%A %d/%m, %H:%M") %></p>
+
+  <!-- venue w/ map -->
+
+  <!-- msg/content -->
+  <p>Message: <%= @match.content %></p>
+
+  <!-- +13/-6 points on win/lose - normally done by elo/glicko -->
+  <% diff = @match.sender.skill_rating - @match.receiver.skill_rating %>
+  <% if diff > 0 %>
+    <p>+17/-8</p>
+  <% else %>
+    <p>+8/-17</p>
+  <% end %>
+
+  <!-- button: accept -->
+  <%= link_to "Accept", root_path, class: "btn btn-primary" %>
+  <!-- button: reject -->
+  <%= link_to "Reject", root_path, class: "btn btn-danger" %>
+</div>
