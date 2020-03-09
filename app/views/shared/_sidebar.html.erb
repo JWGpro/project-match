@@ -44,7 +44,7 @@
 
       <% if current_user %>
 
-        <% current_user.matches.each do |match| %>
+        <% current_user.matches.reverse_each do |match| %>
           <% sender = match.sender %>
           <% receiver = match.receiver %>
 
