@@ -1,3 +1,9 @@
+
+
+
+
+
+
 * {
   padding: 0;
   margin: 0;
@@ -98,7 +104,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
     }
   }
   &:hover {
-    background: rgb(242, 68, 93);
+    background: #FD5013;
   }
 }
 
@@ -171,7 +177,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   object-fit: cover;
   height: 300px;
   position: absolute;
-  top: 40px;
+  top: 29px;
   right: 23px;
 }
 
@@ -529,3 +535,35 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 .my-tooltip:hover + .my-tooltiptext {
   visibility: visible;
 }
+
+.alex-tooltip {
+  position: relative;
+  // display: inline-block;
+  // border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.alex-tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  top: 238px;
+  left: 484px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.alex-tooltip:hover + .alex-tooltiptext {
+  visibility: visible;
+}
+
+
+
+
