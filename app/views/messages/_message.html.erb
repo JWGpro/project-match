@@ -1,4 +1,4 @@
-<div class="p-3 m-3 container round-lg shadow <%= style %>" data-user-id="<%= current_user.id %>">
+<div class="p-3 m-3 container round-lg message-card-partial <%= style %>" data-user-id="<%= current_user.id %>">
   <i class="author">
     <span><%= message.user.name %></span>
     <small><%= message.created_at.strftime("") %></small>

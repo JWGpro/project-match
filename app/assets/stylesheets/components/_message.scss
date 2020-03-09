@@ -1,16 +1,19 @@
 .message-container{
+
 }
 
 .message-out {
-  background-color: lightgrey;
+  background-color: rgb(255, 130, 58);
   text-align: left;
   float: left;
   width: 50%;
+  border-radius: 7px;
 }
 
 .message-in {
-  background-color: white;
+  background-color:rgb(247, 169, 102);
   text-align: right;
   float: right;
   width: 50%;
+  border-radius: 7px;
 }
