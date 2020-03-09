@@ -35,11 +35,15 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <%= cl_image_tag(result[:user].avatar.key, class: "navbar-mini-card-avatar") %>
-              <p class="modal-title" id="exampleModalLongTitle">Challenge <strong class="modal-name"><%= result[:user].name.split(" ")[0] %>?</strong></p>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <div>
+                <% if result[:user].avatar.attached? %>
+                  <%= cl_image_tag(result[:user].avatar.key, class: "navbar-mini-card-avatar") %>
+                <% else %>
+                <img class="user-avatar" src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="image">
+                <% end %>
+              </div>
+              <h5 class="modal-title" id="exampleModalLongTitle">Challenge <strong class="modal-name"><%= result[:user].name.split(" ")[0] %>?</strong></h5>
+              <p>Skill Points: <strong><%= result[:user].skill_rating %></strong></p>
             </div>
             <div class="modal-body">
               <%= result[:user].bio %>
