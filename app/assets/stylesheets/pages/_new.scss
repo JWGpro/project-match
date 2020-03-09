@@ -5,13 +5,19 @@
   align-items: center;
   flex-direction: column;
 
-  
+
 }
 
-.matching-form { 
-  width: 40%; 
+.match-submit-button {
+  background-color:#EA5A07;
+  border: none;
+}
+
+.matching-form {
+  width: 90%;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   padding: 15px;
+  margin-bottom: 45px;
   border-radius: 7px;
 }
 
@@ -19,7 +25,7 @@
   background: #fc4e67;
   &:hover {
     background: rgb(242, 68, 93);
-    
+
   }
 }
 .form-title {
@@ -32,24 +38,29 @@
 .search_start_datetime {
   text-align: center;
   font-weight: 900;
+  margin-right: 0px;
 }
 
 .search_start_time {
   text-align: center;
   font-weight: 900;
+  margin-right: 0px;
 }
 
 .search_end_time {
   text-align: center;
   font-weight: 900;
+  margin-right: 0px;
 }
 
 .search_acceptance_deadline_hrs {
   text-align: center;
   font-weight: 900;
+  margin-right: 0px;
 }
 
 .search_will_travel_km {
   text-align: center;
   font-weight: 900;
+  margin-right: 0px;
 }
