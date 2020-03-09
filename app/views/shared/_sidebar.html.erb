@@ -30,9 +30,11 @@
 
   <div class="navbarlist">
     <ul>
-      <li class="nav-link link-btn home-button"><%= link_to "Home", "/" %></li><hr>
+      <li class="nav-link link-btn home-button" id="home-butto-padding"><%= link_to "Home", "/" %></li><hr>
       <% if current_user %>
-        <li class="nav-link link-btn"><%= link_to "Profile", "/" %></li><hr>
+        <li class="nav-link link-btn"><button type="button" class="profile-modal-button" data-toggle="modal" data-target="#exampleModalScrollable">
+          Profile
+        </button></li><hr>
         <li class="nav-link link-btn"><%= link_to "Messages", user_matches_path(current_user.id) %></li><hr>
         <li class="nav-link link-btn"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li><hr>
         <li class="nav-link match-button"><%= link_to "New Match", new_search_path %></li>
@@ -40,6 +42,7 @@
         <li class="nav-link link-btn"><%= link_to "Login", new_user_session_path %></li><hr>
       <% end %>
     </ul>
+
     <div class="navbar-card-container">
 
       <% if current_user %>
@@ -103,6 +106,49 @@
       <% end %>
       <%# raise %>
 
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="personal-info">
+          <% if current_user %>
+            <% if current_user.avatar.attached? %>
+              <%= cl_image_tag(current_user.avatar.key, class: "splash-profile-pic") %>
+            <% else %>
+              <img src="https://education.uky.edu/wp-content/uploads/2019/12/TL-Headshot-2squaresmall.jpg" alt="Profile-picture" class="splash-profile-pic">
+            <% end %>
+          <% end %>
+          <div class="user-details">
+            <p class="username" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">
+              <% if current_user %>
+                <%= current_user.name %>
+              <% end %>
+            </p>
+            <p class="little-title" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINT</p>
+            <p class="skill-values" style="font-family: 'Nunito Sans';font-weight: 600;">
+              <% if current_user %>
+                <%= current_user.skill_rating %>
+              <% end %>
+            </p>
+          </div>
+          <i class="fas fa-medal" style="padding-top:1%;padding-left:2%;color:#cc6633;"></i>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>
