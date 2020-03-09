@@ -5,3 +5,41 @@
 .message-right {
   text-align: right;
 }
+
+.challenge-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.player-vs-player-div {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:100
+}
+
+.match-information {
+  position:fixed;
+  top:10vh;
+
+  z-index:100
+}
+
+.message-input-div {
+margin-top: 30px;
+position:fixed;
+top:10vh;
+width:100%;
+z-index:100
+}
+
+.form-message-input {
+  
+}
