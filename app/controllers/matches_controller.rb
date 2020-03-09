@@ -33,6 +33,13 @@ class MatchesController < ApplicationController
   def destroy
   end
 
+  def accept
+    @match = Match.find(params[:id])
+    @match.is_accepted = true
+    @match.save
+    redirect_to matches_path(match: @match.id)
+  end
+
   private
 
   def match_params
