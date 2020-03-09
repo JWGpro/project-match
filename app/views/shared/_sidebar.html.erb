@@ -117,33 +117,79 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalScrollableTitle">Profile</h5>
+        <div>
+          <i style="padding-left:12px;"class="fas fa-pencil-alt"></i>
+        </div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <div class="personal-info">
-          <% if current_user %>
-            <% if current_user.avatar.attached? %>
-              <%= cl_image_tag(current_user.avatar.key, class: "splash-profile-pic") %>
-            <% else %>
-              <img src="https://education.uky.edu/wp-content/uploads/2019/12/TL-Headshot-2squaresmall.jpg" alt="Profile-picture" class="splash-profile-pic">
-            <% end %>
-          <% end %>
-          <div class="user-details">
-            <p class="username" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">
+
+        <div class="row">
+          <div class="col-6" style="border-right: solid 1px rgba(0,0,0,0.8)">
+            <div class="personal-info">
               <% if current_user %>
-                <%= current_user.name %>
+                <% if current_user.avatar.attached? %>
+                  <%= cl_image_tag(current_user.avatar.key, class: "splash-profile-pic") %>
+                <% else %>
+                  <img src="https://education.uky.edu/wp-content/uploads/2019/12/TL-Headshot-2squaresmall.jpg" alt="Profile-picture" class="splash-profile-pic">
+                <% end %>
               <% end %>
-            </p>
-            <p class="little-title" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINT</p>
-            <p class="skill-values" style="font-family: 'Nunito Sans';font-weight: 600;">
-              <% if current_user %>
-                <%= current_user.skill_rating %>
-              <% end %>
-            </p>
+              <div class="user-details">
+                <p class="username" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">
+                  <% if current_user %>
+                    <%= current_user.name %>
+                  <% end %>
+                </p>
+                <p class="little-title" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINT</p>
+                <p class="skill-values" style="font-family: 'Nunito Sans';font-weight: 600;">
+                  <% if current_user %>
+                    <%= current_user.skill_rating %>
+                  <% end %>
+                </p>
+              </div>
+              <i class="fas fa-medal" style="padding-top:1%;padding-left:2%;color:#cc6633;"></i>
+            </div>
+            <div class="user-bio">
+              <h5 style="margin-top:10px;margin-bottom:0;font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">Bio</h5>
+              <%= current_user.bio %>
+            </div>
           </div>
-          <i class="fas fa-medal" style="padding-top:1%;padding-left:2%;color:#cc6633;"></i>
+
+          <div class="col-6">
+            <div class="flexy">
+              <img src="https://image.flaticon.com/icons/svg/669/669442.svg" alt="" style="height:20px;padding-right:7px;">
+              <h5 style="font-family: 'Nunito Sans';font-weight: 600;color:rgb(94,94,144)">Player Stats</h5>
+            </div>
+            <div class="flexy">
+              <div class="stats-item">
+                <p style="font-family: 'Nunito Sans';font-weight: 900;font-size:12px;opacity:0.6;">MP</p>
+                <p style="font-family: 'Nunito Sans';font-weight: 600;">11</p>
+              </div>
+
+              <div class="stats-item">
+                <p style="font-family: 'Nunito Sans';font-weight: 900;font-size:12px;opacity:0.6;">W</p>
+                <p style="font-family: 'Nunito Sans';font-weight: 600;">8</p>
+              </div>
+
+              <div class="stats-item">
+                <p style="font-family: 'Nunito Sans';font-weight: 900;font-size:12px;opacity:0.6;">L</p>
+                <p style="font-family: 'Nunito Sans';font-weight: 600;">3</p>
+              </div>
+            </div>
+            <div class="cabinet-wrap">
+              <h5 style="font-family: 'Nunito Sans';font-weight: 600;color:#EA5A07">Cabinet</h5>
+              <div class="medals" style="display: flex;">
+                <img src="https://image.flaticon.com/icons/svg/625/625396.svg" class="tropy-item my-tooltip">
+                <span class="my-tooltiptext">3rd place</span>
+
+                <img src="https://image.flaticon.com/icons/svg/744/744960.svg" class="tropy-item hip-tooltip">
+                <span class="hip-tooltiptext">5 straight wins</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
       <div class="modal-footer">
@@ -152,3 +198,4 @@
     </div>
   </div>
 </div>
+
