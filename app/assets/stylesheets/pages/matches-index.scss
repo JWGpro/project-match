@@ -7,9 +7,10 @@
 
 }
 
-.message-container-div {
-
+.contents-div {
   background-color: white;
+  display: flex;
+  flex-direction: column;
 }
 .challenge-message {
   display: flex;
@@ -34,7 +35,7 @@
 }
 
 .messagess {
-  
+
   max-height: 100%
   width 52%;
   width: 50%;
@@ -42,14 +43,10 @@
 }
 
 .message-input-div {
-margin-top: 30px;
-
-position:fixed;
-top:10vh;
-width: 75%;
-z-index:100;
-overflow-y: scroll;
-max-height: 100%;
+  margin-top: 30px;
+  width: 75%;
+  overflow-y: scroll;
+  max-height: 65%;
 }
 
 .message-input-div::-webkit-scrollbar {
