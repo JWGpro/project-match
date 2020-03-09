@@ -129,7 +129,7 @@ User.all.each do |user|
     # All days, 1600-2000
     av = Availability.new(
       user: user,
-      day: i
+      day: i + 1
     )
     av.start_time = DateTime.new(2000,1,1, 16,0,0)
     av.end_time = DateTime.new(2000,1,1, 20,0,0)
