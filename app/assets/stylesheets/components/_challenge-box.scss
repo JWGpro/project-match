@@ -1,4 +1,64 @@
 .challenge-box {
-  width: 300px;
+  width: 600px;
   margin-top: 30px;
+  text-align: center;
+  border-radius: 7px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    font-family: "Anton";
+    color: #616292;
+    padding-top: 25px;
+  }
+
+  strong {
+    font-style: normal;
+    font-weight: 900;
+    font-family: "Nunito Sans";
+    font-size: 16px;
+    opacity: 0.6;
+    text-transform: uppercase;
+  }
+
+  em {
+    font-style: normal;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgb(94,94,144);
+  }
+
+  > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .challenge-info {
+    margin: 20px;
+  }
+
+  .challenge-location {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px;
+    > * {
+      margin-bottom: 20px;
+    }
+  }
+
+  .challenge-buttons a {
+    margin-bottom: 30px;
+  }
+
+}
+
+.points-risk {
+  font-size: 32px;
+  .win {
+    color: green;
+  }
+  .lose {
+    color: red;
+  }
 }
