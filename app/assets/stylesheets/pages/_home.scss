@@ -4,7 +4,7 @@
   font-family: "Nunito Sans", sans-serif;
   // font-family: 'Anton', sans-serif;
 }
- 
+
 p {
   padding: 0;
   margin: 0;
@@ -57,9 +57,13 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   background: rgb(240, 240, 240);
 }
 
+#home-butto-padding {
+  padding-top: none;
+}
+
 .home-button {
   a {
-    color: #fc4e67;
+    color: #EA5A07;
     opacity: 1;
     font-family: "Nunito Sans";
     font-weight: 600;
@@ -67,7 +71,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 }
 
 .match-button {
-  background-color: #fc4e67;
+  background-color: #EA5A07;
   border-radius: 7px;
   a {
     color: white;
@@ -94,7 +98,6 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   margin-bottom: 10%;
   img {
     height: 110px;
-    width: 110px;
   }
 }
 
@@ -135,6 +138,23 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   border-bottom-left-radius: 7px;
   object-fit: cover;
   width: 80px;
+}
+
+.tropy-title {
+  position:absolute;
+  right: 95px;
+  top: 14px;
+  font-family: "Nunito Sans";
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.tropy-image {
+  object-fit: cover;
+  height: 300px;
+  position: absolute;
+  top: 40px;
+  right: 23px;
 }
 
 .navbar-players-short-description {
@@ -187,12 +207,12 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 }
 
 .red-pink-background {
-  background: #fc4e67;
+  background: #EA5A07;
  }
 
 .navbar-chat-icon {
   width: 40%;
-  background: #fc4e67;
+  background: #EA5A07;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -276,7 +296,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   font-weight: 800;
   font-size: 15px;
   color: white;
-  background-color: #fc4e67;
+  background-color: #EA5A07;
 }
 
 .news-input {
@@ -386,6 +406,22 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   hr {
     margin: 0;
   }
+}
+
+.listimage-avatar {
+  height:60px;
+  width:60px;
+  border-top-left-radius:7px;
+  border-bottom-left-radius:7px;
+}
+
+.profile-modal-button{
+  border:none;
+  background:none;
+  opacity: 0.7;
+  font-family: "Nunito Sans";
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .available-date {
