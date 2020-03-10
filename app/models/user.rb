@@ -19,16 +19,16 @@ class User < ApplicationRecord
     sorted = []
 
     # challenges
-    matches.where(is_accepted: false, receiver_id: self.id).each { |match| sorted << match }
+    matches.where(is_accepted: false, receiver_id: self.id).reverse_each { |match| sorted << match }
 
     # pending
-    matches.where(is_accepted: false, sender_id: self.id).each { |match| sorted << match }
+    matches.where(is_accepted: false, sender_id: self.id).reverse_each { |match| sorted << match }
 
     # upcoming
-    matches.where(is_accepted: true, is_complete: false).each { |match| sorted << match }
+    matches.where(is_accepted: true, is_complete: false).reverse_each { |match| sorted << match }
 
     # completed
-    matches.where(is_complete: true).each { |match| sorted << match }
+    matches.where(is_complete: true).reverse_each { |match| sorted << match }
 
     return sorted
   end
