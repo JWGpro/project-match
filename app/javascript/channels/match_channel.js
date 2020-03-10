@@ -1,5 +1,11 @@
 import consumer from "./consumer";
-
+const clearMessagesContainer = document.getElementById('message_content')
+clearMessagesContainer.addEventListener('keyup', (event) => {
+  const key = event.key; 
+    if (key === "Enter") {
+        clearMessagesContainer.value = "";
+    }
+});
 const messagesContainer = document.querySelector('.messagess');
 if (messagesContainer) {
   const id = messagesContainer.dataset.matchId;
@@ -7,9 +13,9 @@ if (messagesContainer) {
   consumer.subscriptions.create({ channel: "MatchChannel", id: id }, {
     received(data) {
       messagesContainer.insertAdjacentHTML('afterbegin', data);
-      if (userId === messagesContainer.lastElementChild.dataset.userId) {
-        messagesContainer.lastElementChild.classList.remove("message-in")
-        messagesContainer.lastElementChild.classList.add("message-out")
+      if (userId === messagesContainer.firstElementChild.dataset.userId) {
+        messagesContainer.firstElementChild.classList.remove("message-in")
+        messagesContainer.firstElementChild.classList.add("message-out")
       }
       console.log(data); // called when data is broadcast in the cable
     },
