@@ -31,7 +31,7 @@ temp = User.new(
   email: "jill@gmail.com",
   password: "password",
   name: "Jill Valentine",
-  bio: "My name is Jill and I like tennis",
+  bio: "I'm in it to win! Think you can beat me?",
   skill_rating: 1154,
   rep_rating: 3,
   will_travel_km: 3,
@@ -52,7 +52,7 @@ temp = User.new(
   email: "greg@gmail.com",
   password: "password",
   name: "Greg Fields",
-  bio: "My name is Greg and I like tennis",
+  bio: "Just a newbie trying to get better with every game.",
   skill_rating: 982,
   rep_rating: 2,
   will_travel_km: 3,
@@ -71,7 +71,7 @@ temp = User.new(
   email: "daigo@gmail.com",
   password: "password",
   name: "Daigo Umehara",
-  bio: "My name is Daigo and I like tennis",
+  bio: "Nothing beats the thrill of a good challenge!",
   skill_rating: 1211,
   rep_rating: 4,
   will_travel_km: 3,
@@ -92,7 +92,7 @@ temp = User.new(
   email: "sofia@gmail.com",
   password: "password",
   name: "Sofia Alanis",
-  bio: "My name is Sofia and I like tennis",
+  bio: "Tennis is fun! Let's play some games!",
   skill_rating: 1037,
   rep_rating: 1,
   will_travel_km: 3,
@@ -107,7 +107,6 @@ temp.avatar.attach(
   filename: 'sofia.jpg')
 temp.save!
 
-
 # 10.times do
 #   User.create!(
 #     email: Faker::Internet.email,
@@ -120,6 +119,12 @@ temp.save!
 #     address: Faker::Address.street_address
 #   )
 # end
+
+
+# Paris Faulkner
+# Ahmed Klein
+# Trey Randall
+# Anisha Mcpherson
 
 
 ### Availabilities
