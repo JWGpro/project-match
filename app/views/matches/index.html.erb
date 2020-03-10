@@ -52,10 +52,8 @@
 
     <div class="match-information">
 
-      <% if current_user.id == receiver.id && !@match.is_accepted %>
+      <% if !@match.is_complete %>
         <%= render 'challenge' %>
-      <% else %>
-        <p>accepted or pending</p>
       <% end %>
 
     </div>
