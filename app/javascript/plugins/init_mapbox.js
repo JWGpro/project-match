@@ -18,14 +18,22 @@ const initMapbox = () => {
       });
 
       const markers = JSON.parse(mapElement.dataset.markers);
+      markers.forEach((marker) => {
 
-      // colour all the other users
-      for (let i=0; i < markers.length - 1; i++) {
-        const marker = markers[i];
-        new mapboxgl.Marker({ "color": "#6959cd" })
-          .setLngLat([ marker.lng, marker.lat ])
+  // Create a HTML element for your custom marker
+    console.log('Inside map marker', marker);
+      const element = document.createElement('div');
+      element.className = 'marker';
+      element.style.backgroundImage = `url('https://res.cloudinary.com/kloomes/image/upload/${marker.cl_image_url}')`;
+      element.style.backgroundSize = 'contain';
+      element.style.width = '25px';
+      element.style.height = '25px';
+
+      // Pass the element as an argument to the new marker
+      new mapboxgl.Marker(element)
+          .setLngLat([marker.lng, marker.lat])
           .addTo(map);
-      }
+      });
 
       // colour the centre point (current user)
       const central = markers.pop();
@@ -37,6 +45,8 @@ const initMapbox = () => {
       counter += 1;
     }
   })
+
+
 };
 
 export { initMapbox };
