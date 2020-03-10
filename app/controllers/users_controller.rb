@@ -55,7 +55,7 @@ class UsersController < ApplicationController
       }
     end
 
-
+    @markers << { lat: current_user.latitude, lng: current_user.longitude }
 
   end
 
