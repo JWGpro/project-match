@@ -1,12 +1,12 @@
 
 
-<div class="row little-margin">
+<div class="row little-margin" style="background-color:white">
   <div class="col-3 first-row">
       <%= render 'shared/sidebar' %>
   </div>
 
 
-  <div class="col-9 contents-div">
+  <div class="col-6 contents-div" style="height:110%;background-color:white;">
 
     <div class="challenge-message" style="height:70px;">
 
@@ -50,14 +50,6 @@
 
     </div>
 
-    <div class="match-information">
-
-      <% if !@match.is_complete %>
-        <%= render 'challenge' %>
-      <% end %>
-
-    </div>
-
     <div class="message-input-div" >
       <%= simple_form_for [ current_user, @match, @message ], html: { class: "form-message-input"} do |f| %>
         <%= f.input :content, label: false, placeholder: "Message....", input_html: { class: 'special' }%>
@@ -67,7 +59,7 @@
           <div class="message-container">
             <% sender.name %>
             <br>
-            <%= @match.content %>
+
           </div>
           <% @match.messages.order(created_at: :desc).each do |message| %>
 
@@ -88,6 +80,11 @@
       </div>
     </div>
 
+  </div>
+  <div class="col-3 match-dets" style="background-color:rgba(0,0,0,0.03)">
+    <% if !@match.is_complete %>
+      <%= render 'challenge' %>
+    <% end %>
   </div>
 </div>
 
