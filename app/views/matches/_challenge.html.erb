@@ -1,11 +1,20 @@
-<div class="container challenge-box">
+<div class="challenge-box" style="overflow-y:scroll;max-height:100vh;">
 
   <% if @match.is_accepted %>
-    <h2>Upcoming match:</h2>
+    <h3>Upcoming match</h3>
   <% elsif current_user.id == @match.receiver_id %>
-    <h2>You've been challenged!</h2>
+    <h3>You've been challenged!</h3>
   <% else %>
-    <h2>Pending challenge:</h2>
+    <h3>Pending challenge</h3>
+  <% end %>
+
+  <% if !@match.is_accepted && current_user.id == @match.receiver_id %>
+    <div class="challenge-buttons" style="height: 30px;">
+      <!-- button: accept -->
+      <%= link_to "Accept", accept_match_path(@match), class: "accept-button" %>
+      <!-- button: reject -->
+      <%= link_to "Reject", root_path, class: "rejecter" %>
+    </div>
   <% end %>
 
   <div>
@@ -63,13 +72,4 @@
       </div>
     </div>
   </div>
-
-  <% if !@match.is_accepted && current_user.id == @match.receiver_id %>
-    <div class="challenge-buttons">
-      <!-- button: accept -->
-      <%= link_to "Accept", accept_match_path(@match), class: "btn btn-success" %>
-      <!-- button: reject -->
-      <%= link_to "Reject", root_path, class: "btn btn-danger" %>
-    </div>
-  <% end %>
 </div>
