@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 100, maxZoom: 500, duration: 0 });
+  map.fitBounds(bounds, { padding: 100, maxZoom: 5000, duration: 0 });
 };
 
 const initMapbox = () => {
@@ -21,13 +21,17 @@ const initMapbox = () => {
       markers.forEach((marker) => {
 
   // Create a HTML element for your custom marker
-    console.log('Inside map marker', marker);
       const element = document.createElement('div');
       element.className = 'marker';
       element.style.backgroundImage = `url('https://res.cloudinary.com/kloomes/image/upload/${marker.cl_image_url}')`;
       element.style.backgroundSize = 'contain';
-      element.style.width = '25px';
-      element.style.height = '25px';
+      element.style.transition = "all .75s ease"
+      element.style.width = '50px';
+      element.style.height = '50px';
+      element.style.borderRadius = '50%';
+
+
+// element.addEventListner
 
       // Pass the element as an argument to the new marker
       new mapboxgl.Marker(element)
