@@ -1,5 +1,13 @@
 <div class="container challenge-box">
-  <h2>You've been challenged!</h2>
+
+  <% if @match.is_accepted %>
+    <h2>Upcoming match:</h2>
+  <% elsif current_user.id == @match.receiver_id %>
+    <h2>You've been challenged!</h2>
+  <% else %>
+    <h2>Pending challenge:</h2>
+  <% end %>
+
   <div>
     <div class="challenge-info">
       <!-- datetime -->
@@ -7,14 +15,20 @@
       <p><strong><%= @match.start_datetime.strftime("%A %d/%m, %H:%M") %></strong></p>
       <br>
 
-      <!-- acceptance deadline -->
-      <% deadline = (@match.start_datetime - @match.acceptance_deadline_hrs * 3600) %>
-      <p><em>Acceptance deadline:</em></p>
-      <p><strong><%= deadline.strftime("%A %d/%m, %H:%M") %></strong></p>
-      <br>
+      <% if !@match.is_accepted %>
+        <!-- acceptance deadline -->
+        <% deadline = (@match.start_datetime - @match.acceptance_deadline_hrs * 3600) %>
+        <p><em>Acceptance deadline:</em></p>
+        <p><strong><%= deadline.strftime("%A %d/%m, %H:%M") %></strong></p>
+        <br>
+      <% end %>
 
       <!-- msg/content -->
-      <p><em>Their message:</em></p>
+      <% if current_user.id == @match.receiver_id %>
+        <p><em>Their message:</em></p>
+      <% else %>
+        <p><em>Your message:</em></p>
+      <% end %>
       <p><%= @match.content %></p>
       <br>
 
@@ -50,10 +64,12 @@
     </div>
   </div>
 
-  <div class="challenge-buttons">
-    <!-- button: accept -->
-    <%= link_to "Accept", accept_match_path(@match), class: "btn btn-success" %>
-    <!-- button: reject -->
-    <%= link_to "Reject", root_path, class: "btn btn-danger" %>
-  </div>
+  <% if !@match.is_accepted && current_user.id == @match.receiver_id %>
+    <div class="challenge-buttons">
+      <!-- button: accept -->
+      <%= link_to "Accept", accept_match_path(@match), class: "btn btn-success" %>
+      <!-- button: reject -->
+      <%= link_to "Reject", root_path, class: "btn btn-danger" %>
+    </div>
+  <% end %>
 </div>
