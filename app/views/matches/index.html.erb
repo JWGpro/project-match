@@ -59,7 +59,7 @@
     </div>
 
     <div class="message-input-div" >
-      <%= simple_form_for [ current_user, @match, @message ], html: { class: "form-message-input"}  do |f| %>
+      <%= simple_form_for [ current_user, @match, @message ], html: { class: "form-message-input"} do |f| %>
         <%= f.input :content, label: false, placeholder: "Message....", input_html: { class: 'special' }%>
       <% end %>
       <div class="messages-box-container">
