@@ -31,8 +31,6 @@ const initMapbox = () => {
       element.style.borderRadius = '50%';
 
 
-// element.addEventListner
-
       // Pass the element as an argument to the new marker
       new mapboxgl.Marker(element)
           .setLngLat([marker.lng, marker.lat])
