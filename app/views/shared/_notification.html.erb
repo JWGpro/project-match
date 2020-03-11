@@ -1,6 +1,36 @@
 <%= link_to matches_path(match: @match.id), data: {turbolinks: :false} do %>
   <!-- <div class="notification container shadow p-3 m-3"> -->
   <div class="notification">
-    <p>You've been challenged to a match by <%= @match.sender.name %>!</p>
+    <div class="row">
+      <div class="col-6">
+        <div class="personal-info">
+          <% if current_user %>
+            <% if @match.sender.avatar.attached? %>
+              <%= cl_image_tag(@match.sender.avatar.key, class: "splash-profile-pic") %>
+            <% else %>
+              <img src="https://education.uky.edu/wp-content/uploads/2019/12/TL-Headshot-2squaresmall.jpg" alt="Profile-picture" class="splash-profile-pic">
+            <% end %>
+          <% end %>
+          <div class="user-details">
+            <p class="username" id="username" data-id="<%= current_user.id %>" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">
+              <% if current_user %>
+                <%= @match.sender.name %>
+              <% end %>
+            </p>
+            <p class="little-title" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINT</p>
+            <p class="skill-values" style="font-family: 'Nunito Sans';font-weight: 600;">
+              <% if current_user %>
+                <%= @match.sender.skill_rating %>
+              <% end %>
+            </p>
+          </div>
+          <i class="fas fa-medal" style="padding-top:2%;padding-left:3%;color:#cc6633;"></i>
+        </div>
+      </div>
+
+      <div class="col-6">
+          <p>You've been challenged to a match by <%= @match.sender.name %>!</p>
+      </div>
+    </div>
   </div>
 <% end %>
