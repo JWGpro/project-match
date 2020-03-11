@@ -6,7 +6,7 @@
 
   <div class="col-5 my-container">
     <% @results.each_with_index do |result, index| %>
-      <div class="my-card">
+      <div class="my-card card_<%= index %>">
         <div>
           <% if result[:user].avatar.attached? %>
           <%= cl_image_tag(result[:user].avatar.key, class: "card-avatar") %>
