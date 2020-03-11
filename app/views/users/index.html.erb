@@ -4,7 +4,7 @@
     <%= render 'shared/sidebar' %>
   </div>
 
-  <div class="col-5 my-container">
+  <div class="col my-container">
     <% @results.each_with_index do |result, index| %>
       <div class="my-card">
         <div>
@@ -121,8 +121,8 @@
 
   <div class="map col-4" id="map_0"
          style="
-         width: 600px;
-         min-width: 600px;
+         width: 500px;
+         min-width: 500px;
          height: 100vh;"
          data-markers="<%= @markers.to_json %>"
          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
