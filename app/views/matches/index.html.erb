@@ -15,10 +15,10 @@
       <div class="player-vs-player-div" style="display: flex;margin-top: 20px;justify-content: space-between;align-items: center; width:100%;">
         <div>
           <% if current_user.avatar.attached? %>
-          <div>
-            <%=  cl_image_tag(current_user.avatar.key, class: "splash-profile-pic") %>
-            <%= current_user.name %>
-          </div>
+            <div>
+              <%=  cl_image_tag(current_user.avatar.key, class: "splash-profile-pic") %>
+              <%= current_user.name %>
+            </div>
           <% else %>
             <div>
               <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
@@ -29,8 +29,8 @@
 
         <h5 style="position: absolute;left: 46%;">VS</h5>
 
-        <div>
-          <% if current_user.id == sender.id %>
+        <% if current_user.id == sender.id %>
+          <div>
             <% if receiver.avatar.attached? %>
               <div>
                 <%= receiver.name %>
@@ -42,10 +42,11 @@
                 <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
               </div>
             <% end %>
-          <% end %>
-        </div>
-        <div>
-          <% if current_user.id == receiver.id %>
+          </div>
+        <% end %>
+
+        <% if current_user.id == receiver.id %>
+          <div>
             <% if sender.avatar.attached? %>
               <div>
                 <%= sender.name %>
@@ -57,8 +58,8 @@
                 <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
               </div>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
 
     </div>
