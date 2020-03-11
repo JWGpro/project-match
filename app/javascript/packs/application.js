@@ -36,9 +36,3 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
 })
 
-const cards = document.querySelectorAll(".my-card").forEach((card) => {
-  card.addEventListener("mouseover", (event) => {
-    console.log(event)
-  });
-});
-
