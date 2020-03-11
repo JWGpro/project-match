@@ -16,6 +16,10 @@
       background: rgb(214, 73, 21);
       
     }
+
+    &:active {
+      background-color: #d64915 !important;
+    }
 }
 
 .form-control {
@@ -75,4 +79,11 @@
   text-align: center;
   font-weight: 900;
   margin-right: 0px;
+}
+.btn {
+  .btn-primary{
+    &active {
+      background: rgb(214, 73, 21);
+    }
+  }
 }

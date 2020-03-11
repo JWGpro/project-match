@@ -10,7 +10,7 @@
       <%= f.input :acceptance_deadline_hrs, label: "How many hours in advance must the opponent accept?", input_html: {value: f.object.acceptance_deadline_hrs || '8'}  %>
       <%= f.input :will_travel_km, label: "How far can you travel (km)?", input_html: {value: f.object.will_travel_km || current_user.will_travel_km}  %>
       <%#= text_field_tag(:match_address) %>
-      <%= f.submit "Search!", class: "btn btn-primary form-color-pink" %>
+      <%= f.submit "Search!", class: "btn btn-primary" %>
   <% end %>
 
 </div>
