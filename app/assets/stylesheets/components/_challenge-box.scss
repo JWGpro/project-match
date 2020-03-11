@@ -1,0 +1,119 @@
+.challenge-box {
+  width: 100%;
+  text-align: center;
+  // border-radius: 7px;
+  // border: solid 0.5px #bfbfd1;
+  // box-shadow: 0px 0px 3px 2px #bfbfd1;
+
+  h3 {
+    font-family: "Anton";
+    color: #616292;
+    padding-top: 25px;
+    padding-bottom: 14px;
+  }
+
+  strong {
+    font-style: normal;
+    font-weight: 900;
+    font-family: "Nunito Sans";
+    font-size: 16px;
+    opacity: 0.6;
+    text-transform: uppercase;
+  }
+
+  em {
+    font-style: normal;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgb(94,94,144);
+  }
+
+  .accept-button {
+  // margin-right: 2%;
+  // margin-top: 1%;
+  padding: 8px 20px 8px 20px;
+  border-radius: 8px;
+  font-family: "Nunito Sans";
+  font-weight: 800;
+  font-size: 15px;
+  color: white;
+  background-color: #EA5A07;
+  &:hover {
+    text-decoration: none;
+    background-color:rgb(214, 73, 21);
+  }
+
+}
+
+.rejecter {
+  padding: 8px 20px 8px 20px;
+  border-radius: 8px;
+  font-family: "Nunito Sans";
+  font-weight: 800;
+  font-size: 15px;
+  color: white;
+  background-color: #7B7876;
+  &:hover {
+    text-decoration: none;
+    background-color: rbga(0,0,0,0.8);
+  }
+}
+  // > div {
+  //   display: flex;
+  //   justify-content: space-around;
+  //   align-items: center;
+  // }
+
+  .challenge-info {
+    margin: 20px;
+  }
+
+  .challenge-location {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    > * {
+      margin-bottom: 20px;
+    }
+  }
+
+  .challenge-buttons a {
+    margin-bottom: 30px;
+  }
+
+}
+.modal-footer-challenge {
+  justify-content: center;
+  padding: 15px;
+}
+.challenge-card-points-gained {
+  text-align: center;
+    .skill-points-risked {
+      font-family: "Anton";
+      color: #616292;
+      padding-top: 25px;
+      padding-bottom: 14px;
+  }
+}
+.challenge-points {
+  text-align: center;
+  font-size: 32px;
+  .win {
+    color: #EA5A07;
+  }
+  .lose {
+    color: #565656;
+  }
+}
+
+.points-risk {
+  font-size: 32px;
+  .win {
+    color: #EA5A07;
+  }
+  .lose {
+    color: #565656;
+  }
+}

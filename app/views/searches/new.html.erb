@@ -2,6 +2,7 @@
   <div class="form-title ">
     <h2>Match search</h2>
   </div>
+
   <%= simple_form_for @search, url: users_path, method: :get, html: { class: "matching-form" }   do |f| %>
       <%= f.input :start_datetime, as: :date, html5: true, class: "pink-border", label: "When do you want to play?", input_html: { value: Date.today } %>
       <%= f.input :start_time, label: "Between:", default: Time.parse('18:00') %>
@@ -11,4 +12,5 @@
       <%#= text_field_tag(:match_address) %>
       <%= f.submit "Search!", class: "btn btn-primary form-color-pink" %>
   <% end %>
+
 </div>

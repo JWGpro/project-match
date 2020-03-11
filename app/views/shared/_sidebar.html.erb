@@ -1,6 +1,6 @@
-<div class="firstcolumn-wrapper container" style="overflow-y:scroll;max-height:100vh;">
+<div class="firstcolumn-wrapper container" style="overflow-y:scroll;max-height:100vh;width:310px;">
 
-  <div class="ourlogo" style="background-color:white;border-radius:7px">
+  <div class="ourlogo" style="display: flow-root;">
     <%= image_tag "real_logo.png" %>
   </div>
 
@@ -13,7 +13,7 @@
       <% end %>
     <% end %>
     <div class="user-details">
-      <p class="username" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">
+      <p class="username" id="username" data-id="<%= current_user.id %>" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">
         <% if current_user %>
           <%= current_user.name %>
         <% end %>
@@ -32,22 +32,21 @@
     <ul>
       <li class="nav-link link-btn home-button" id="home-butto-padding"><%= link_to "Home", "/" %></li><hr>
       <% if current_user %>
-        <li class="nav-link link-btn"><button type="button" class="profile-modal-button" data-toggle="modal" data-target="#exampleModalScrollable">
+        <li class="nav-link link-btn"><button type="button" class="profile-modal-button" data-toggle="modal" data-target="#exampleModalScrollable" style="outline:none;">
           Profile
         </button></li><hr>
-        <li class="nav-link link-btn"><%= link_to "Messages", user_matches_path(current_user.id) %></li><hr>
         <li class="nav-link link-btn"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li><hr>
-        <li class="nav-link match-button"><%= link_to "New Match", new_search_path %></li>
+
+        <li class="nav-link match-button" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">New Match</li>
       <% else %>
         <li class="nav-link link-btn"><%= link_to "Login", new_user_session_path %></li><hr>
       <% end %>
     </ul>
 
-    <div class="navbar-card-container">
+    <!-- <div class="navbar-card-container"> -->
 
       <% if current_user %>
-
-        <% current_user.matches.reverse_each do |match| %>
+        <% current_user.sort_matches.each do |match| %>
           <% sender = match.sender %>
           <% receiver = match.receiver %>
 
@@ -88,24 +87,27 @@
               <% else %>
                 <% opponent = receiver %>
               <% end %>
-              <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;color:rgb(94,94,144)"><%= opponent.name%></h2><hr>
+              <h2 style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1%;"><strong style="color: #616292;"><%= opponent.name.split(" ")[0] %></strong> <%= opponent.name.split(" ")[1]%></h2>
+              <hr>
               <div class="navbar-available-date">
                 <div class="navbar-skill-div">
-                  <p class="navbar-skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINTS</p>
-                  <p class="navbar-skill-values" style="font-family: 'Nunito Sans';font-weight: 600;"><%= opponent.skill_rating %></p>
+                  <p class="navbar-skill-availability" style="font-family: 'Nunito Sans';font-weight: 900;opacity:0.6;"><%= match.start_datetime.strftime("%A %d/%m") %></p>
+                  <p class="navbar-skill-values" style="font-family: 'Nunito Sans';font-weight: 600;"><%= match.start_datetime.strftime("%H:%M") %></p>
                 </div>
               </div>
             </div>
 
-            <div class="navbar-chat-icon">
-                <i class="far fa-comment-dots"></i>
+            <div class="navbar-chat-icon" style="background: <%= match.get_property(current_user, :bg) %>;">
+              <i class="<%= match.get_property(current_user, :icon) %>"></i>
+              <!-- <i class="far fa-comment-dots"></i> -->
             </div>
 
           </div>
+
         <% end %>
       <% end %>
 
-    </div>
+    <!-- </div> -->
   </div>
 </div>
 
@@ -152,7 +154,7 @@
             </div>
             <div class="user-bio">
               <h5 style="margin-top:10px;margin-bottom:0;font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">Bio</h5>
-              <%= current_user.bio %>
+                <%= current_user&.bio %>
             </div>
           </div>
 
@@ -178,7 +180,7 @@
               </div>
             </div>
             <div class="cabinet-wrap">
-              <h5 style="font-family: 'Nunito Sans';font-weight: 600;color:#EA5A07">Cabinet</h5>
+              <h5 style="font-family: 'Nunito Sans';font-weight: 600;color:rgb(94,94,144)">Cabinet</h5>
               <div class="medals" style="display: flex;">
                 <img src="https://image.flaticon.com/icons/svg/625/625396.svg" class="tropy-item my-tooltip">
                 <span class="my-tooltiptext">3rd place</span>
@@ -197,4 +199,36 @@
     </div>
   </div>
 </div>
+
+
+<% if current_user %>
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="form-container" style="max-height: 70%;">
+          <div class="form-title ">
+            <h2>Match search</h2>
+          </div>
+          <div class="form-container-box">
+            <%= simple_form_for Search.new, url: users_path, method: :get, html: { class: "matching-form" }   do |f| %>
+                <%= f.input :start_datetime, as: :date, html5: true, class: "pink-border", label: "When do you want to play?", input_html: { value: Date.today } %>
+                <%= f.input :start_time, label: "Between:", default: Time.parse('18:00') %>
+                <%= f.input :end_time, label: "and:", default: Time.parse('20:00')  %>
+                <%= f.input :acceptance_deadline_hrs, label: "How many hours in advance must the opponent accept?", input_html: {value: f.object.acceptance_deadline_hrs || '8'}  %>
+                <%= f.input :will_travel_km, label: "How far can you travel (km)?", input_html: {value: f.object.will_travel_km || current_user.will_travel_km}  %>
+                <%#= text_field_tag(:match_address) %>
+                <%= f.submit "Search!", class: "btn btn-primary btn-lg btn-block match-submit-button" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+
 

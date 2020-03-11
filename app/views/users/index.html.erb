@@ -4,7 +4,7 @@
     <%= render 'shared/sidebar' %>
   </div>
 
-  <div class="col-9 middle-row container">
+  <div class="col my-container">
     <% @results.each_with_index do |result, index| %>
       <div class="my-card">
         <div>
@@ -15,48 +15,116 @@
         <% end %>
         </div>
         <div class="card-content">
-          <p class="name"> <strong><%= result[:user].name.split(" ")[0] %></strong> <%= result[:user].name.split(" ")[1] %></p>
-          <p>User skill: <%= result[:user].skill_rating %></p>
-          <p>Rep Rating <%= result[:user].rep_rating %></p>
-          <p><%= result[:user].bio %></p>
+          <div class="name"><p><strong><%= result[:user].name.split(" ")[0] %></strong> <%= result[:user].name.split(" ")[1] %><i class="fas fa-medal" style="padding-top:2%;padding-left:3%;color:#cc6633;"></i><%= "⭐️" * result[:user].rep_rating %></p><p>Skill Points: <strong><%= result[:user].skill_rating %></strong></p></div>
+            <%= result[:user].bio %>
           <button type="button" class="my-btn" data-toggle="modal" data-user="<%= result[:user].id %>" data-target="#exampleModalCenter<%= index %>">
             Challenge
           </button>
         </div>
-        <div class="map" id="map_<%= index %>"
-         style="width: 20%;
-         height: auto;"
-         data-markers="<%= @markers.to_json %>"
-         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
+
       </div>
       <div class="modal fade" id="exampleModalCenter<%= index %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="modal-header">             
+             
+
+
+
+        <div class="row">
+          <div class="col-6" style="border-right: solid 1px rgba(0,0,0,0.8)">
+            <div class="personal-info">
+              <% if current_user %>
+
+                <% if result[:user].avatar.attached? %>
+                  <%= cl_image_tag(result[:user].avatar.key, class: "splash-profile-pic") %>
+                <% else %>
+                  <img src="https://education.uky.edu/wp-content/uploads/2019/12/TL-Headshot-2squaresmall.jpg" alt="Profile-picture" class="splash-profile-pic">
+                <% end %>
+              <% end %>
+              <div class="user-details">
+                <p class="username" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">
+                  <% if result[:user] %>
+                    <%= result[:user].name %>
+                  <% end %>
+                </p>
+                <p class="little-title" style="font-family: 'Nunito Sans';font-weight: 900;font-size:7px;opacity:0.6;">SKILL POINT</p>
+                <p class="skill-values" style="font-family: 'Nunito Sans';font-weight: 600;">
+                  <% if result[:user] %>
+                    <%= result[:user].skill_rating %>
+                  <% end %>
+                </p>
+              </div>
+              <i class="fas fa-medal" style="padding-top:1%;padding-left:2%;color:#cc6633;"></i>
             </div>
-            <div class="modal-body">
-              <%= result[:user].name %>
+            <div class="user-bio">
+              <h5 style="margin-top:10px;margin-bottom:0;font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">Bio</h5>
+                <%= result[:user]&.bio %>
             </div>
-            <div class="modal-footer">
+          </div>
+
+          <div class="col-6">
+            <div class="flexy">
+              <img src="https://image.flaticon.com/icons/svg/669/669442.svg" alt="" style="height:20px;padding-right:7px;">
+              <h5 style="font-family: 'Nunito Sans';font-weight: 600;color:rgb(94,94,144)">Player Stats</h5>
+            </div>
+            <div class="flexy">
+              <div class="stats-item">
+                <p style="font-family: 'Nunito Sans';font-weight: 900;font-size:12px;opacity:0.6;">MP</p>
+                <p style="font-family: 'Nunito Sans';font-weight: 600;">11</p>
+              </div>
+
+              <div class="stats-item">
+                <p style="font-family: 'Nunito Sans';font-weight: 900;font-size:12px;opacity:0.6;">W</p>
+                <p style="font-family: 'Nunito Sans';font-weight: 600;">8</p>
+              </div>
+
+              <div class="stats-item">
+                <p style="font-family: 'Nunito Sans';font-weight: 900;font-size:12px;opacity:0.6;">L</p>
+                <p style="font-family: 'Nunito Sans';font-weight: 600;">3</p>
+              </div>
+            </div>
+            <div class="cabinet-wrap">
+              <h5 style="font-family: 'Nunito Sans';font-weight: 600;color:rgb(94,94,144)">Cabinet</h5>
+              <div class="medals" style="display: flex;">
+                <img src="https://image.flaticon.com/icons/svg/625/625396.svg" class="tropy-item my-tooltip">
+                <span class="my-tooltiptext">3rd place</span>
+
+                <img src="https://image.flaticon.com/icons/svg/744/744960.svg" class="tropy-item hip-tooltip">
+                <span class="hip-tooltiptext">5 straight wins</span>
+              </div>
+            </div>
+          </div>
+        </div>    
+      </div>
+            <div class="modal-footer-challenge">
+              <div class="challenge-card-points-gained">
+                <p><em class="skill-points-risked">Skill points risked:</em></p>
+                <p class="challenge-points"><em class="win">+43 / <span class="lose">-18</span></em></p>
+              </div>
               <%= simple_form_for [result[:user], Match.new] do |f| %>
                 <%= f.input :sender_id, :as => :hidden, input_html: { value: current_user.id } %>
                 <%= f.input :receiver_id, :as => :hidden, input_html: { value: result[:user].id } %>
                 <%= f.input :venue_id, :as => :hidden, input_html: { value: result[:venue].id } %>
-                <%= f.input :content, :as => :text %>
+                <%= f.input :content, :as => :text, label: "Message #{result[:user].name.split(" ")[0]}" %>
                 <%= f.input :start_datetime, :as => :hidden, input_html: { value: result[:start_datetime] } %>
                 <%= f.input :acceptance_deadline_hrs, :as => :hidden, input_html: { value: params.dig(:search, :acceptance_deadline_hrs) } %>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Confirm</button>
+                <button type="submit" class="btn btn-success">Challenge</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
               <% end %>
             </div>
           </div>
         </div>
       </div>
     <% end %>
+  </div>
+
+  <div class="map col-4" id="map_0"
+         style="
+         width: 500px;
+         min-width: 500px;
+         height: 100vh;"
+         data-markers="<%= @markers.to_json %>"
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>

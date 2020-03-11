@@ -6,7 +6,11 @@ Rails.application.routes.draw do
       resources :messages, only: :create
     end
   end
-  resources :matches, only: [:index, :destroy]
+  resources :matches, only: [:index, :destroy] do
+    member do
+      get :accept
+    end
+  end
   resources :messages, only: :destroy
   resources :searches, only: [:new]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

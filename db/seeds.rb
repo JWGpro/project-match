@@ -184,32 +184,43 @@ Venue.create!(
 ### Matches
 # could seed some completed matches for viewing in a history chart or something
 
-match = Match.create!(
-  sender_id: User.first.id,
-  receiver_id: User.second.id,
-  venue: Venue.first,
-  acceptance_deadline_hrs: 6
-)
-match.start_datetime = match.created_at + 100_000
-match.save!
-
+# Challenge
 match = Match.create!(
   sender_id: User.fourth.id,
   receiver_id: User.first.id,
   venue: Venue.first,
-  acceptance_deadline_hrs: 6
+  acceptance_deadline_hrs: 6,
+  start_datetime: DateTime.new(2020,3,16, 20,0,0)
 )
-match.start_datetime = match.created_at + 200_000
-match.save!
 
+# Upcoming
+match = Match.create!(
+  sender_id: User.first.id,
+  receiver_id: User.second.id,
+  venue: Venue.first,
+  acceptance_deadline_hrs: 6,
+  start_datetime: DateTime.new(2020,3,17, 20,0,0),
+  is_accepted: true
+)
 match = Match.create!(
   sender_id: User.third.id,
   receiver_id: User.first.id,
   venue: Venue.first,
-  acceptance_deadline_hrs: 6
+  acceptance_deadline_hrs: 6,
+  start_datetime: DateTime.new(2020,3,21, 14,0,0),
+  is_accepted: true
 )
-match.start_datetime = match.created_at + 300_000
-match.save!
+
+# Completed
+match = Match.create!(
+  sender_id: User.first.id,
+  receiver_id: User.third.id,
+  venue: Venue.first,
+  acceptance_deadline_hrs: 6,
+  start_datetime: DateTime.new(2020,3,7, 14,0,0),
+  is_accepted: true,
+  is_complete: true
+)
 
 # 5.times do
 #   sender_id = User.all.order(Arel.sql('RANDOM()')).first.id

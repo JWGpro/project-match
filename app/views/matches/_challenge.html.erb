@@ -1,0 +1,75 @@
+<div class="challenge-box">
+
+  <% if @match.is_accepted %>
+    <h3>Upcoming match</h3>
+  <% elsif current_user.id == @match.receiver_id %>
+    <h3>You've been challenged!</h3>
+  <% else %>
+    <h3>Pending challenge</h3>
+  <% end %>
+
+  <% if !@match.is_accepted && current_user.id == @match.receiver_id %>
+    <div class="challenge-buttons" style="height: 30px;">
+      <!-- button: accept -->
+      <%= link_to "Accept", accept_match_path(@match), class: "accept-button" %>
+      <!-- button: reject -->
+      <%= link_to "Reject", root_path, class: "rejecter" %>
+    </div>
+  <% end %>
+
+  <div>
+    <div class="challenge-info">
+      <!-- datetime -->
+      <p><em>Date and time:</em></p>
+      <p><strong><%= @match.start_datetime.strftime("%A %d/%m, %H:%M") %></strong></p>
+      <br>
+
+      <% if !@match.is_accepted %>
+        <!-- acceptance deadline -->
+        <% deadline = (@match.start_datetime - @match.acceptance_deadline_hrs * 3600) %>
+        <p><em>Acceptance deadline:</em></p>
+        <p><strong><%= deadline.strftime("%A %d/%m, %H:%M") %></strong></p>
+        <br>
+      <% end %>
+
+      <!-- msg/content -->
+      <% if current_user.id == @match.receiver_id %>
+        <p><em>Their message:</em></p>
+      <% else %>
+        <p><em>Your message:</em></p>
+      <% end %>
+      <p><%= @match.content %></p>
+      <br>
+
+      <!-- +13/-6 points on win/lose - normally done by elo/glicko -->
+      <% diff = @match.sender.skill_rating - @match.receiver.skill_rating %>
+      <p><em>Skill points risked:</em></p>
+      <% if diff > 0 %>
+        <% winnable = 43 %>
+        <% losable = 18 %>
+      <% else %>
+        <% winnable = 18 %>
+        <% losable = 43 %>
+      <% end %>
+
+      <p class="points-risk"><span class="win">+<%= winnable %></span> / <span class="lose">-<%= losable %></span></p>
+
+    </div>
+    <!-- venue w/ map -->
+    <div class="challenge-location">
+      <p><em>Venue location:</em></p>
+      <div class="map" id="map_0"
+       style="width: 250px;
+       height: 250px;"
+       data-markers="<%= [{
+                            lat: current_user.latitude,
+                            lng: current_user.longitude
+                           }, {
+                            lat: @match.venue.latitude,
+                            lng: @match.venue.longitude
+                           }].to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
+</div>
