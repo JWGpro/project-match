@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 50, maxZoom: 5000, duration: 0 });
+  map.fitBounds(bounds, { padding: 75, maxZoom: 17, duration: 0 });
 };
 
 const initMapbox = () => {
@@ -20,21 +20,20 @@ const initMapbox = () => {
       const markers = JSON.parse(mapElement.dataset.markers);
       markers.forEach((marker) => {
 
-  // Create a HTML element for your custom marker
-      const element = document.createElement('div');
-      element.className = 'marker';
-      element.style.backgroundImage = `url('https://res.cloudinary.com/kloomes/image/upload/${marker.cl_image_url}')`;
-      element.style.backgroundSize = 'contain';
-      element.style.transition = "all .75s ease"
-      element.style.width = '50px';
-      element.style.height = '50px';
-      element.style.borderRadius = '50%';
+        // Create a HTML element for your custom marker
+        const element = document.createElement('div');
+        element.className = 'marker';
+        element.style.backgroundImage = `url('https://res.cloudinary.com/kloomes/image/upload/${marker.cl_image_url}')`;
+        element.style.backgroundSize = 'contain';
+        // element.style.transition = "all .75s ease"
+        element.style.width = '50px';
+        element.style.height = '50px';
+        element.style.borderRadius = '50%';
 
-
-      // Pass the element as an argument to the new marker
-      new mapboxgl.Marker(element)
-          .setLngLat([marker.lng, marker.lat])
-          .addTo(map);
+        // Pass the element as an argument to the new marker
+        new mapboxgl.Marker(element)
+            .setLngLat([marker.lng, marker.lat])
+            .addTo(map);
       });
 
       // colour the centre point (current user)
