@@ -374,6 +374,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 
 //Right asside column
 .available-players {
+  width: 100%;
 }
 
 //turnament
@@ -565,6 +566,12 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   visibility: visible;
 }
 
-
+.turnaments-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 
