@@ -38,7 +38,7 @@ document.addEventListener('turbolinks:load', () => {
 
 const cards = document.querySelectorAll(".my-card").forEach((card) => {
   card.addEventListener("mouseover", (event) => {
-    console.log(markers)
+    console.log(event)
   });
 });
 
