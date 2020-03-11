@@ -24,7 +24,7 @@ const initMapbox = () => {
         const element = document.createElement('div');
         element.className = 'marker';
         element.setAttribute("id", `marker_${counter}`)
-        element.style.backgroundImage = `url('https://res.cloudinary.com/kloomes/image/upload/${marker.cl_image_url}')`;
+        element.style.backgroundImage = `url('https://res.cloudinary.com/dzx4pveid/image/upload/${marker.cl_image_url}')`;
         element.style.backgroundSize = 'contain';
         element.style.transition = "all .75s ease"
         element.style.width = '50px';
