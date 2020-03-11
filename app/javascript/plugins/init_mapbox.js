@@ -25,7 +25,7 @@ const initMapbox = () => {
         element.className = 'marker';
         element.style.backgroundImage = `url('https://res.cloudinary.com/kloomes/image/upload/${marker.cl_image_url}')`;
         element.style.backgroundSize = 'contain';
-        // element.style.transition = "all .75s ease"
+        element.style.transition = "all .75s ease"
         element.style.width = '50px';
         element.style.height = '50px';
         element.style.borderRadius = '50%';
