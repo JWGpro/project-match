@@ -1,20 +1,24 @@
 import consumer from "./consumer";
+
 const clearMessagesContainer = document.getElementById('message_content')
-clearMessagesContainer.addEventListener('keyup', (event) => {
-  const key = event.key; 
- 
-    if (key === "Enter") {
-        clearMessagesContainer.value = "";
-        clearMessagesContainer.blur()
-        clearMessagesContainer.focus()
-      }
-});
+if (clearMessagesContainer) {
 
+  clearMessagesContainer.addEventListener('keyup', (event) => {
+    const key = event.key;
 
+      if (key === "Enter") {
+          clearMessagesContainer.value = "";
+          clearMessagesContainer.blur()
+          clearMessagesContainer.focus()
+        }
+  });
+
+}
 
 
 const messagesContainer = document.querySelector('.messagess');
 if (messagesContainer) {
+
   const id = messagesContainer.dataset.matchId;
   const userId = messagesContainer.dataset.userId;
   consumer.subscriptions.create({ channel: "MatchChannel", id: id }, {
@@ -27,4 +31,5 @@ if (messagesContainer) {
       console.log(data); // called when data is broadcast in the cable
     },
   });
+
 }
