@@ -1,3 +1,5 @@
+require 'open-uri'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -7,14 +9,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-### Users
+### Users (1)
 
 temp = User.new(
   email: "bigdave@gmail.com",
   password: "password",
-  name: "Dave",
-  bio: "My name is Dave and I like tennis",
-  skill_rating: 1068,
+  name: "Dave Williams",
+  bio: "My name is Dave, and I like tennis.",
+  skill_rating: 968,
   rep_rating: 5,
   will_travel_km: 3,
   # will_match_units: 300,
@@ -23,16 +25,21 @@ temp = User.new(
   # address: "271 Church Lane, Wimbledon, London SW19 5AF"
 )
 temp.avatar.attach(
-  io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/dave_mwvxdk.jpg'),
+  # io: open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1580887412/pbppcylduzhm2xtk3ird.jpg'),
+  # "https://res.cloudinary.com/dzx4pveid/image/upload/v1583934767/jack_asf3zg.jpg"
+  # io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/dave_mwvxdk.jpg'),
+  io: open(File.join(Rails.root, "/app/assets/images/ava/dave.jpg")),
   filename: 'dave.jpg')
 temp.save!
+
+### Potential matches (2-6)
 
 temp = User.new(
   email: "jill@gmail.com",
   password: "password",
   name: "Jill Valentine",
-  bio: "My name is Jill and I like tennis",
-  skill_rating: 1154,
+  bio: "I'm in it to win! Think you can beat me?",
+  skill_rating: 957,
   rep_rating: 3,
   will_travel_km: 3,
   # address: "Cambium, 15 Victoria Dr, London SW19 6AD"
@@ -44,7 +51,7 @@ temp = User.new(
   longitude: -0.254581
 )
 temp.avatar.attach(
-  io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/jill_vqcedz.jpg'),
+  io: open(File.join(Rails.root, "/app/assets/images/ava/jill.jpg")),
   filename: 'jill.jpg')
 temp.save!
 
@@ -52,7 +59,7 @@ temp = User.new(
   email: "greg@gmail.com",
   password: "password",
   name: "Greg Fields",
-  bio: "My name is Greg and I like tennis",
+  bio: "Just a newbie trying to get better with every game.",
   skill_rating: 982,
   rep_rating: 2,
   will_travel_km: 3,
@@ -63,16 +70,16 @@ temp = User.new(
   longitude: -0.213319
 )
 temp.avatar.attach(
-  io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/greg_cvxdxv.jpg'),
+  io: open(File.join(Rails.root, "/app/assets/images/ava/greg.jpg")),
   filename: 'greg.jpg')
 temp.save!
 
 temp = User.new(
-  email: "daigo@gmail.com",
+  email: "trey@gmail.com",
   password: "password",
-  name: "Daigo Umehara",
-  bio: "My name is Daigo and I like tennis",
-  skill_rating: 1211,
+  name: "Trey Randall",
+  bio: "Nothing beats the thrill of a good challenge!",
+  skill_rating: 941,
   rep_rating: 4,
   will_travel_km: 3,
   # address: "81 Revelstoke Rd, Wimbledon Park, London SW18 5NL"
@@ -84,16 +91,16 @@ temp = User.new(
   longitude: -0.175462
 )
 temp.avatar.attach(
-  io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/daigo_rlyvrr.jpg'),
-  filename: 'daigo.jpg')
+  io: open(File.join(Rails.root, "/app/assets/images/ava/trey.jpg")),
+  filename: 'trey.jpg')
 temp.save!
 
 temp = User.new(
   email: "sofia@gmail.com",
   password: "password",
   name: "Sofia Alanis",
-  bio: "My name is Sofia and I like tennis",
-  skill_rating: 1037,
+  bio: "Tennis is fun! Let's play some games!",
+  skill_rating: 906,
   rep_rating: 1,
   will_travel_km: 3,
 
@@ -103,23 +110,130 @@ temp = User.new(
   longitude: -0.217034
 )
 temp.avatar.attach(
-  io: open('https://res.cloudinary.com/dzx4pveid/image/upload/v1583343878/sofia_caatde.jpg'),
+  io: open(File.join(Rails.root, "/app/assets/images/ava/sofia.jpg")),
   filename: 'sofia.jpg')
 temp.save!
 
+temp = User.new(
+  email: "regan@gmail.com",
+  password: "password",
+  name: "Regan Wallace",
+  bio: "Hurry up and play me!",
+  skill_rating: 997,
+  rep_rating: 2,
+  will_travel_km: 3,
 
-# 10.times do
-#   User.create!(
-#     email: Faker::Internet.email,
-#     password: "password",
-#     name: Faker::Name.name,
-#     skill_rating: rand(0..3000),
-#     rep_rating: rand(-10..10),
-#     will_travel_km: rand(0..5),
-#     will_match_units: rand(300..1000),
-#     address: Faker::Address.street_address
-#   )
-# end
+  latitude: 51.429754,
+  longitude: -0.206342
+)
+temp.avatar.attach(
+  io: open(File.join(Rails.root, "/app/assets/images/ava/regan.jpg")),
+  filename: 'regan.jpg')
+temp.save!
+
+### Matched users (7-9)
+
+temp = User.new(
+  email: "kevin@gmail.com",
+  password: "password",
+  name: "Kevin Ross"
+)
+temp.avatar.attach(
+  io: open(File.join(Rails.root, "/app/assets/images/ava/kevin.jpg")),
+  filename: 'kevin.jpg')
+temp.save!
+
+temp = User.new(
+  email: "maciej@gmail.com",
+  password: "password",
+  name: "Maciej Kostek"
+)
+temp.avatar.attach(
+  io: open(File.join(Rails.root, "/app/assets/images/ava/maciej.jpg")),
+  filename: 'maciej.jpg')
+temp.save!
+
+temp = User.new(
+  email: "owen@gmail.com",
+  password: "password",
+  name: "Owen Wood"
+)
+temp.avatar.attach(
+  io: open(File.join(Rails.root, "/app/assets/images/ava/owen.jpg")),
+  filename: 'owen.jpg')
+temp.save!
+
+### Around-me (10+)
+
+temp = User.new(
+  email: "danny@gmail.com",
+  password: "password",
+  name: "Danny Hunter"
+)
+temp.avatar.attach(
+  io: open(File.join(Rails.root, "/app/assets/images/ava/danny.jpg")),
+  filename: 'danny.jpg')
+temp.save!
+
+temp = User.new(
+  email: "harper@gmail.com",
+  password: "password",
+  name: "Harper Kaur"
+)
+temp.avatar.attach(
+  io: open(File.join(Rails.root, "/app/assets/images/ava/harper.jpg")),
+  filename: 'harper.jpg')
+temp.save!
+
+temp = User.new(
+  email: "nicolas@gmail.com",
+  password: "password",
+  name: "Nicolas Lowe"
+)
+temp.avatar.attach(
+  io: open(File.join(Rails.root, "/app/assets/images/ava/nicolas.jpg")),
+  filename: 'nicolas.jpg')
+temp.save!
+
+temp = User.new(
+  email: "grayson@gmail.com",
+  password: "password",
+  name: "Grayson Collins"
+)
+temp.avatar.attach(
+  io: open(File.join(Rails.root, "/app/assets/images/ava/grayson.jpg")),
+  filename: 'grayson.jpg')
+temp.save!
+
+temp = User.new(
+  email: "marshall@gmail.com",
+  password: "password",
+  name: "Marshall Smith"
+)
+temp.avatar.attach(
+  io: open(File.join(Rails.root, "/app/assets/images/ava/marshall.jpg")),
+  filename: 'marshall.jpg')
+temp.save!
+
+temp = User.new(
+  email: "eleanor@gmail.com",
+  password: "password",
+  name: "Eleanor Hudson"
+)
+temp.avatar.attach(
+  io: open(File.join(Rails.root, "/app/assets/images/ava/eleanor.jpg")),
+  filename: 'eleanor.jpg')
+temp.save!
+
+temp = User.new(
+  email: "ayden@gmail.com",
+  password: "password",
+  name: "Ayden Byrne"
+)
+temp.avatar.attach(
+  io: open(File.join(Rails.root, "/app/assets/images/ava/ayden.jpg")),
+  filename: 'ayden.jpg')
+temp.save!
 
 
 ### Availabilities
@@ -180,9 +294,18 @@ Venue.create!(
 # could seed some completed matches for viewing in a history chart or something
 
 # Challenge
+# match = Match.create!(
+#   sender_id: User.fourth.id,
+#   receiver_id: User.first.id,
+#   venue: Venue.first,
+#   acceptance_deadline_hrs: 6,
+#   start_datetime: DateTime.new(2020,3,16, 20,0,0)
+# )
+
+# Pending
 match = Match.create!(
-  sender_id: User.fourth.id,
-  receiver_id: User.first.id,
+  sender_id: User.first.id,
+  receiver_id: User.find(7).id,
   venue: Venue.first,
   acceptance_deadline_hrs: 6,
   start_datetime: DateTime.new(2020,3,16, 20,0,0)
@@ -191,25 +314,25 @@ match = Match.create!(
 # Upcoming
 match = Match.create!(
   sender_id: User.first.id,
-  receiver_id: User.second.id,
+  receiver_id: User.find(8).id,
   venue: Venue.first,
   acceptance_deadline_hrs: 6,
   start_datetime: DateTime.new(2020,3,17, 20,0,0),
   is_accepted: true
 )
-match = Match.create!(
-  sender_id: User.third.id,
-  receiver_id: User.first.id,
-  venue: Venue.first,
-  acceptance_deadline_hrs: 6,
-  start_datetime: DateTime.new(2020,3,21, 14,0,0),
-  is_accepted: true
-)
+# match = Match.create!(
+#   sender_id: User.third.id,
+#   receiver_id: User.first.id,
+#   venue: Venue.first,
+#   acceptance_deadline_hrs: 6,
+#   start_datetime: DateTime.new(2020,3,21, 14,0,0),
+#   is_accepted: true
+# )
 
 # Completed
 match = Match.create!(
   sender_id: User.first.id,
-  receiver_id: User.third.id,
+  receiver_id: User.find(9).id,
   venue: Venue.first,
   acceptance_deadline_hrs: 6,
   start_datetime: DateTime.new(2020,3,7, 14,0,0),
