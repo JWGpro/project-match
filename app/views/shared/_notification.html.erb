@@ -1,0 +1,6 @@
+<%= link_to matches_path(match: @match.id), data: {turbolinks: :false} do %>
+  <!-- <div class="notification container shadow p-3 m-3"> -->
+  <div class="notification">
+    <p>You've been challenged to a match by <%= @match.sender.name %>!</p>
+  </div>
+<% end %>

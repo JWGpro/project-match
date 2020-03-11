@@ -13,7 +13,7 @@
       <% end %>
     <% end %>
     <div class="user-details">
-      <p class="username" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">
+      <p class="username" id="username" data-id="<%= current_user.id %>" style="font-family: 'Nunito Sans';font-weight: 600;padding-bottom: 1vh;color:rgb(94,94,144)">
         <% if current_user %>
           <%= current_user.name %>
         <% end %>
