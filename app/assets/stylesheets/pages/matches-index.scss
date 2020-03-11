@@ -19,18 +19,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-}
-
-.player-vs-player-div {
-  display: flex;
-  margin-top: 20px;
-  justify-content: center;
-  align-items: center;
-
   width:100%;
-  z-index:100
+  position: relative;
+
 }
+
+// .player-vs-player-div {
+//   display: flex;
+//   margin-top: 20px;
+//   justify-content: space-between;
+//   align-items: center;
+
+//   width:100%;
+//   z-index:100
+// }
 
 .match-information {
 
