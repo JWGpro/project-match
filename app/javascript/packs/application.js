@@ -35,3 +35,10 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
 })
+
+const cards = document.querySelectorAll(".my-card").forEach((card) => {
+  card.addEventListener("mouseover", (event) => {
+    console.log(markers)
+  });
+});
+

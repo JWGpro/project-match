@@ -15,7 +15,6 @@ if (clearMessagesContainer) {
 
 }
 
-
 const messagesContainer = document.querySelector('.messagess');
 if (messagesContainer) {
 

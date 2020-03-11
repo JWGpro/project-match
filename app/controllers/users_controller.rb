@@ -51,11 +51,12 @@ class UsersController < ApplicationController
     @markers = @results.map do |result|
       {
         lat: result[:user].latitude,
-        lng: result[:user].longitude
+        lng: result[:user].longitude,
+        cl_image_url: result[:user].avatar.key
       }
     end
 
-
+    @markers << { lat: current_user.latitude, lng: current_user.longitude }
 
   end
 

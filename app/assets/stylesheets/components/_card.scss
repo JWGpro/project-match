@@ -1,7 +1,7 @@
 .my-card {
   display: flex;
-  height: 15vh;
-  width: 70%;
+  height: 16vh;
+  width: 90%;
   justify-content: space-between;
   font-family: 'Nunito Sans';
   font-weight: 600;
@@ -15,7 +15,9 @@
 .card-content {
   flex-grow: 2;
   display: flex;
-  height: 15vh;
+  height: 16vh;
+  width: 100%;
+  text-overflow: ellipsis;
   flex-direction: column;
   justify-content: space-between;
   padding: 10px;
@@ -49,5 +51,5 @@
 }
 
 .card-avatar {
-  height: 15vh;
+  height: 16vh;
 }
