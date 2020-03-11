@@ -6,7 +6,7 @@ class Match < ApplicationRecord
 
   PROPERTIES = {
     completed: {
-      bg: "#EA5A07",
+      bg: "rgba(0,0,0,0.2)",
       icon: "far fa-check-square"
     },
     upcoming: {
@@ -14,11 +14,11 @@ class Match < ApplicationRecord
       icon: "fas fa-calendar-alt"
     },
     challenge: {
-      bg: "#EA5A07",
+      bg: "#EACC06",
       icon: "fas fa-exclamation"
     },
     pending: {
-      bg: "#EA5A07",
+      bg: "#EACC06",
       icon: "fas fa-hourglass-half"
     }
   }
