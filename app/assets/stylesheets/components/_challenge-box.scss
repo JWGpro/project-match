@@ -84,6 +84,29 @@
   }
 
 }
+.modal-footer-challenge {
+  justify-content: center;
+  padding: 15px;
+}
+.challenge-card-points-gained {
+  text-align: center;
+    .skill-points-risked {
+      font-family: "Anton";
+      color: #616292;
+      padding-top: 25px;
+      padding-bottom: 14px;
+  }
+}
+.challenge-points {
+  text-align: center;
+  font-size: 32px;
+  .win {
+    color: #EA5A07;
+  }
+  .lose {
+    color: #565656;
+  }
+}
 
 .points-risk {
   font-size: 32px;
