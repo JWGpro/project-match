@@ -63,6 +63,19 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   background: rgb(240, 240, 240);
 }
 
+.ranking-medals {
+  display:flex;
+  justify-content: center;
+  width: 125px;
+  padding-top:4px;
+  padding-bottom: 4px;
+  p {
+    font-family: 'Nunito Sans';
+    font-weight: 600;
+  }
+}
+
+
 #home-butto-padding {
   padding-top: none;
 }
