@@ -49,12 +49,12 @@
           <div>
             <% if sender.avatar.attached? %>
               <div>
-                <%= sender.name %>
+                <%= sender.name  %>
                 <%=  cl_image_tag(sender.avatar.key, class: "splash-profile-pic") %>
               </div>
             <% else %>
               <div>
-                <%= sender.name %>
+                <%= sender.name  %>
                 <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
               </div>
             <% end %>
@@ -65,7 +65,7 @@
     </div>
 
     <div class="message-input-div" style="width:85%" >
-      <%= simple_form_for [ current_user, @match, @message ], html: { class: "form-message-input"} do |f| %>
+      <%= simple_form_for [ current_user, @match, @message ], html: { class: "form-message-input match-chat-form"} do |f| %>
         <%= f.input :content, label: false, placeholder: "Message....", input_html: { class: 'special' }%>
       <% end %>
       <div class="messages-box-container">
