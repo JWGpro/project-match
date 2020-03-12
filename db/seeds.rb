@@ -349,6 +349,15 @@ match = Match.create!(
   is_accepted: true,
   is_complete: true
 )
+match = Match.create!(
+  sender_id: User.first.id,
+  receiver_id: User.find(3).id,
+  venue: Venue.first,
+  acceptance_deadline_hrs: 6,
+  start_datetime: DateTime.new(2020,3,2, 20,0,0),
+  is_accepted: true,
+  is_complete: true
+)
 
 # 5.times do
 #   sender_id = User.all.order(Arel.sql('RANDOM()')).first.id
