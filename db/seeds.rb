@@ -56,6 +56,23 @@ temp.avatar.attach(
 temp.save!
 
 temp = User.new(
+  email: "regan@gmail.com",
+  password: "password",
+  name: "Regan Wallace",
+  bio: "Hurry up and play me!",
+  skill_rating: 997,
+  rep_rating: 2,
+  will_travel_km: 3,
+
+  latitude: 51.429754,
+  longitude: -0.206342
+)
+temp.avatar.attach(
+  io: open(File.join(Rails.root, "/app/assets/images/ava/regan.jpg")),
+  filename: 'regan.jpg')
+temp.save!
+
+temp = User.new(
   email: "greg@gmail.com",
   password: "password",
   name: "Greg Fields",
@@ -66,8 +83,8 @@ temp = User.new(
   # address:
 
   # Venue 1
-  latitude: 51.441641,
-  longitude: -0.213319
+  latitude: 51.443644,
+  longitude: -0.207099
 )
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/greg.jpg")),
@@ -112,23 +129,6 @@ temp = User.new(
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/sofia.jpg")),
   filename: 'sofia.jpg')
-temp.save!
-
-temp = User.new(
-  email: "regan@gmail.com",
-  password: "password",
-  name: "Regan Wallace",
-  bio: "Hurry up and play me!",
-  skill_rating: 997,
-  rep_rating: 2,
-  will_travel_km: 3,
-
-  latitude: 51.429754,
-  longitude: -0.206342
-)
-temp.avatar.attach(
-  io: open(File.join(Rails.root, "/app/assets/images/ava/regan.jpg")),
-  filename: 'regan.jpg')
 temp.save!
 
 ### Matched users (7-9)
