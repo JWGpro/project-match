@@ -44,15 +44,8 @@
       <!-- +13/-6 points on win/lose - normally done by elo/glicko -->
       <% diff = @match.sender.skill_rating - @match.receiver.skill_rating %>
       <p><em>Skill points risked:</em></p>
-      <% if diff > 0 %>
-        <% winnable = 43 %>
-        <% losable = 18 %>
-      <% else %>
-        <% winnable = 18 %>
-        <% losable = 43 %>
-      <% end %>
-
-      <p class="points-risk"><span class="win">+<%= winnable %></span> / <span class="lose">-<%= losable %></span></p>
+      <% points = current_user.skillpoints_risked(@match.receiver) %>
+      <p class="points-risk"><span class="win">+<%= points[:gained] %></span> / <span class="lose">-<%= points[:lost] %></span></p>
 
     </div>
     <!-- venue w/ map -->

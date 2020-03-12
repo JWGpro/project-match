@@ -574,4 +574,6 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   align-items: center;
 }
 
-
+.last-row {
+  overflow-y: scroll;
+}

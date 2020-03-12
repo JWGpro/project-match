@@ -71,27 +71,24 @@
             <div class="flexy">
               <div class="stats-item">
                 <p style="font-family: 'Nunito Sans';font-weight: 900;font-size:12px;opacity:0.6;">MP</p>
-                <p style="font-family: 'Nunito Sans';font-weight: 600;">11</p>
+                <p style="font-family: 'Nunito Sans';font-weight: 600;">7</p>
               </div>
 
               <div class="stats-item">
                 <p style="font-family: 'Nunito Sans';font-weight: 900;font-size:12px;opacity:0.6;">W</p>
-                <p style="font-family: 'Nunito Sans';font-weight: 600;">8</p>
+                <p style="font-family: 'Nunito Sans';font-weight: 600;">5</p>
               </div>
 
               <div class="stats-item">
                 <p style="font-family: 'Nunito Sans';font-weight: 900;font-size:12px;opacity:0.6;">L</p>
-                <p style="font-family: 'Nunito Sans';font-weight: 600;">3</p>
+                <p style="font-family: 'Nunito Sans';font-weight: 600;">2</p>
               </div>
             </div>
             <div class="cabinet-wrap">
               <h5 style="font-family: 'Nunito Sans';font-weight: 600;color:rgb(94,94,144)">Cabinet</h5>
               <div class="medals" style="display: flex;">
-                <img src="https://image.flaticon.com/icons/svg/625/625396.svg" class="tropy-item my-tooltip">
-                <span class="my-tooltiptext">3rd place</span>
-
-                <img src="https://image.flaticon.com/icons/svg/744/744960.svg" class="tropy-item hip-tooltip">
-                <span class="hip-tooltiptext">5 straight wins</span>
+                <img src="https://image.flaticon.com/icons/svg/625/625395.svg" class="tropy-item my-tooltip">
+                <span class="my-tooltiptext">2rd place</span>
               </div>
             </div>
           </div>
@@ -100,7 +97,8 @@
             <div class="modal-footer-challenge">
               <div class="challenge-card-points-gained">
                 <p><em class="skill-points-risked">Skill points risked:</em></p>
-                <p class="challenge-points"><em class="win">+43 / <span class="lose">-18</span></em></p>
+                <% points = current_user.skillpoints_risked(result[:user]) %>
+                <p class="challenge-points"><em class="win">+<%= points[:gained] %> / <span class="lose">-<%= points[:lost] %></span></em></p>
               </div>
               <%= simple_form_for [result[:user], Match.new] do |f| %>
                 <%= f.input :sender_id, :as => :hidden, input_html: { value: current_user.id } %>

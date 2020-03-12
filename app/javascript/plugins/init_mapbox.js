@@ -23,10 +23,11 @@ const initMapbox = () => {
         // Create a HTML element for your custom marker
         const element = document.createElement('div');
         element.className = 'marker';
-        element.setAttribute("id", `marker_${counter}`)
-        element.style.backgroundImage = `url('https://res.cloudinary.com/kloomes/image/upload/${marker.cl_image_url}')`;
+
+        element.setAttribute("id", `marker_${counter}`);
+        element.style.backgroundImage = `url('https://res.cloudinary.com/dzx4pveid/image/upload/${marker.cl_image_url}')`;
         element.style.backgroundSize = 'contain';
-        element.style.transition = "all .75s ease"
+        element.style.transition = "all .75s ease";
         element.style.width = '50px';
         element.style.height = '50px';
         element.style.borderRadius = '50%';
@@ -37,15 +38,16 @@ const initMapbox = () => {
             .addTo(map);
 
         const card = document.querySelector(`.card_${counter}`)
-        const myMarker = document.querySelector(`#marker_${counter}`)
+        if (card) {
+          const myMarker = document.querySelector(`#marker_${counter}`)
 
-        card.addEventListener("mouseenter", event => myMarker.style.width = "75px");
-        card.addEventListener("mouseenter", event => myMarker.style.height = "75px");
-        card.addEventListener("mouseleave", event => myMarker.style.width = "50px");
-        card.addEventListener("mouseleave", event => myMarker.style.height = "50px");
-        card.addEventListener("mouseenter", event => card.style.width = "93%");
-        card.addEventListener("mouseleave", event => card.style.width = "90%");
-
+          card.addEventListener("mouseenter", event => myMarker.style.width = "75px");
+          card.addEventListener("mouseenter", event => myMarker.style.height = "75px");
+          card.addEventListener("mouseleave", event => myMarker.style.width = "50px");
+          card.addEventListener("mouseleave", event => myMarker.style.height = "50px");
+          card.addEventListener("mouseenter", event => card.style.width = "93%");
+          card.addEventListener("mouseleave", event => card.style.width = "90%");
+        }
 
         counter += 1;
         fitMapToMarkers(map, JSON.parse(mapElement.dataset.markers));
