@@ -1,5 +1,11 @@
 <div class="challenge-box">
 
+  <% if current_user.id == @match.receiver_id %>
+    <% opponent = @match.sender %>
+  <% else %>
+    <% opponent = @match.receiver %>
+  <% end %>
+
   <% if @match.is_accepted %>
     <h3>Upcoming match</h3>
   <% elsif current_user.id == @match.receiver_id %>
@@ -41,10 +47,8 @@
       <p><%= @match.content %></p>
       <br>
 
-      <!-- +13/-6 points on win/lose - normally done by elo/glicko -->
-      <% diff = @match.sender.skill_rating - @match.receiver.skill_rating %>
       <p><em>Skill points risked:</em></p>
-      <% points = current_user.skillpoints_risked(@match.receiver) %>
+      <% points = current_user.skillpoints_risked(opponent) %>
       <p class="points-risk"><span class="win">+<%= points[:gained] %></span> / <span class="lose">-<%= points[:lost] %></span></p>
 
     </div>
@@ -55,9 +59,9 @@
        style="width: 250px;
        height: 250px;"
        data-markers="<%= [{
-                            lat: @match.receiver.latitude,
-                            lng: @match.receiver.longitude,
-                            cl_image_url: @match.receiver.avatar.key
+                            lat: opponent.latitude,
+                            lng: opponent.longitude,
+                            cl_image_url: opponent.avatar.key
                            }, {
                             lat: current_user.latitude,
                             lng: current_user.longitude
