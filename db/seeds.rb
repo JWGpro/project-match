@@ -64,8 +64,8 @@ temp = User.new(
   rep_rating: 2,
   will_travel_km: 3,
 
-  latitude: 51.429754,
-  longitude: -0.206342
+  latitude: 51.435706,
+  longitude: -0.199823
 )
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/regan.jpg")),
@@ -83,8 +83,8 @@ temp = User.new(
   # address:
 
   # Venue 1
-  latitude: 51.443644,
-  longitude: -0.207099
+  latitude: 51.453289,
+  longitude: -0.205136
 )
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/greg.jpg")),
