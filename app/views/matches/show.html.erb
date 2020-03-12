@@ -5,7 +5,7 @@
       <% sender = @match.sender %>
       <% receiver = @match.receiver %>
 
-      <% if current_user.avatar.attached? %>
+      <% if sender.avatar.attached? %>
         <%= cl_image_tag(sender.avatar.key) %>
       <% else %>
         <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-8.png" alt="avatar" class="avatar">
