@@ -1,6 +1,6 @@
 .my-card {
   display: flex;
-  height: 16vh;
+  height: 145px;
   width: 90%;
   justify-content: space-between;
   font-family: 'Nunito Sans';
@@ -16,7 +16,7 @@
 .card-content {
   flex-grow: 2;
   display: flex;
-  height: 16vh;
+  height: 145px;
   width: 100%;
   text-overflow: ellipsis;
   flex-direction: column;
@@ -29,10 +29,6 @@
   }
   strong {
     color: #616292;
-  }
-  textarea {
-    margin: 5px;
-    border: none;
   }
 }
 
@@ -52,5 +48,9 @@
 }
 
 .card-avatar {
-  height: 16vh;
+  height: 145px;
+}
+
+.name-seg {
+  width: 135px;
 }

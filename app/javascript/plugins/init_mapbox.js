@@ -23,6 +23,7 @@ const initMapbox = () => {
         // Create a HTML element for your custom marker
         const element = document.createElement('div');
         element.className = 'marker';
+
         element.setAttribute("id", `marker_${counter}`);
         element.style.backgroundImage = `url('https://res.cloudinary.com/kloomes/image/upload/${marker.cl_image_url}')`;
         element.style.backgroundSize = 'contain';
