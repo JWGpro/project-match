@@ -12,10 +12,10 @@ require 'open-uri'
 ### Users (1)
 
 temp = User.new(
-  email: "bigdave@gmail.com",
+  email: "jack@gmail.com",
   password: "password",
-  name: "Dave Williams",
-  bio: "My name is Dave, and I like tennis.",
+  name: "Jack Williams",
+  bio: "My name is Jack, and I like tennis.",
   skill_rating: 968,
   rep_rating: 5,
   will_travel_km: 3,
@@ -136,7 +136,8 @@ temp.save!
 temp = User.new(
   email: "kevin@gmail.com",
   password: "password",
-  name: "Kevin Ross"
+  name: "Kevin Ross",
+  skill_rating: rand(900..999)
 )
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/kevin.jpg")),
@@ -146,7 +147,8 @@ temp.save!
 temp = User.new(
   email: "maciej@gmail.com",
   password: "password",
-  name: "Maciej Kostek"
+  name: "Pawl Kostek",
+  skill_rating: rand(900..999)
 )
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/maciej.jpg")),
@@ -156,7 +158,8 @@ temp.save!
 temp = User.new(
   email: "owen@gmail.com",
   password: "password",
-  name: "Owen Wood"
+  name: "Owen Wood",
+  skill_rating: rand(900..999)
 )
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/owen.jpg")),
@@ -168,7 +171,8 @@ temp.save!
 temp = User.new(
   email: "danny@gmail.com",
   password: "password",
-  name: "Danny Hunter"
+  name: "Danny Hunter",
+  skill_rating: rand(900..999)
 )
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/danny.jpg")),
@@ -178,7 +182,8 @@ temp.save!
 temp = User.new(
   email: "harper@gmail.com",
   password: "password",
-  name: "Harper Kaur"
+  name: "Harper Kaur",
+  skill_rating: rand(900..999)
 )
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/harper.jpg")),
@@ -188,7 +193,8 @@ temp.save!
 temp = User.new(
   email: "nicolas@gmail.com",
   password: "password",
-  name: "Nicolas Lowe"
+  name: "Nicolas Lowe",
+  skill_rating: rand(900..999)
 )
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/nicolas.jpg")),
@@ -198,7 +204,8 @@ temp.save!
 temp = User.new(
   email: "grayson@gmail.com",
   password: "password",
-  name: "Grayson Collins"
+  name: "Grayson Collins",
+  skill_rating: rand(900..999)
 )
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/grayson.jpg")),
@@ -208,7 +215,8 @@ temp.save!
 temp = User.new(
   email: "marshall@gmail.com",
   password: "password",
-  name: "Marshall Smith"
+  name: "Marshall Smith",
+  skill_rating: rand(900..999)
 )
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/marshall.jpg")),
@@ -218,7 +226,8 @@ temp.save!
 temp = User.new(
   email: "eleanor@gmail.com",
   password: "password",
-  name: "Eleanor Hudson"
+  name: "Eleanor Hudson",
+  skill_rating: rand(900..999)
 )
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/eleanor.jpg")),
@@ -228,7 +237,8 @@ temp.save!
 temp = User.new(
   email: "ayden@gmail.com",
   password: "password",
-  name: "Ayden Byrne"
+  name: "Ayden Byrne",
+  skill_rating: rand(900..999)
 )
 temp.avatar.attach(
   io: open(File.join(Rails.root, "/app/assets/images/ava/ayden.jpg")),

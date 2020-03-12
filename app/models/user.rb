@@ -34,4 +34,12 @@ class User < ApplicationRecord
 
     return sorted
   end
+
+  def skillpoints_risked(opponent)
+    diff = (opponent.skill_rating - skill_rating)
+
+    risk = (diff / 2).clamp(-15, 15)
+
+    return {gained: (20 + risk), lost: (20 - risk)}
+  end
 end

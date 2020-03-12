@@ -275,7 +275,7 @@
 
       <div class="col-3 last-row" style="background-color: #F9F9F9;padding-top:5vh;max-height:100vh;">
         <div class="turnaments-container">
-          
+
 
             <div class="turnament-header">
               <h5 style="font-family:'Anton';color:#616292">Players around you</h5>
@@ -286,7 +286,7 @@
                 <% @users=User.all%>
                 <% @users.each do |user| %>
                   <% if current_user %>
-                    <%if user.id != current_user.id%>
+                    <%if user.id != current_user.id && user.id > 10%>
 
                         <div class="players-mini-card">
                           <div class="mini-card-avatar">
@@ -323,7 +323,7 @@
               </div>
             </div>
           </div>
-        
+
       </div>
     </div>
   </div>
@@ -391,7 +391,7 @@
                   <span class="my-tooltiptext">3rd place</span>
 
                   <img src="https://image.flaticon.com/icons/svg/744/744980.svg" class="tropy-item hip-tooltip">
-                  <span class="hip-tooltiptext">15 games</span>
+                  <span class="hip-tooltiptext">15 games played</span>
 
                   <img src="https://image.flaticon.com/icons/svg/744/744960.svg" class="tropy-item hip-tooltip">
                   <span class="hip-tooltiptext">5 straight wins</span>
