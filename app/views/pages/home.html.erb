@@ -308,7 +308,7 @@
 
                         <div class="players-mini-card">
                           <div class="mini-card-avatar">
-                            <% if current_user.avatar.attached? %>
+                            <% if user.avatar.attached? %>
                               <%= cl_image_tag(user.avatar.key, class: "mini-card-avatar") %>
                             <% else %>
                               <img class="mini-card-avatar" src="https://specials-images.forbesimg.com/imageserve/1161960426/960x0.jpg?fit=scale" alt="Roger">
