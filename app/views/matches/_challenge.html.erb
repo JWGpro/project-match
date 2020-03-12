@@ -55,11 +55,12 @@
        style="width: 250px;
        height: 250px;"
        data-markers="<%= [{
+                            lat: @match.receiver.latitude,
+                            lng: @match.receiver.longitude,
+                            cl_image_url: @match.receiver.avatar.key
+                           }, {
                             lat: current_user.latitude,
                             lng: current_user.longitude
-                           }, {
-                            lat: @match.venue.latitude,
-                            lng: @match.venue.longitude
                            }].to_json %>"
        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
