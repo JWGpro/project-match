@@ -110,12 +110,14 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
 .match-button {
   background-color: #EA5A07;
   border-radius: 7px;
-  a {
-    color: white;
-    &:hover {
-      color: black;
-    }
-  }
+  color: white;
+  font-weight: 600;
+  // a {
+  //   color: white;
+  //   &:hover {
+  //     color: black;
+  //   }
+  // }
   &:hover {
     background: rgb(214, 73, 21);
   }
@@ -332,7 +334,7 @@ $news-container-background-dark-gray: rgba(0, 0, 0, 0.5);
   padding: 8px 20px 8px 20px;
   border-radius: 8px;
   font-family: "Nunito Sans";
-  font-weight: 800;
+  font-weight: 300;
   font-size: 15px;
   color: white;
   background-color: #EA5A07;
