@@ -26,8 +26,8 @@
       <div class="modal fade" id="exampleModalCenter<%= index %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header">             
-             
+            <div class="modal-header">
+
 
 
 
@@ -95,12 +95,13 @@
               </div>
             </div>
           </div>
-        </div>    
+        </div>
       </div>
             <div class="modal-footer-challenge">
               <div class="challenge-card-points-gained">
                 <p><em class="skill-points-risked">Skill points risked:</em></p>
-                <p class="challenge-points"><em class="win">+43 / <span class="lose">-18</span></em></p>
+                <% points = current_user.skillpoints_risked(result[:user]) %>
+                <p class="challenge-points"><em class="win">+<%= points[:gained] %> / <span class="lose">-<%= points[:lost] %></span></em></p>
               </div>
               <%= simple_form_for [result[:user], Match.new] do |f| %>
                 <%= f.input :sender_id, :as => :hidden, input_html: { value: current_user.id } %>
