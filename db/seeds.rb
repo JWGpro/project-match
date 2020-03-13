@@ -351,7 +351,7 @@ match = Match.create!(
 )
 match = Match.create!(
   sender_id: User.first.id,
-  receiver_id: User.find(3).id,
+  receiver_id: User.find(4).id,
   venue: Venue.first,
   acceptance_deadline_hrs: 6,
   start_datetime: DateTime.new(2020,3,2, 20,0,0),
